@@ -1,0 +1,33 @@
+import { PageHero } from "@/components/ui/page-hero";
+import { getAboutPage, getSiteSettings } from "@/lib/db";
+import { AboutSections } from "@/components/ui/about-sections";
+
+export const metadata = {
+  title: "Hakkımızda",
+  description: "ARK Global hakkında bilgi edinin — Endüstriyel güvenlik mühendisliği alanında 15+ yıllık tecrübe.",
+};
+
+export default async function AboutPage() {
+  const [about, settings] = await Promise.all([
+    getAboutPage(),
+    getSiteSettings(),
+  ]);
+
+  return (
+    <>
+      <PageHero
+        title="Hakkımızda"
+        accent="ARK Global"
+        subtitle={settings.aboutPageSubtitle || "Endüstriyel tesisler için uçtan uca kazalardan korunma sistemleri — risk analizi, projelendirme ve anahtar teslim kurulum."}
+        breadcrumbs={[{ label: "Hakkımızda" }]}
+        image={about.cover_image_url || "https://images.pexels.com/photos/3862130/pexels-photo-3862130.jpeg?auto=compress&cs=tinysrgb&w=1920"}
+      />
+
+      <AboutSections 
+        settings={settings} 
+        aboutContent={about.content} 
+        aboutImage={about.cover_image_url} 
+      />
+    </>
+  );
+}

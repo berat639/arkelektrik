@@ -214,6 +214,11 @@ export interface SiteSettings {
   // Sectors
   sectorsSectionTitle: string;
 
+  // Hakkımızda Page Details
+  aboutHeroImage: string;
+  aboutStoryTitle: string;
+  aboutStoryText: string;
+
   // Timestamps
   updated_at: string;
 }

@@ -32,20 +32,30 @@ export function AboutSections({ settings, aboutContent, aboutImage }: AboutSecti
               className={`animate-on-scroll-left ${v1 ? "is-visible" : ""}`}
             >
               <span className="text-teal-500 text-xs font-semibold uppercase tracking-[0.25em] mb-4 block">Hikayemiz</span>
-              <h2 className="font-heading font-bold text-4xl uppercase text-gray-900 mb-4">
-                Deneyimden Doğan <span className="text-teal-500">Uzmanlık</span>
+              <h2 className="font-heading font-bold text-4xl uppercase text-gray-900 mb-4 whitespace-pre-wrap">
+                {settings.aboutStoryTitle ? (
+                  settings.aboutStoryTitle.includes(" ") ? (
+                    <>
+                      {settings.aboutStoryTitle.split(" ")[0]} <span className="text-teal-500">{settings.aboutStoryTitle.substring(settings.aboutStoryTitle.indexOf(" ") + 1)}</span>
+                    </>
+                  ) : (
+                    settings.aboutStoryTitle
+                  )
+                ) : (
+                  <>
+                    Deneyimden Doğan <span className="text-teal-500">Uzmanlık</span>
+                  </>
+                )}
               </h2>
               <div className="w-16 h-1 bg-teal-500 mb-6" />
               
-              {aboutContent ? (
-                <div className="prose prose-neutral max-w-none text-gray-600">
+              <div className="text-gray-600 leading-relaxed mb-6 whitespace-pre-wrap">
+                {settings.aboutStoryText || "ARK Global'in temeli, kurucu kadrosunun Tyco, Honeywell ve UTC Fire Safety gibi dünya devi markalarda bizzat sahada kazandığı 15 yılı aşkın deneyime dayanmaktadır."}
+              </div>
+
+              {aboutContent && (
+                <div className="prose prose-neutral max-w-none text-gray-600 mt-6 pt-6 border-t border-gray-100">
                   <MarkdownRenderer content={aboutContent} />
-                </div>
-              ) : (
-                <div className="text-gray-600 leading-relaxed space-y-4">
-                  <p>
-                    ARK Global&apos;in temeli, kurucu kadrosunun Tyco, Honeywell ve UTC Fire Safety gibi dünya devi markalarda bizzat sahada kazandığı 15 yılı aşkın deneyime dayanmaktadır.
-                  </p>
                 </div>
               )}
             </div>

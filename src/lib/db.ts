@@ -914,6 +914,11 @@ const DEFAULT_SITE_SETTINGS: SiteSettings = {
   // Sectors
   sectorsSectionTitle: "Hizmet Verdiğimiz Sektörler",
 
+  // Hakkımızda Page Details
+  aboutHeroImage: "https://images.pexels.com/photos/3862130/pexels-photo-3862130.jpeg?auto=compress&cs=tinysrgb&w=1920",
+  aboutStoryTitle: "Deneyimden Doğan Uzmanlık",
+  aboutStoryText: "ARK Global'in temeli, kurucu kadrosunun Tyco, Honeywell ve UTC Fire Safety gibi dünya devi markalarda bizzat sahada kazandığı 15 yılı aşkın deneyime dayanmaktadır.",
+
   updated_at: new Date().toISOString(),
 };
 

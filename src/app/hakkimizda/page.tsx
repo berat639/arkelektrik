@@ -18,9 +18,9 @@ export default async function AboutPage() {
       <PageHero
         title="Hakkımızda"
         accent="ARK Global"
-        subtitle={settings.aboutPageSubtitle || "Endüstriyel tesisler için uçtan uca kazalardan korunma sistemleri — risk analizi, projelendirme ve anahtar teslim kurulum."}
+        subtitle={settings.aboutPageSubtitle || "15 yılı aşkın endüstriyel güvenlik tecrübesiyle, standart bir tedarikçiden öte uçtan uca mühendislik partneri."}
         breadcrumbs={[{ label: "Hakkımızda" }]}
-        image={about.cover_image_url || "https://images.pexels.com/photos/3862130/pexels-photo-3862130.jpeg?auto=compress&cs=tinysrgb&w=1920"}
+        image={settings.aboutHeroImage || about.cover_image_url || "https://images.pexels.com/photos/3862130/pexels-photo-3862130.jpeg?auto=compress&cs=tinysrgb&w=1920"}
       />
 
       <AboutSections 

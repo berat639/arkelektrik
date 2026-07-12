@@ -13,10 +13,10 @@ import { UploadDropzone } from "@/lib/uploadthing";
 import type { SiteSettings } from "@/lib/types";
 
 const TABS = [
-  { id: "icerik", label: "İçerik Yönetimi" },
-  { id: "ayarlar", label: "Hero & Teaser" },
-  { id: "kilometre", label: "Kilometre Taşları" },
-  { id: "degerler", label: "Değerlerimiz & İlkeler" },
+  { id: "ayarlar", label: "Giriş & Yetkinlik Ayarları" },
+  { id: "icerik", label: "Detaylı Şirket Profili" },
+  { id: "kilometre", label: "Tarihçe & Zaman Tüneli" },
+  { id: "degerler", label: "İlkeler & Sertifikalar" },
 ];
 
 interface AboutAdminClientProps {
@@ -27,7 +27,7 @@ interface AboutAdminClientProps {
 }
 
 export function AboutAdminClient({ initialAbout }: AboutAdminClientProps) {
-  const [activeTab, setActiveTab] = useState("icerik");
+  const [activeTab, setActiveTab] = useState("ayarlar");
   const [settings, setSettings] = useState<SiteSettings | null>(null);
   const [loading, setLoading] = useState(true);
   const [saving, setSaving] = useState(false);
@@ -67,9 +67,9 @@ export function AboutAdminClient({ initialAbout }: AboutAdminClientProps) {
     <div className="space-y-6">
       <div className="flex items-center justify-between mb-2">
         <div>
-          <h1 className="text-xl sm:text-2xl font-bold">Hakkımızda & Genel Ayarlar</h1>
+          <h1 className="text-xl sm:text-2xl font-bold">Hakkımızda Sayfa Yönetimi</h1>
           <p className="text-sm text-muted-foreground mt-1">
-            Hakkımızda sayfası, iletişim bilgileri ve JSON verilerini buradan yönetebilirsiniz.
+            Hakkımızda sayfasının başlıkları, görselleri, zaman tüneli ve ilkelerini buradan kolayca yönetebilirsiniz.
           </p>
         </div>
         {activeTab !== "icerik" && (
@@ -116,12 +116,12 @@ export function AboutAdminClient({ initialAbout }: AboutAdminClientProps) {
             <div className="space-y-6">
               <Card>
                 <CardHeader>
-                  <CardTitle>Hero Ayarları</CardTitle>
-                  <CardDescription>Sayfanın en üstünde yer alan ana başlık arka planı ve alt başlığı.</CardDescription>
+                  <CardTitle>Giriş Görseli ve Yazısı (Sayfa Başı)</CardTitle>
+                  <CardDescription>Hakkımızda sayfasına girildiğinde en üstte görünen büyük arka plan resmi ve açıklama yazısı.</CardDescription>
                 </CardHeader>
                 <CardContent className="space-y-4">
                   <div className="space-y-2">
-                    <Label>Hakkımızda Hero Alt Başlığı</Label>
+                    <Label>Giriş Açıklama Yazısı</Label>
                     <Input
                       value={settings.aboutPageSubtitle || ""}
                       onChange={(e) => setSettings({ ...settings, aboutPageSubtitle: e.target.value })}
@@ -130,7 +130,7 @@ export function AboutAdminClient({ initialAbout }: AboutAdminClientProps) {
                   </div>
 
                   <div className="space-y-2">
-                    <Label>Hakkımızda Üst Görsel (Hero Arka Plan)</Label>
+                    <Label>Giriş Bölümü Arka Plan Resmi</Label>
                     {settings.aboutHeroImage ? (
                       <div className="relative border rounded-lg p-2 bg-muted/50 flex justify-center max-w-lg">
                         <img src={settings.aboutHeroImage} alt="Hero Arka Plan" className="h-40 object-cover w-full rounded-md" />
@@ -164,12 +164,12 @@ export function AboutAdminClient({ initialAbout }: AboutAdminClientProps) {
 
               <Card>
                 <CardHeader>
-                  <CardTitle>Hikayemiz Tanıtım Metinleri</CardTitle>
-                  <CardDescription>Hikayemiz başlığı ve giriş paragrafı.</CardDescription>
+                  <CardTitle>Şirket Tanıtım Özeti</CardTitle>
+                  <CardDescription>Şirket hikayesi ve kuruluş amacını belirten giriş yazıları.</CardDescription>
                 </CardHeader>
                 <CardContent className="space-y-4">
                   <div className="space-y-2">
-                    <Label>Hikaye Başlığı</Label>
+                    <Label>Tanıtım Başlığı</Label>
                     <Input
                       value={settings.aboutStoryTitle || ""}
                       onChange={(e) => setSettings({ ...settings, aboutStoryTitle: e.target.value })}
@@ -178,7 +178,7 @@ export function AboutAdminClient({ initialAbout }: AboutAdminClientProps) {
                     <p className="text-xs text-muted-foreground">Birden fazla kelime girildiğinde son kelimeler otomatik olarak renkli vurgulanır.</p>
                   </div>
                   <div className="space-y-2">
-                    <Label>Hikaye Giriş Paragrafı</Label>
+                    <Label>Tanıtım Yazısı (Giriş Paragrafı)</Label>
                     <Textarea
                       value={settings.aboutStoryText || ""}
                       onChange={(e) => setSettings({ ...settings, aboutStoryText: e.target.value })}
@@ -191,13 +191,13 @@ export function AboutAdminClient({ initialAbout }: AboutAdminClientProps) {
 
               <Card>
                 <CardHeader>
-                  <CardTitle>Neden Biz? / Yetkinlikler Ayarları</CardTitle>
-                  <CardDescription>Uzmanlık alanları listesi ve sağdaki ana görsel.</CardDescription>
+                  <CardTitle>Yetkinliklerimiz ve Neden Biz? Bölümü</CardTitle>
+                  <CardDescription>Sayfanın alt kısmındaki görsel, maddeler ve başlık yazıları.</CardDescription>
                 </CardHeader>
                 <CardContent className="space-y-6">
                   <div className="grid sm:grid-cols-2 gap-4">
                     <div className="space-y-2">
-                      <Label>Bölüm Üst Başlığı (Etiket)</Label>
+                      <Label>Küçük Üst Başlık (Etiket)</Label>
                       <Input
                         value={settings.aboutExpertiseSubtitle || ""}
                         onChange={(e) => setSettings({ ...settings, aboutExpertiseSubtitle: e.target.value })}
@@ -205,7 +205,7 @@ export function AboutAdminClient({ initialAbout }: AboutAdminClientProps) {
                       />
                     </div>
                     <div className="space-y-2">
-                      <Label>Bölüm Başlığı</Label>
+                      <Label>Ana Başlık</Label>
                       <Input
                         value={settings.aboutExpertiseTitle || ""}
                         onChange={(e) => setSettings({ ...settings, aboutExpertiseTitle: e.target.value })}
@@ -215,7 +215,7 @@ export function AboutAdminClient({ initialAbout }: AboutAdminClientProps) {
                   </div>
 
                   <div className="space-y-2">
-                    <Label>Bölüm Açıklama Yazısı</Label>
+                    <Label>Tanıtım Açıklaması</Label>
                     <Textarea
                       value={settings.aboutExpertiseDescription || ""}
                       onChange={(e) => setSettings({ ...settings, aboutExpertiseDescription: e.target.value })}
@@ -225,7 +225,7 @@ export function AboutAdminClient({ initialAbout }: AboutAdminClientProps) {
                   </div>
 
                   <div className="space-y-2">
-                    <Label>Yetkinlikler / Uzmanlık Görseli</Label>
+                    <Label>Bölümün Sağ Tarafındaki Büyük Görsel</Label>
                     {settings.expertiseImage ? (
                       <div className="relative border rounded-lg p-2 bg-muted/50 flex justify-center max-w-lg">
                         <img src={settings.expertiseImage} alt="Yetkinlikler Görseli" className="h-40 object-cover w-full rounded-md" />

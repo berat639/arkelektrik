@@ -211,6 +211,9 @@ export interface SiteSettings {
   seoDescription: string;
   seoKeywords: string;
 
+  // Sectors
+  sectorsSectionTitle: string;
+
   // Timestamps
   updated_at: string;
 }

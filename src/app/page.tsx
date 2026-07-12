@@ -37,6 +37,8 @@ export default async function HomePage() {
         image={settings.whyArkImage}
         quote={settings.whyArkQuote}
         reasonsMDX={settings.whyArkReasonsMDX}
+        sectorsTitle={settings.sectorsSectionTitle}
+        sectors={settings.sectors}
       />
       <FixedStandards />
       <StandardsSection

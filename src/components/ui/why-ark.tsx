@@ -21,6 +21,8 @@ interface WhyArkProps {
   subtitle: string;
   quote: string;
   reasonsMDX: string;
+  sectorsTitle?: string;
+  sectors?: { name: string; image: string }[];
 }
 
 export function WhyArk({
@@ -29,6 +31,8 @@ export function WhyArk({
   subtitle,
   quote,
   reasonsMDX,
+  sectorsTitle,
+  sectors,
 }: WhyArkProps) {
   const { ref: leftRef, isVisible: leftVisible } = useScrollAnimation();
   const { ref: rightRef, isVisible: rightVisible } = useScrollAnimation();
@@ -132,16 +136,16 @@ export function WhyArk({
         </div>
 
         {/* Sectors */}
-        {HARDCODED_SECTORS.length > 0 && (
+        {((sectors || HARDCODED_SECTORS).length > 0) && (
           <div
             ref={sectorRef as React.RefObject<HTMLDivElement>}
             className={`animate-on-scroll ${sectorVisible ? "is-visible" : ""}`}
           >
             <h3 className="font-heading font-bold text-2xl uppercase text-gray-900 text-center mb-8">
-              {HARDCODED_SECTORS_TITLE}
+              {sectorsTitle || HARDCODED_SECTORS_TITLE}
             </h3>
             <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
-              {HARDCODED_SECTORS.map(({ name, image: img }, i) => (
+              {(sectors || HARDCODED_SECTORS).map(({ name, image: img }, i) => (
                 <div
                   key={name}
                   className={`relative overflow-hidden group h-48 animate-on-scroll ${

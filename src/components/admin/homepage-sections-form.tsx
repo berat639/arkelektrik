@@ -18,6 +18,7 @@ const TABS = [
   { id: "hakkimizda", label: "Hakkımızda Yönetimi" },
   { id: "nedenbiz", label: "Neden Biz Yönetimi" },
   { id: "standartlar", label: "Markalar Yönetimi" },
+  { id: "sektorler", label: "Hizmet Verdiğimiz Sektörler Yönetimi" },
   { id: "seo", label: "SEO Yönetimi" },
 ];
 
@@ -367,6 +368,117 @@ export function HomepageSectionsForm({ initialSlides }: HomepageSectionsFormProp
               {(!settings.carouselBrands || settings.carouselBrands.length === 0) && (
                 <div className="col-span-full text-sm text-muted-foreground text-center py-8 border rounded-lg border-dashed">
                   Henüz marka eklenmemiş. "Marka Ekle" butonuna tıklayarak başlayın.
+                </div>
+              )}
+            </div>
+          </CardContent>
+        </Card>
+      )}
+
+      {/* Hizmet Verdiğimiz Sektörler */}
+      {activeTab === "sektorler" && (
+        <Card>
+          <CardHeader className="flex flex-row items-center justify-between space-y-0">
+            <div>
+              <CardTitle>Hizmet Verdiğimiz Sektörler</CardTitle>
+              <CardDescription>Neden Biz sayfasındaki/bölümündeki sektörlerin listesi.</CardDescription>
+            </div>
+            <Button
+              variant="outline"
+              size="sm"
+              onClick={() => {
+                setSettings({
+                  ...settings,
+                  sectors: [...(settings.sectors || []), { name: "Yeni Sektör", image: "" }],
+                });
+              }}
+            >
+              <Plus className="w-4 h-4 mr-2" /> Sektör Ekle
+            </Button>
+          </CardHeader>
+          <CardContent className="space-y-4">
+            <div className="space-y-2 mb-6">
+              <Label>Sektörler Başlığı (Örn: Hizmet Verdiğimiz Sektörler)</Label>
+              <Input
+                value={settings.sectorsSectionTitle || ""}
+                onChange={(e) => setSettings({ ...settings, sectorsSectionTitle: e.target.value })}
+              />
+            </div>
+
+            <div className="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+              {(settings.sectors || []).map((sector, i) => (
+                <div key={i} className="flex flex-col gap-3 border p-3 rounded-lg bg-gray-50/50 relative">
+                  <Button
+                    variant="ghost"
+                    size="icon"
+                    className="absolute top-1 right-1 h-6 w-6 text-destructive hover:bg-destructive/10 z-10 bg-white shadow-sm"
+                    onClick={() => {
+                      const updated = settings.sectors.filter((_, idx) => idx !== i);
+                      setSettings({ ...settings, sectors: updated });
+                    }}
+                  >
+                    <Trash2 className="w-3 h-3" />
+                  </Button>
+
+                  <div className="space-y-1 mt-4">
+                    <Label className="text-xs">Sektör Adı</Label>
+                    <Input
+                      className="h-8 text-xs"
+                      value={sector.name}
+                      onChange={(e) => {
+                        const updated = [...settings.sectors];
+                        updated[i] = { ...updated[i], name: e.target.value };
+                        setSettings({ ...settings, sectors: updated });
+                      }}
+                      placeholder="Örn: Petrol ve Gaz"
+                    />
+                  </div>
+
+                  <div className="space-y-1">
+                    <Label className="text-xs">Görsel</Label>
+                    {sector.image ? (
+                      <div className="relative border rounded-md p-2 bg-white flex justify-center h-24 items-center group overflow-hidden">
+                        <img src={sector.image} alt={sector.name} className="max-h-16 max-w-full object-contain" />
+                        <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                          <Button
+                            variant="destructive"
+                            size="sm"
+                            className="h-7 text-xs"
+                            onClick={() => {
+                              const updated = [...settings.sectors];
+                              updated[i] = { ...updated[i], image: "" };
+                              setSettings({ ...settings, sectors: updated });
+                            }}
+                          >
+                            Değiştir
+                          </Button>
+                        </div>
+                      </div>
+                    ) : (
+                      <div className="border border-dashed rounded-md flex items-center justify-center bg-white p-2">
+                        <UploadDropzone
+                          endpoint="contentImage"
+                          className="ut-button:text-xs ut-button:h-8 ut-allowed-content:hidden m-0 w-full"
+                          onClientUploadComplete={(res) => {
+                            if (res?.[0]) {
+                              const updated = [...settings.sectors];
+                              updated[i] = { ...updated[i], image: res[0].url };
+                              setSettings({ ...settings, sectors: updated });
+                              toast.success("Görsel yüklendi");
+                            }
+                          }}
+                          onUploadError={(error) => {
+                            toast.error("Yükleme hatası: " + error.message);
+                          }}
+                        />
+                      </div>
+                    )}
+                  </div>
+                </div>
+              ))}
+              {(!settings.sectors || settings.sectors.length === 0) && (
+                <div className="col-span-full text-sm text-muted-foreground text-center py-8 border rounded-lg border-dashed">
+                  Henüz sektör eklenmemiş. "Sektör Ekle" butonuna tıklayarak başlayın.
                 </div>
               )}
             </div>

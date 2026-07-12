@@ -911,6 +911,9 @@ const DEFAULT_SITE_SETTINGS: SiteSettings = {
   seoDescription: "Endüstriyel tesisler için uçtan uca kazalardan korunma sistemleri. Risk analizinden anahtar teslim projeye, uluslararası standartlarda mühendislik.",
   seoKeywords: "Endüstriyel Güvenlik, Yangın Algılama, Patlamadan Korunma, ARK Global",
 
+  // Sectors
+  sectorsSectionTitle: "Hizmet Verdiğimiz Sektörler",
+
   updated_at: new Date().toISOString(),
 };
 

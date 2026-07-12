@@ -918,6 +918,9 @@ const DEFAULT_SITE_SETTINGS: SiteSettings = {
   aboutHeroImage: "https://images.pexels.com/photos/3862130/pexels-photo-3862130.jpeg?auto=compress&cs=tinysrgb&w=1920",
   aboutStoryTitle: "Deneyimden Doğan Uzmanlık",
   aboutStoryText: "ARK Global'in temeli, kurucu kadrosunun Tyco, Honeywell ve UTC Fire Safety gibi dünya devi markalarda bizzat sahada kazandığı 15 yılı aşkın deneyime dayanmaktadır.",
+  aboutExpertiseSubtitle: "Yetkinliklerimiz",
+  aboutExpertiseTitle: "Neden Biz?",
+  aboutExpertiseDescription: "Sadece ürün temini değil; risk analizi ile başlayan, tesisin ihtiyaçlarına özel proses mühendisliği ile şekillenen ve uluslararası standartlarda hazırlanan detaylı projelendirme süreçlerimizle fark yaratıyoruz.",
 
   updated_at: new Date().toISOString(),
 };

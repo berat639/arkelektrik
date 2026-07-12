@@ -195,6 +195,35 @@ export function AboutAdminClient({ initialAbout }: AboutAdminClientProps) {
                   <CardDescription>Uzmanlık alanları listesi ve sağdaki ana görsel.</CardDescription>
                 </CardHeader>
                 <CardContent className="space-y-6">
+                  <div className="grid sm:grid-cols-2 gap-4">
+                    <div className="space-y-2">
+                      <Label>Bölüm Üst Başlığı (Etiket)</Label>
+                      <Input
+                        value={settings.aboutExpertiseSubtitle || ""}
+                        onChange={(e) => setSettings({ ...settings, aboutExpertiseSubtitle: e.target.value })}
+                        placeholder="Örn: Yetkinliklerimiz"
+                      />
+                    </div>
+                    <div className="space-y-2">
+                      <Label>Bölüm Başlığı</Label>
+                      <Input
+                        value={settings.aboutExpertiseTitle || ""}
+                        onChange={(e) => setSettings({ ...settings, aboutExpertiseTitle: e.target.value })}
+                        placeholder="Örn: Neden Biz?"
+                      />
+                    </div>
+                  </div>
+
+                  <div className="space-y-2">
+                    <Label>Bölüm Açıklama Yazısı</Label>
+                    <Textarea
+                      value={settings.aboutExpertiseDescription || ""}
+                      onChange={(e) => setSettings({ ...settings, aboutExpertiseDescription: e.target.value })}
+                      placeholder="Sadece ürün temini değil; risk analizi ile başlayan..."
+                      rows={3}
+                    />
+                  </div>
+
                   <div className="space-y-2">
                     <Label>Yetkinlikler / Uzmanlık Görseli</Label>
                     {settings.expertiseImage ? (

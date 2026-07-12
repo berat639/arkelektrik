@@ -218,6 +218,9 @@ export interface SiteSettings {
   aboutHeroImage: string;
   aboutStoryTitle: string;
   aboutStoryText: string;
+  aboutExpertiseSubtitle: string;
+  aboutExpertiseTitle: string;
+  aboutExpertiseDescription: string;
 
   // Timestamps
   updated_at: string;

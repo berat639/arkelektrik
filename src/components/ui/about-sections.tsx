@@ -130,13 +130,15 @@ export function AboutSections({ settings, aboutContent, aboutImage }: AboutSecti
               ref={ref3 as React.RefObject<HTMLDivElement>}
               className={`animate-on-scroll-left ${v3 ? "is-visible" : ""}`}
             >
-              <span className="text-teal-500 text-xs font-semibold uppercase tracking-[0.25em] mb-4 block">Yetkinliklerimiz</span>
+              <span className="text-teal-500 text-xs font-semibold uppercase tracking-[0.25em] mb-4 block">
+                {settings.aboutExpertiseSubtitle || "Yetkinliklerimiz"}
+              </span>
               <h2 className="font-heading font-bold text-4xl uppercase text-gray-900 mb-4">
-                Neden Biz?
+                {settings.aboutExpertiseTitle || "Neden Biz?"}
               </h2>
               <div className="w-16 h-1 bg-teal-500 mb-6" />
-              <p className="text-gray-600 leading-relaxed mb-6">
-                Sadece ürün temini değil; risk analizi ile başlayan, tesisin ihtiyaçlarına özel proses mühendisliği ile şekillenen ve uluslararası standartlarda hazırlanan detaylı projelendirme süreçlerimizle fark yaratıyoruz.
+              <p className="text-gray-600 leading-relaxed mb-6 whitespace-pre-wrap">
+                {settings.aboutExpertiseDescription || "Sadece ürün temini değil; risk analizi ile başlayan, tesisin ihtiyaçlarına özel proses mühendisliği ile şekillenen ve uluslararası standartlarda hazırlanan detaylı projelendirme süreçlerimizle fark yaratıyoruz."}
               </p>
               <ul className="space-y-3">
                 {settings.expertiseItems.map((item) => (

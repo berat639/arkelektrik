@@ -1,7 +1,7 @@
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import {
-  ArrowRight, ArrowLeft, Flame, Zap, Shield, Gauge, Wind, Lock, Wrench, CheckCircle,
+  ArrowRight, ArrowLeft, Flame, Zap, Shield, Gauge, Wind, Lock, Wrench,
 } from "lucide-react";
 import { PageHero } from "@/components/ui/page-hero";
 import { getServicePageBySlug, getAllServicePages } from "@/lib/db";
@@ -42,10 +42,6 @@ export default async function ServiceDetailPage({ params }: Props) {
     currentIndex < publishedServices.length - 1 ? publishedServices[currentIndex + 1] : null;
 
   const Icon = iconMap[service.icon] ?? Shield;
-  const features = service.features || [];
-  const standards = service.standards || [];
-  const applications = service.applications || [];
-  const longDesc = service.longDesc || service.content || service.excerpt || "";
 
   return (
     <>
@@ -87,8 +83,6 @@ export default async function ServiceDetailPage({ params }: Props) {
                 </div>
               </div>
 
-              <p className="text-gray-600 leading-relaxed text-base mb-8">{longDesc}</p>
-
               {/* Image */}
               {service.cover_image_url && (
                 <div
@@ -103,82 +97,16 @@ export default async function ServiceDetailPage({ params }: Props) {
                 </div>
               )}
 
-              {/* Markdown content if any */}
+              {/* Markdown content */}
               {service.content && (
-                <div className="prose prose-neutral max-w-none mb-8">
+                <div className="prose prose-neutral max-w-none prose-headings:font-heading prose-headings:uppercase prose-h2:text-xl prose-h2:text-gray-900 prose-h3:text-lg prose-h3:text-gray-900 prose-p:text-gray-600 prose-p:leading-relaxed prose-li:text-gray-700 prose-strong:text-gray-900 prose-hr:border-gray-200">
                   <MarkdownRenderer content={service.content} />
                 </div>
-              )}
-
-              {/* Features */}
-              {features.length > 0 && (
-                <>
-                  <h3 className="font-heading font-bold text-xl uppercase text-gray-900 mb-4">
-                    Sistem Özellikleri
-                  </h3>
-                  <div className="w-12 h-0.5 bg-teal-500 mb-6" />
-                  <ul className="space-y-3 mb-8">
-                    {features.map((f) => (
-                      <li key={f} className="flex items-start gap-3">
-                        <CheckCircle size={16} className="text-teal-500 flex-shrink-0 mt-0.5" />
-                        <span className="text-gray-700 text-sm leading-relaxed">{f}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </>
               )}
             </div>
 
             {/* Right sidebar */}
             <div className="space-y-6">
-              {/* Standards */}
-              {standards.length > 0 && (
-                <div
-                  className="bg-white border border-gray-200 p-6"
-                  style={{
-                    clipPath:
-                      "polygon(0 0, calc(100% - 14px) 0, 100% 14px, 100% 100%, 14px 100%, 0 calc(100% - 14px))",
-                  }}
-                >
-                  <h4 className="font-heading font-bold text-sm uppercase text-gray-900 tracking-wider mb-4">
-                    Uyumlu Standartlar
-                  </h4>
-                  <div className="flex flex-wrap gap-2">
-                    {standards.map((s) => (
-                      <span
-                        key={s}
-                        className="px-3 py-1.5 bg-teal-500/5 border border-teal-500/20 text-teal-500 text-xs font-semibold uppercase tracking-wide"
-                      >
-                        {s}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-              )}
-
-              {/* Applications */}
-              {applications.length > 0 && (
-                <div
-                  className="bg-white border border-gray-200 p-6"
-                  style={{
-                    clipPath:
-                      "polygon(0 0, calc(100% - 14px) 0, 100% 14px, 100% 100%, 14px 100%, 0 calc(100% - 14px))",
-                  }}
-                >
-                  <h4 className="font-heading font-bold text-sm uppercase text-gray-900 tracking-wider mb-4">
-                    Uygulama Alanları
-                  </h4>
-                  <ul className="space-y-2">
-                    {applications.map((a) => (
-                      <li key={a} className="flex items-center gap-2 text-sm text-gray-600">
-                        <span className="w-1.5 h-1.5 bg-teal-500 rounded-full flex-shrink-0" />
-                        {a}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              )}
-
               {/* CTA */}
               <div
                 className="bg-teal-500 p-6"
@@ -215,11 +143,10 @@ export default async function ServiceDetailPage({ params }: Props) {
                 <ul className="space-y-2">
                   {publishedServices
                     .filter((s) => s.slug !== slug)
-                    .slice(0, 4)
                     .map((s) => {
                       const SIcon = iconMap[s.icon] ?? Shield;
                       return (
-                        <li key={s.slug}>
+                        <li key={s.id}>
                           <Link
                             href={`/hizmetler/${s.slug}`}
                             className="flex items-center gap-2 text-sm text-gray-600 hover:text-teal-500 transition-colors py-1"

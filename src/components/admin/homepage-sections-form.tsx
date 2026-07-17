@@ -1,6 +1,7 @@
 "use client";
 
-import { useState, useEffect, lazy, Suspense } from "react";
+import { useState, useEffect } from "react";
+import dynamic from "next/dynamic";
 import { toast } from "sonner";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -11,7 +12,10 @@ import type { SiteSettings, Slide } from "@/lib/types";
 import { UploadDropzone } from "@/lib/uploadthing";
 import { SlideManager } from "@/components/admin/slide-manager";
 
-const MdxEditor = lazy(() => import("@/components/admin/mdx-editor"));
+const MdxEditor = dynamic(() => import("@/components/admin/mdx-editor"), {
+  ssr: false,
+  loading: () => <div className="h-[200px] bg-muted animate-pulse rounded-md" />,
+});
 
 const TABS = [
   { id: "slider", label: "Slider Yönetimi" },
@@ -125,14 +129,12 @@ export function HomepageSectionsForm({ initialSlides }: HomepageSectionsFormProp
             </div>
             <div className="space-y-2">
               <Label>Açıklama Metni (Önizlemedeki Paragraf)</Label>
-              <Suspense fallback={<div className="h-[200px] bg-muted animate-pulse rounded-md" />}>
-                <div className="border rounded-md overflow-hidden [&_.mdxeditor]:bg-background">
+              <div className="border rounded-md overflow-hidden [&_.mdxeditor]:bg-background">
                   <MdxEditor
                     markdown={settings.aboutTeaserText || ""}
                     onChange={(val) => setSettings({ ...settings, aboutTeaserText: val })}
                   />
                 </div>
-              </Suspense>
             </div>
 
             <div className="grid sm:grid-cols-2 gap-4">
@@ -196,28 +198,24 @@ export function HomepageSectionsForm({ initialSlides }: HomepageSectionsFormProp
             </div>
             <div className="space-y-2">
               <Label>Açıklama Metni (MDX)</Label>
-              <Suspense fallback={<div className="h-[200px] bg-muted animate-pulse rounded-md" />}>
-                <div className="border rounded-md overflow-hidden [&_.mdxeditor]:bg-background">
+              <div className="border rounded-md overflow-hidden [&_.mdxeditor]:bg-background">
                   <MdxEditor
                     markdown={settings.whyArkDescription || ""}
                     onChange={(val) => setSettings({ ...settings, whyArkDescription: val })}
                   />
                 </div>
-              </Suspense>
             </div>
             <div className="space-y-2">
               <Label>Sağ Taraftaki Avantaj Listesi (Maddeler halinde yazın, MDX formatı)</Label>
               <p className="text-xs text-muted-foreground mb-2">
                 Buraya girdiğiniz liste (- madde) önizlemede yeşil tik tasarımlı liste olarak görünür.
               </p>
-              <Suspense fallback={<div className="h-[200px] bg-muted animate-pulse rounded-md" />}>
-                <div className="border rounded-md overflow-hidden [&_.mdxeditor]:bg-background">
+              <div className="border rounded-md overflow-hidden [&_.mdxeditor]:bg-background">
                   <MdxEditor
                     markdown={settings.whyArkReasonsMDX || ""}
                     onChange={(val) => setSettings({ ...settings, whyArkReasonsMDX: val })}
                   />
                 </div>
-              </Suspense>
             </div>
 
             <div className="grid sm:grid-cols-2 gap-4">

@@ -42,6 +42,7 @@ export const KEYS = {
   service: (id: string) => `service:${id}`,
   serviceBySlug: (slug: string) => `service:slug:${slug}`,
   servicesAll: "services:all",
+  servicesSeedVersion: "services:seed_version",
 
   // Static Pages
   pageAbout: "page:about",

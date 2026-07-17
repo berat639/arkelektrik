@@ -14,13 +14,20 @@ export async function PUT(request: NextRequest) {
   }
 
   const body = await request.json();
-  const { id, content, excerpt, cover_image_url } = body;
+  const { id, ...fields } = body;
 
   if (!id) {
     return NextResponse.json({ error: "ID zorunlu" }, { status: 400 });
   }
 
-  const service = await updateServicePage(id, { content, excerpt, cover_image_url });
+  // Only pass known editable fields
+  const allowed: Record<string, unknown> = {};
+  const keys = ["title", "content", "excerpt", "cover_image_url", "icon", "shortDesc", "longDesc", "features", "standards", "applications", "is_published"] as const;
+  for (const k of keys) {
+    if (fields[k] !== undefined) allowed[k] = fields[k];
+  }
+
+  const service = await updateServicePage(id, allowed);
   if (!service) {
     return NextResponse.json({ error: "Bulunamadı" }, { status: 404 });
   }

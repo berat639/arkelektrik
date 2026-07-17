@@ -56,7 +56,7 @@ export async function Footer() {
               {services.map((s) => {
                 const Icon = iconMap[s.icon] ?? Shield;
                 return (
-                  <li key={s.slug}>
+                  <li key={s.id}>
                     <Link
                       href={`/hizmetler/${s.slug}`}
                       className="flex items-center gap-2 text-white/55 hover:text-teal-500 text-sm transition-colors duration-200"

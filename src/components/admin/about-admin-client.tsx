@@ -507,6 +507,7 @@ export function AboutAdminClient({ initialAbout }: AboutAdminClientProps) {
                       <div key={i} className="flex flex-col gap-2 border p-3 rounded-lg bg-gray-50/50 relative">
                         <Button
                           variant="ghost"
+                          type="button"
                           size="icon"
                           className="absolute top-1 right-1 h-6 w-6 text-destructive hover:bg-destructive/10 z-10 bg-white shadow-sm"
                           onClick={() => {
@@ -543,6 +544,44 @@ export function AboutAdminClient({ initialAbout }: AboutAdminClientProps) {
                             }}
                             placeholder="Örn: Üye, Sertifikalı Mühendis..."
                           />
+                        </div>
+
+                        <div className="space-y-1 mt-1">
+                          <Label className="text-xs">Logo / Görsel</Label>
+                          {cp.image_url ? (
+                            <div className="relative border rounded p-1 bg-white flex justify-center items-center h-20 overflow-hidden">
+                              <img src={cp.image_url} alt="Partner Logo" className="max-h-full max-w-full object-contain" />
+                              <Button
+                                variant="destructive"
+                                type="button"
+                                size="icon"
+                                className="absolute top-1 right-1 h-5 w-5 rounded-full"
+                                onClick={() => {
+                                  const updated = [...settings.certPartners];
+                                  updated[i] = { ...updated[i], image_url: "" };
+                                  setSettings({ ...settings, certPartners: updated });
+                                }}
+                              >
+                                <Trash2 className="w-3 h-3" />
+                              </Button>
+                            </div>
+                          ) : (
+                            <UploadDropzone
+                              endpoint="coverImage"
+                              className="ut-label:hidden ut-button:text-xs ut-button:h-7 ut-allowed-content:hidden border-dashed border-2 p-2 h-20 flex flex-col justify-center items-center cursor-pointer bg-white"
+                              onClientUploadComplete={(res) => {
+                                if (res?.[0]) {
+                                  const updated = [...settings.certPartners];
+                                  updated[i] = { ...updated[i], image_url: res[0].ufsUrl };
+                                  setSettings({ ...settings, certPartners: updated });
+                                  toast.success("Görsel yüklendi");
+                                }
+                              }}
+                              onUploadError={(error) => {
+                                toast.error("Yükleme hatası: " + error.message);
+                              }}
+                            />
+                          )}
                         </div>
                       </div>
                     ))}

@@ -602,16 +602,157 @@ const DEFAULT_SERVICES: Array<{
   features: string[];
   standards: string[];
   applications: string[];
+  content?: string;
 }> = [
   {
-    title: "Yangın Algılama & Söndürme",
-    slug: "yangin-algilama-sondurme",
+    title: "Yangından Korunma Sistemleri",
+    slug: "yangindan-korunma-sistemleri",
     icon: "Flame",
-    shortDesc: "Endüstriyel tesisler için ileri yangın algılama teknolojileri ve otomatik söndürme sistemleri. Erken uyarı ile hasarı minimize edin.",
-    longDesc: "Endüstriyel tesislerde yangın; salt bir tesis kaybı değil, insan hayatları ve çevre için ciddi bir tehlikedir. ARK Global olarak, riski kaynağında bastırmaya odaklanan, çok katmanlı ve entegre yangın algılama & söndürme çözümleri sunuyoruz.",
-    features: ["Alev, duman, ısı ve çok sensörlü dedektörler", "Otomatik gazlı, köpüklü ve su sisi söndürme sistemleri", "Adreslenebilir yangın alarm panelleri ve kontrol üniteleri", "Acil tahliye, sesli & görsel uyarı sistemleri", "Yangın kapı ve kapama damper entegrasyonu", "Uzaktan izleme ve SCADA entegrasyonu"],
-    standards: ["NFPA 72", "NFPA 2001", "EN 54", "EN 12094", "ISO 7240"],
-    applications: ["Petrokimya ve rafineri tesisleri", "Enerji santralleri", "Gemi ve offshor platformları", "Veri merkezleri", "Endüstriyel üretim tesisleri"],
+    shortDesc: "Konvansiyonel ve adreslenebilir yangın algılama, Fire & Gas, görüntü işleme, hava örneklemeli sistemler, kablo/ışın tipi ve gaz/alev dedektörleriyle kapsamlı yangın koruması.",
+    longDesc: "Endüstriyel tesislerde yangın riski; insan hayatı, çevre ve iş sürekliliği açısından en kritik tehditlerden biridir. ARK Global olarak, tesislerin risk profiline uygun çok katmanlı yangından korunma çözümleri sunuyoruz. Konvansiyonelden adreslenebilir sistemlere, Fire & Gas algılamadan görüntü işleme teknolojilerine kadar geniş bir ürün ve mühendislik yelpazesiyle, yangını kaynağında tespit edip müdahale sürelerini minimuma indiriyoruz.",
+    features: ["Konvansiyonel ve adreslenebilir yangın algılama panelleri", "Fire & Gas entegre algılama sistemleri", "Video tabanlı yangın ve duman algılama (VID)", "Hava örneklemeli yüksek hassasiyetli duman algılama (ASD/VESDA)", "Lineer ısı algılamalı kablo tipi dedektörler", "Işın tipi (beam) duman dedektörleri", "Katalitik, IR ve elektrokimyasal gaz dedektörleri", "UV/IR ve multi-spektrum alev dedektörleri", "SCADA, BMS ve DCS entegrasyonu"],
+    standards: ["NFPA 72", "EN 54", "ISO 7240", "EN 60079-29", "NFPA 720", "EN 54-20", "IEC 60079", "ATEX 2014/34/EU"],
+    applications: ["Petrokimya ve rafineri tesisleri", "Enerji santralleri ve trafo merkezleri", "Gemi ve offshore platformları", "Veri merkezleri ve telekomünikasyon odaları", "Endüstriyel üretim ve depolama tesisleri", "Tüneller ve kapalı otopark yapıları", "Havalimanları ve alışveriş merkezleri"],
+    content: `## Konvansiyonel Yangın Algılama Sistemleri
+
+Konvansiyonel yangın algılama sistemleri, yangın güvenliğinin temel yapı taşını oluşturur. Bu sistemlerde dedektörler zone (bölge) bazında gruplandırılır ve panele bağlanır. Herhangi bir dedektör alarm verdiğinde, hangi zone'dan geldiği tespit edilir ancak bireysel dedektör adresi gösterilmez.
+
+**Temel Özellikler:**
+- Zone bazlı alarm bölgelendirmesi ile hızlı müdahale
+- Duman, ısı ve multi-sensör dedektör seçenekleri
+- Manuel ihbar butonları ve alarm zil/siren entegrasyonu
+- Küçük ve orta ölçekli tesisler için maliyet etkin çözüm
+- EN 54 ve NFPA 72 standartlarına tam uyumluluk
+
+Konvansiyonel sistemler; depolar, küçük ölçekli üretim tesisleri, ofis binaları ve perakende mağazaları gibi alanlarda yaygın olarak tercih edilmektedir.
+
+---
+
+## Adreslenebilir Yangın Algılama Sistemleri
+
+Adreslenebilir sistemlerde her dedektör ve modül benzersiz bir adrese sahiptir. Bu sayede yangın paneli, alarm veren cihazın tam konumunu belirleyerek müdahale süresini önemli ölçüde kısaltır. Büyük ve karmaşık tesislerde vazgeçilmez bir çözümdür.
+
+**Temel Özellikler:**
+- Her dedektöre özel adres ataması ile nokta bazlı algılama
+- Gerçek zamanlı cihaz durum izleme ve arıza tespiti
+- Akıllı algoritmalar ile yanlış alarm oranının minimuma indirilmesi
+- Loop (halka) kablo topolojisi ile yüksek sistem güvenilirliği
+- Geniş tesislerde binlerce cihazın tek panelden yönetimi
+- Grafik harita gösterimi ve yangın senaryosu programlama
+
+Adreslenebilir sistemler; hastaneler, havalimanları, alışveriş merkezleri, yüksek katlı binalar ve büyük endüstriyel tesislerde kritik önem taşır.
+
+---
+
+## Fire & Gas Algılama Sistemleri
+
+Fire & Gas (F&G) sistemleri, özellikle petrokimya, rafineri ve offshore gibi yüksek riskli endüstriyel tesislerde yangın ve gaz kaçağı tehditlerini eş zamanlı olarak izler. Bu sistemler, yangın dedektörleri ile gaz algılama sensörlerini tek bir entegre platform üzerinde birleştirerek kapsamlı bir erken uyarı ağı oluşturur.
+
+**Temel Özellikler:**
+- Yangın ve gaz algılama fonksiyonlarının tek sistemde birleştirilmesi
+- SIL 2/3 sertifikalı güvenlik döngüleri
+- Cause & Effect (neden-sonuç) matris programlaması
+- Otomatik söndürme, havalandırma ve izolasyon aksiyonları
+- Merkezi F&G kontrol panelleri ve uzak I/O üniteleri
+- DCS, ESD ve SCADA ile kesintisiz entegrasyon
+
+F&G sistemleri; IEC 61511, NFPA 72 ve EN 54 standartlarına uygun olarak tasarlanır ve yaşam döngüsü boyunca yönetilir.
+
+---
+
+## Görüntü İşleme Teknolojisi ile Yangın Algılama Sistemleri
+
+Video tabanlı yangın algılama (Video Image Detection — VID) sistemleri, gelişmiş görüntü işleme algoritmaları ve yapay zekâ kullanarak kamera görüntüleri üzerinden duman ve alev tespiti yapar. Geleneksel dedektörlerin yetersiz kaldığı geniş açık alanlar ve yüksek tavanlı mekânlarda üstün performans sunar.
+
+**Temel Özellikler:**
+- Yapay zekâ destekli duman ve alev tanıma algoritmaları
+- Geniş açık alanlarda ve yüksek tavanlarda etkili algılama
+- Mevcut CCTV altyapısı ile entegrasyon imkânı
+- Çoklu kamera ile geniş alan kapsaması
+- Düşük yanlış alarm oranı (yapay zekâ filtreleme)
+- Gerçek zamanlı görüntü analizi ve alarm doğrulama
+
+VID sistemleri; hangarlar, büyük depolar, atrium yapılar, tarihi binalar ve açık hava depolama alanlarında konvansiyonel dedektörlere güçlü bir alternatif sunar.
+
+---
+
+## Hava Örneklemeli Sistemler
+
+Hava örneklemeli duman algılama (Aspirating Smoke Detection — ASD) sistemleri, ortam havasını aktif olarak örnekleyerek en erken aşamada duman tespiti yapar. VESDA ve benzeri teknolojiler, duman partiküllerini geleneksel dedektörlerden çok daha önce algılayarak kritik varlıkların korunmasını sağlar.
+
+**Temel Özellikler:**
+- Çok erken aşamada duman algılama (0,005 — 20 %obs/m hassasiyet)
+- Boru ağı ile geniş alanlardan sürekli hava örneklemesi
+- Hassasiyet seviyeleri programlanabilir (uyarı, aksiyon, yangın 1, yangın 2)
+- Temiz oda, soğuk hava deposu gibi zorlu ortamlarda çalışabilme
+- Çok düşük yanlış alarm oranı
+- EN 54-20 ve NFPA 76 standartlarına uygunluk
+
+Hava örneklemeli sistemler; veri merkezleri, müzeler, temiz odalar, soğuk hava depoları, telekomünikasyon odaları ve tarihi yapılar gibi kritik ve yüksek değerli mekânlarda tercih edilir.
+
+---
+
+## Kablo Tipi Dedektörler
+
+Lineer ısı algılama kabloları (Linear Heat Detection — LHD), uzun mesafeler boyunca sürekli ısı izlemesi yapan özel kablolardır. Konveyör bantları, kablo tavaları, tüneller ve boru hatları gibi uzun ve dar alanlarda nokta tipi dedektörlerin yetersiz kaldığı uygulamalarda ideal çözüm sunar.
+
+**Temel Özellikler:**
+- Kablo boyunca sürekli ve kesintisiz ısı izleme
+- Sabit sıcaklık ve sıcaklık artış hızı algılama modları
+- Fiber optik ve bakır iletkenli seçenekler
+- Zorlu çevre koşullarına (toz, nem, kimyasal) dayanıklılık
+- Noktasal konum tespiti (fiber optik DTS sistemlerinde)
+- Uzun ömürlü ve düşük bakım gereksinimi
+
+Kablo tipi dedektörler; tünel yapıları, konveyör bantları, kablo kanalları, petrokimya boru hatları, enerji kablolarının geçtiği galeriler ve park alanlarında yaygın olarak kullanılmaktadır.
+
+---
+
+## Işın Tipi Dedektörler
+
+Işın tipi (beam) duman dedektörleri, bir verici ve alıcı arasında oluşturulan kızılötesi ışın demetinin duman tarafından zayıflatılması prensibine dayanır. Yüksek tavanlı ve geniş açık alanlarda nokta tipi dedektörlerin montajının zor veya verimsiz olduğu durumlarda tercih edilir.
+
+**Temel Özellikler:**
+- 100 metreye kadar algılama mesafesi
+- Yüksek tavanlı alanlarda (8 — 25 m) etkili duman algılama
+- Reflektörlü (tek uçlu) ve verici-alıcı (çift uçlu) modeller
+- Otomatik kirlilik telafisi ile yanlış alarm koruması
+- Minimum kablolama ile kolay montaj
+- EN 54-12 standardına uygunluk
+
+Işın tipi dedektörler; fabrika üretim alanları, depolar, spor salonları, sergi alanları, kiliseler ve tarihi yapılar gibi geniş hacimli mekânlarda idealdir.
+
+---
+
+## Gaz Dedektörleri
+
+Gaz dedektörleri, ortamdaki yanıcı, toksik veya oksijen yetersizliği durumlarını sürekli izleyerek erken uyarı sağlar. Farklı sensör teknolojileri (katalitik, elektrokimyasal, kızılötesi, yarı iletken) ile geniş bir gaz yelpazesine karşı koruma sunar.
+
+**Temel Özellikler:**
+- Katalitik bead sensörler (LEL — yanıcı gaz tespiti)
+- Kızılötesi (NDIR) sensörler (metan, propan, CO₂)
+- Elektrokimyasal sensörler (H₂S, CO, NH₃, Cl₂ gibi toksik gazlar)
+- Açık hat (open-path) IR dedektörler ile geniş alan taraması
+- Ultrasonik gaz kaçak dedektörleri
+- SIL 2 sertifikalı modeller ve ATEX/IECEx uyumluluğu
+
+Gaz dedektörleri; doğalgaz ve LPG tesisleri, rafineriler, kimya fabrikaları, kapalı otoparklar, atık su arıtma tesisleri ve soğutma sistemlerinde hayati öneme sahiptir.
+
+---
+
+## Alev Dedektörleri
+
+Alev dedektörleri, alevin yaydığı ultraviyole (UV), kızılötesi (IR) veya her iki dalga boyundaki radyasyonu algılayarak yangının en erken aşamasında tespit sağlar. Özellikle hızla yayılan sıvı ve gaz yangınlarında milisaniyeler içinde alarm verir.
+
+**Temel Özellikler:**
+- UV, IR, UV/IR kombine ve multi-spektrum (IR³) algılama modelleri
+- 0,1 saniyenin altında tepki süresi
+- 60 metreye kadar algılama mesafesi
+- Güneş ışığı ve kaynak arkı gibi yanlış alarm kaynaklarına karşı filtre
+- ATEX/IECEx sertifikalı Ex-proof gövde seçenekleri
+- SIL 2/3 uyumluluk ve kendini test etme fonksiyonu
+
+Alev dedektörleri; rafineri ve petrokimya tesisleri, uçak hangarları, boya kabinleri, silah/mühimmat depoları, gaz dolum istasyonları ve offshore platformlarında vazgeçilmez koruma elemanıdır.`,
   },
   {
     title: "Kıvılcım Algılama & Söndürme",
@@ -622,6 +763,94 @@ const DEFAULT_SERVICES: Array<{
     features: ["UV/IR kıvılcım algılama sensörleri", "Yüksek hızlı otomatik söndürme valfleri", "Konveyör hız bağımlı söndürme optimizasyonu", "Erken uyarı ve otomatik durdurma entegrasyonu", "Lokal kontrol ve uzaktan izleme paneli", "Silo, siklon ve filtre üniteleri için koruma"],
     standards: ["NFPA 654", "EN 16447", "ATEX 2014/34/EU", "VdS"],
     applications: ["Tahıl ve un değirmenleri", "Ahşap işleme ve pellet tesisleri", "Tekstil üretimi", "Madencilik ve maden işleme", "Geri dönüşüm tesisleri"],
+    content: `## Kıvılcım Algılama
+
+Kıvılcım algılama sistemleri, pnömatik taşıma hatları, konveyör bantları ve kanal sistemleri içinde oluşan kıvılcım ve akkor parçacıklarını milisaniyeler içinde tespit eder. Bu sistemler, malzemenin filtre, silo veya depolama ünitesine ulaşmadan önce tutuşma kaynağının ortadan kaldırılmasını sağlar.
+
+**Çalışma Prensibi:**
+
+Kıvılcım dedektörleri, taşıma hattı boyunca stratejik noktalara yerleştirilir. IR (kızılötesi) sensörler, malzeme akışı içindeki sıcak parçacıkların yaydığı radyasyonu algılar ve alarm sinyalini kontrol ünitesine iletir. Sistem, algılama anından itibaren 50 milisaniyenin altında tepki verebilir.
+
+**Temel Özellikler:**
+- Yüksek hassasiyetli IR kıvılcım dedektörleri
+- 1 mm²'ye kadar küçük akkor parçacıkları tespit edebilme
+- 20 m/s'ye kadar taşıma hızlarında güvenilir algılama
+- Toz, buhar ve yoğun ortam koşullarında çalışabilme
+- Otomatik lens temizleme (hava üflemeli) sistemi
+- Çoklu dedektör ile 360° kanal taraması
+
+---
+
+## Gün Işığında Alev Algılama
+
+Gün ışığında alev algılama (Daylight Flame Detection) teknolojisi, açık hava ortamlarında veya doğal ışığa maruz kalan endüstriyel alanlarda, güneş ışığı ve diğer optik parazitlerden etkilenmeden alev tespiti yapabilen ileri seviye bir algılama sistemidir.
+
+**Çalışma Prensibi:**
+
+Multi-spektrum (UV/IR ve IR³) sensör teknolojisi kullanılarak alevin kendine özgü titreşim frekansı ve spektral imzası analiz edilir. Güneş ışığı, kaynak arkı, sıcak yüzeyler ve yapay aydınlatma gibi yanlış alarm kaynaklarından ayırt edici algoritmalar sayesinde, yalnızca gerçek alev durumlarında alarm üretilir.
+
+**Temel Özellikler:**
+- Multi-spektrum (IR³) ve UV/IR kombine algılama modelleri
+- Güneş ışığı altında yanlış alarmsız çalışma
+- 65 metreye kadar algılama mesafesi (0,1 m² alev kaynağı için)
+- 180° geniş görüş açısı
+- Sürekli kendini test etme (CIST) fonksiyonu
+- ATEX/IECEx sertifikalı Ex-proof gövde seçenekleri
+- SIL 2 uyumluluk
+
+Gün ışığında alev algılama sistemleri; açık hava depolama alanları, yükleme/boşaltma terminalleri, boru hatları, offshore platformları ve rafineri sahalarında kritik güvenlik sağlar.
+
+---
+
+## Kıvılcım Sulu Söndürme
+
+Kıvılcım sulu söndürme sistemleri, algılanan kıvılcım veya akkor parçacığının üzerine yüksek basınçlı su sisi püskürterek tutuşma kaynağını anında söndürür. Bu yöntem, malzeme akışının minimum düzeyde etkilenmesiyle hızlı ve etkili bir müdahale sağlar.
+
+**Çalışma Prensibi:**
+
+Kıvılcım dedektörü alarm verdiğinde, kontrol ünitesi kanal üzerindeki yüksek hızlı selenoid vanayı tetikler. Özel tasarım nozullar aracılığıyla ince su sisi (water mist) doğrudan tutuşma noktasına yönlendirilir. Söndürme süresi tipik olarak 100-500 milisaniye arasındadır.
+
+**Temel Özellikler:**
+- Yüksek hızlı selenoid vanalar (açılma süresi < 50 ms)
+- İnce su sisi nozulları ile minimum malzeme ıslanması
+- Malzeme hızına göre otomatik süre ayarlaması
+- Su basınç ve debi izleme sistemi
+- Otomatik vana sızıntı testi
+- Çoklu söndürme bölgesi desteği (zone bazlı)
+- Düşük su tüketimi ile çevre dostu çözüm
+
+**Uygulama Alanları:**
+- Tahıl, un ve yem taşıma hatları
+- Ahşap talaşı ve pellet üretim tesisleri
+- Tekstil lif taşıma kanalları
+- Kağıt ve karton fabrikaları
+- Geri dönüşüm tesis konveyörleri
+
+---
+
+## Kıvılcım Gazlı Söndürme
+
+Kıvılcım gazlı söndürme sistemleri, su kullanımının uygun olmadığı ortamlarda kıvılcım ve akkor parçacıklarını inert gaz (CO₂, azot) ile söndürür. Özellikle neme duyarlı malzemelerin taşındığı hatlarda ve elektrikli ekipman yakınlarında tercih edilen bir çözümdür.
+
+**Çalışma Prensibi:**
+
+Algılama sonrası kontrol ünitesi, yüksek basınçlı CO₂ veya azot tüplerinden gaz salınımını tetikler. Gaz, özel nozullar aracılığıyla kanal içine enjekte edilerek oksijen konsantrasyonunu tutuşma eşiğinin altına düşürür ve kıvılcımı boğarak söndürür.
+
+**Temel Özellikler:**
+- CO₂ ve azot (N₂) söndürme ajanı seçenekleri
+- Malzeme üzerinde sıfır nem etkisi
+- Kapalı kanal ve silo uygulamalarında yüksek etkinlik
+- Otomatik gaz tüp basınç izleme ve düşük basınç alarmı
+- Çoklu salınım bölgesi programlama
+- Elektrikli ekipman ve hassas malzeme uyumluluğu
+- ATEX sertifikalı bileşenler
+
+**Uygulama Alanları:**
+- Kimyasal toz ve granül taşıma hatları
+- İlaç ve gıda endüstrisi (neme duyarlı malzemeler)
+- Elektronik bileşen üretimi
+- Metal toz ve talaş taşıma sistemleri
+- Solvent buharı riski olan ortamlar`,
   },
   {
     title: "Patlamadan Korunma",
@@ -632,6 +861,71 @@ const DEFAULT_SERVICES: Array<{
     features: ["Patlama tahliye panelleri ve kapakları", "Kimyasal patlama bastırma sistemleri (HRD)", "Patlama izolasyon vanaları ve kimyasal bariyer", "Rotary-valve ve çabuk kapama düzenekleri", "Patlama risk analizi ve zone sınıflandırması", "Entegre kontrol ve erken uyarı sistemleri"],
     standards: ["NFPA 69", "EN 14491", "EN 14373", "ATEX", "IECEx"],
     applications: ["Kimya ve ilaç fabrikaları", "Tahıl siloları ve unlu mamuller", "Kömür işleme tesisleri", "Plastik ve kauçuk üretimi", "Boya ve vernik tesisleri"],
+    content: `## Patlama Tahliye (Venting) Sistemleri
+
+Patlama tahliye sistemleri, kapalı ekipman içinde meydana gelen patlamanın kontrollü biçimde dışarıya yönlendirilmesini sağlayarak ekipman hasarını ve personel yaralanmasını önler. En yaygın ve maliyet etkin pasif koruma yöntemidir.
+
+**Çalışma Prensibi:**
+
+Patlama anında oluşan basınç artışı, ekipman üzerindeki tahliye panellerinin (rupture disc / explosion vent) önceden hesaplanmış açılma basıncında kırılmasını sağlar. Basınç ve alev güvenli bir şekilde dış ortama yönlendirilir. Bina içi uygulamalarda flameless (alevsiz) venting üniteleri kullanılarak alev ve basınç dışarıya çıkmadan söndürülür.
+
+**Temel Özellikler:**
+- Pasif çalışma prensibi — enerji kaynağı gerektirmez
+- Düşük açılma basıncı (Pstat) ile hızlı tepki
+- Flameless venting ile iç mekân uygulamaları
+- Hijyenik tasarım seçenekleri (gıda ve ilaç sektörü)
+- EN 14491 ve NFPA 68 hesaplama yöntemlerine uygun boyutlandırma
+- Paslanmaz çelik ve karbon çelik malzeme seçenekleri
+
+---
+
+## Patlama Bastırma (Suppression) Sistemleri
+
+Patlama bastırma sistemleri (HRD — High Rate Discharge), patlamayı milisaniyeler içinde algılayıp kimyasal söndürme ajanı enjekte ederek patlama basıncının yıkıcı seviyeye ulaşmasını engeller. Tahliye imkânı olmayan veya bina içi ekipmanlarda kritik bir aktif koruma yöntemidir.
+
+**Çalışma Prensibi:**
+
+Yüksek hassasiyetli dinamik basınç sensörleri, patlama başlangıcındaki basınç artış hızını algılar. Kontrol ünitesi 5 milisaniye içinde HRD bastırma ünitelerini tetikler. Yüksek basınçlı tüplerden sodyum bikarbonat veya monoamonyum fosfat bazlı söndürme ajanı ekipman içine püskürtülerek alev cephesi söndürülür.
+
+**Temel Özellikler:**
+- 5-15 ms arası tetikleme süresi
+- Yüksek basınçlı (60 bar) HRD tüpler
+- Sodyum bikarbonat ve MAP söndürme ajanları
+- Birden fazla bastırma ünitesi ile büyük hacim koruması
+- Otomatik basınç izleme ve sistem durum göstergesi
+- EN 14373 ve VdS sertifikasyonu
+
+---
+
+## Patlama İzolasyon Sistemleri
+
+Patlama izolasyon sistemleri, bir ekipmanda başlayan patlamanın boru hatları ve kanallar üzerinden diğer ekipmanlara yayılmasını (propagation) önler. Kimyasal bariyer, hızlı kapama vanaları ve mekanik izolasyon yöntemleri kullanılır.
+
+**Çalışma Prensibi:**
+
+Patlama algılandığında, bağlantı hatları üzerindeki izolasyon mekanizmaları devreye girerek alev cephesinin ilerlemesini durdurur. Kimyasal bariyerler söndürme ajanı enjekte ederek alevi boğar; mekanik vanalar fiziksel olarak hattı kapatır.
+
+**Temel Özellikler:**
+- Kimyasal izolasyon bariyerleri (ExtinguishingBarrier)
+- Hızlı kapama vanaları (slam-shut valve) — kapanma süresi < 30 ms
+- Çift yönlü izolasyon kapasitesi
+- Rotary airlock (döner vana) izolasyon üniteleri
+- Pinch valve ve flap valve seçenekleri
+- Tüm boru çapları için uygun boyutlar (DN 50 — DN 1000)
+
+---
+
+## Patlama Risk Analizi ve Zone Sınıflandırması
+
+Etkili bir patlamadan korunma stratejisi, doğru risk analizi ile başlar. ARK Global, tesislerde kapsamlı patlama risk değerlendirmesi yaparak uygun koruma seviyesini belirler.
+
+**Hizmet Kapsamı:**
+- Toz ve gaz patlama risk analizi (Kst, Pmax, MIE değerleri)
+- ATEX Zone sınıflandırması (Zone 0, 1, 2 / Zone 20, 21, 22)
+- Patlama koruma dokümanı (Explosion Protection Document) hazırlığı
+- Koruma konsepti tasarımı ve ekipman seçimi
+- HAZOP ve LOPA analizleri
+- Mevcut sistemlerin uygunluk denetimi ve iyileştirme önerileri`,
   },
   {
     title: "Aşırı Basınçtan Korunma",
@@ -642,6 +936,70 @@ const DEFAULT_SERVICES: Array<{
     features: ["Basınç tahliye ve emniyet valfleri", "Patlama (kırılma) plakaları tasarımı ve seçimi", "Dijital basınç izleme ve alarm sistemleri", "Proses güvenlik analizi (HAZOP, LOPA)", "Acil tahliye hat tasarımı", "SIL sertifikalı güvenlik enstrümantasyon sistemleri (SIS)"],
     standards: ["API 521", "EN 4126", "ASME VIII", "IEC 61511 (SIL)", "ISO 4126"],
     applications: ["Kimyasal reaktörler ve distilasyon kolonları", "Basınçlı depolama tankları", "Boru hatları ve kompresör istasyonları", "Kazan ve ısı değiştiriciler", "Enerji santralleri"],
+    content: `## Emniyet Valfleri (Safety Relief Valves)
+
+Emniyet valfleri, basınçlı ekipmanların birincil koruma hattını oluşturur. Sistem basıncı önceden ayarlanmış değeri aştığında otomatik olarak açılarak fazla basıncı güvenli biçimde tahliye eder ve ekipman bütünlüğünü korur.
+
+**Çalışma Prensibi:**
+
+Yay yüklü veya pilot kumandalı valf mekanizması, set basıncına ulaşıldığında otomatik olarak açılır. Fazla basınç tahliye hattına (flare veya atmosfer) yönlendirilir. Basınç normal seviyeye döndüğünde valf otomatik olarak kapanır.
+
+**Temel Özellikler:**
+- Yay yüklü (spring-loaded) ve pilot kumandalı tipler
+- Konvansiyonel, dengeli körüklü (balanced bellows) ve pilot operated modeller
+- Gaz, buhar ve sıvı servislerine uygun tasarımlar
+- Yüksek sızdırmazlık sınıfları (API 527 uyumlu)
+- Paslanmaz çelik, Inconel, Hastelloy gibi özel alaşım seçenekleri
+- API 526, API 520 ve ASME Section VIII uyumlu boyutlandırma
+- Set basıncı ve kapasite sertifikasyonu
+
+---
+
+## Patlama (Kırılma) Plakaları (Rupture Discs)
+
+Kırılma plakaları, belirli bir basınç değerinde anlık olarak açılarak aşırı basıncın tahliyesini sağlayan tek kullanımlık basınç tahliye cihazlarıdır. Emniyet valflerinin yetersiz kaldığı hızlı basınç artışlarında veya valflerle birlikte ikincil koruma olarak kullanılır.
+
+**Çalışma Prensibi:**
+
+Önceden kalibre edilmiş ince metal membran, belirlenen kırılma basıncına ulaşıldığında anlık olarak açılır ve tam kesit tahliye sağlar. Açılma süresi milisaniye mertebesindedir, bu da emniyet valflerinden çok daha hızlı tepki anlamına gelir.
+
+**Temel Özellikler:**
+- Anlık tam kesit açılma (zero fragmentation tasarımlar)
+- Forward-acting ve reverse-acting modeller
+- Vakum ve basınç kombinasyonu için çift yönlü tasarımlar
+- Korozif ve toksik medya için özel malzeme seçenekleri (Hastelloy, Tantalum, PTFE kaplama)
+- Kırılma basıncı toleransı ±2% (EN ISO 4126-2)
+- Emniyet valfi ile kombine (combination holder) uygulamalar
+- Kırılma göstergesi (burst indicator) ile uzaktan izleme
+
+---
+
+## Basınç İzleme ve Güvenlik Enstrümantasyon Sistemleri (SIS)
+
+Güvenlik enstrümantasyon sistemleri (SIS), prosesin güvenli çalışma sınırlarını sürekli izleyerek tehlikeli durumda otomatik olarak koruyucu aksiyonları devreye sokar. IEC 61511 standardına uygun SIL sertifikalı sistemler, en yüksek düzeyde proses güvenliği sağlar.
+
+**Temel Özellikler:**
+- SIL 1, SIL 2 ve SIL 3 sertifikalı güvenlik döngüleri
+- Basınç, sıcaklık, seviye ve akış bazlı güvenlik fonksiyonları
+- Redundant (yedekli) sensör ve lojik çözücü mimarileri (1oo2, 2oo3)
+- SIS kontrol panelleri ve güvenlik PLC'leri
+- Proses güvenlik analizi: HAZOP, LOPA, SIL belirleme
+- Güvenlik fonksiyon testi (proof test) planlama ve uygulama
+- IEC 61511 ve IEC 61508 tam uyumluluk
+
+---
+
+## Acil Tahliye Hat Tasarımı ve Flare Sistemleri
+
+Aşırı basınç durumlarında açığa çıkan gaz veya sıvının güvenli biçimde uzaklaştırılması için acil tahliye hatları ve flare sistemleri tasarlanır. API 521 hesaplama yöntemlerine uygun olarak hat boyutlandırma, stres analizi ve destek tasarımı yapılır.
+
+**Hizmet Kapsamı:**
+- API 521 bazlı tahliye yükü hesaplamaları (fire case, blocked outlet, thermal expansion vb.)
+- Tahliye hattı boyutlandırma ve stres analizi
+- Flare header, knock-out drum ve flare tip tasarımı
+- Atmosferik ve yüksek basınç tahliye sistemleri
+- Tahliye hattı malzeme seçimi ve korozyon değerlendirmesi
+- Mevcut sistemlerin kapasite doğrulaması ve debottleneck çalışmaları`,
   },
   {
     title: "Gaz Algılama",
@@ -652,6 +1010,88 @@ const DEFAULT_SERVICES: Array<{
     features: ["Sabit çok noktalı gaz dedektör sistemleri", "Katalitik bead, IR ve elektrokimyasal sensörler", "Merkezi kontrol ve gaz alarm panelleri", "Taşınabilir (kişisel) gaz dedektörleri", "Açık hat IR gaz dedektörleri (uzun mesafe)", "SCADA ve DCS entegrasyonu"],
     standards: ["EN 60079-29", "IEC 60079-29", "ATEX", "NFPA 72"],
     applications: ["Doğalgaz ve LPG tesisleri", "Rafineri ve petrokimya", "Boya, solvent ve kimyasal üretim", "Kapalı otopark ve tünel sistemleri", "Soğutma ve amonyak sistemleri"],
+    content: `## Yanıcı Gaz Algılama Sistemleri
+
+Yanıcı gaz algılama sistemleri, ortamdaki yanıcı gaz konsantrasyonunu sürekli izleyerek Alt Patlama Limiti (LEL — Lower Explosive Limit) değerinin altında erken uyarı verir. Metan, propan, bütan, hidrojen ve diğer yanıcı gazların kaçağını anında tespit eder.
+
+**Sensör Teknolojileri:**
+
+- **Katalitik Bead Sensörler:** Gaz moleküllerinin katalitik yüzeyde yanmasıyla oluşan ısı farkını ölçer. 0–100% LEL aralığında yüksek doğruluk sağlar. Geniş gaz yelpazesine duyarlıdır ancak oksijensiz ortamlarda çalışmaz.
+
+- **Kızılötesi (NDIR) Sensörler:** Gazın kızılötesi ışığı absorbe etme özelliğinden yararlanır. Katalitik zehirlenmeye karşı bağışıktır, uzun ömürlüdür ve oksijensiz ortamlarda da çalışır. Metan, propan ve CO₂ tespitinde üstün performans.
+
+- **Açık Hat (Open-Path) IR Dedektörler:** Verici ve alıcı arasında 5-200 metre mesafede gaz bulutu tespiti yapar. Geniş alanları tek bir cihaz çifti ile tarar. Çit hattı (fence-line) ve çevresel izleme uygulamalarında idealdir.
+
+**Temel Özellikler:**
+- %0-100 LEL aralığında sürekli izleme
+- Çoklu alarm eşiği (ön alarm, ana alarm, acil durum)
+- 4-20 mA, HART, Modbus ve Fieldbus iletişim protokolleri
+- SIL 2 sertifikalı modeller
+- ATEX/IECEx Zone 0, 1, 2 sertifikasyonu
+- Otomatik kalibrasyon hatırlatma ve arıza bildirimi
+
+---
+
+## Toksik Gaz Algılama Sistemleri
+
+Toksik gaz algılama sistemleri, insan sağlığına zararlı gazları (H₂S, CO, NH₃, Cl₂, SO₂, NO₂ vb.) ppm seviyesinde tespit ederek anında alarm verir. Çalışan güvenliği ve çevresel uyumluluk için kritik öneme sahiptir.
+
+**Sensör Teknolojileri:**
+
+- **Elektrokimyasal Sensörler:** Gaz moleküllerinin elektrot yüzeyindeki oksidasyonu/redüksiyonu ile elektrik akımı üretir. ppb-ppm hassasiyetinde ölçüm yapar. H₂S, CO, NH₃, Cl₂, HCN, EtO gibi geniş toksik gaz yelpazesi.
+
+- **Fotoiyonizasyon (PID) Sensörler:** UV ışığı ile gaz moleküllerini iyonize ederek toplam VOC (Uçucu Organik Bileşen) konsantrasyonunu ölçer. Solvent buharları ve kimyasal kaçak tespitinde kullanılır.
+
+- **Metal Oksit Yarıiletken (MOS) Sensörler:** Düşük konsantrasyonlarda geniş spektrumlu gaz tespiti sağlar. Endüstriyel hijyen ve iç hava kalitesi izleme uygulamalarında tercih edilir.
+
+**Temel Özellikler:**
+- ppb düzeyinde hassasiyet
+- TWA (zaman ağırlıklı ortalama) ve STEL (kısa süreli maruziyet) alarm seviyeleri
+- Kişisel maruziyet izleme ve veri kayıt
+- Çoklu gaz algılama kapasitesi (tek cihazda 4-6 gaz)
+- ATEX/IECEx sertifikalı modeller
+
+---
+
+## Oksijen İzleme Sistemleri
+
+Oksijen izleme sistemleri, ortamdaki oksijen seviyesinin güvenli sınırların dışına çıkmasını tespit eder. Hem oksijen yetersizliği (boğulma riski) hem de oksijen fazlalığı (yangın/patlama riski artışı) durumlarını izler.
+
+**Temel Özellikler:**
+- 0-25% vol O₂ ölçüm aralığı
+- Düşük oksijen (< %19,5) ve yüksek oksijen (> %23,5) alarmları
+- Elektrokimyasal ve zirkonyum oksit sensör teknolojileri
+- Kapalı alan giriş izni (confined space entry) uygulamaları
+- Azot, argon ve CO₂ inertleme sistemleri ile entegrasyon
+- EN 50545-1 ve EN 45544 uyumluluğu
+
+---
+
+## Ultrasonik Gaz Kaçak Dedektörleri
+
+Ultrasonik gaz kaçak dedektörleri, basınçlı gaz kaçaklarının ürettiği ultrasonik ses dalgalarını algılayarak gaz türünden bağımsız tespit yapar. Rüzgârlı açık hava ortamlarında ve seyreltik gaz bulutlarının dedektöre ulaşamadığı durumlarda geleneksel nokta tipi dedektörlere güçlü bir tamamlayıcıdır.
+
+**Temel Özellikler:**
+- Gaz türünden bağımsız algılama (tüm basınçlı gaz kaçakları)
+- Rüzgâr yönü ve hızından etkilenmeme
+- Geniş algılama alanı (30 metreye kadar yarıçap)
+- Ayarlanabilir hassasiyet ve frekans filtreleri
+- SIL 2 sertifikalı modeller
+- Geleneksel dedektörlerle birlikte çok katmanlı koruma
+
+---
+
+## Taşınabilir (Portatif) Gaz Dedektörleri
+
+Taşınabilir gaz dedektörleri, saha personelinin kapalı alan girişi, rutin devriye ve acil durum müdahalesi sırasında kişisel güvenliğini sağlar.
+
+**Temel Özellikler:**
+- Tek gazlı ve çoklu gaz (4-6 gaz) modeller
+- Yanıcı (LEL), toksik (H₂S, CO) ve O₂ eş zamanlı ölçüm
+- Anlık ve TWA/STEL maruziyet kayıt
+- Sesli, ışıklı ve titreşimli alarm uyarıları
+- USB/Bluetooth ile veri indirme ve filo yönetimi
+- Bump test ve kalibrasyon istasyonları ile entegrasyon`,
   },
   {
     title: "Ex Proof Çözümler",
@@ -662,6 +1102,81 @@ const DEFAULT_SERVICES: Array<{
     features: ["ATEX ve IECEx sertifikalı ekipman temini", "Patlayıcı atmosfer zone sınıflandırması (Ex Zone)", "Flame-proof (Exd), intrinsically safe (Exi), pressurized (Exp) çözümler", "Ex-proof kablo rekorları, pano ve junction boxlar", "Teknik dosya ve uygunluk belgesi hazırlığı", "Periyodik Ex denetimi ve sertifikasyon desteği"],
     standards: ["ATEX 2014/34/EU", "IECEx", "EN 60079 serisi", "IEC 60079 serisi"],
     applications: ["Petrokimya ve rafineri Zone 0/1/2", "Gaz dolum istasyonları", "Hammadde depolama tankları", "Spray boya kabinleri ve solvent depoları", "Madencilik (metan zone)"],
+    content: `## Patlayıcı Atmosfer Zone Sınıflandırması
+
+Zone sınıflandırması, patlayıcı atmosfer oluşma olasılığına göre tehlikeli bölgelerin kategorize edilmesidir. Doğru zone belirlenmesi, uygun koruma seviyesine sahip ekipman seçimi için temel oluşturur ve yasal zorunluluktur.
+
+**Gaz/Buhar Ortamları:**
+
+| Zone | Tanım | Patlayıcı Atmosfer Süresi |
+|------|--------|---------------------------|
+| Zone 0 | Sürekli veya uzun süreli patlayıcı atmosfer | > 1000 saat/yıl |
+| Zone 1 | Normal çalışmada zaman zaman oluşan | 10 — 1000 saat/yıl |
+| Zone 2 | Normal çalışmada oluşmayan, kısa süreli | < 10 saat/yıl |
+
+**Toz Ortamları:**
+
+| Zone | Tanım | Patlayıcı Atmosfer Süresi |
+|------|--------|---------------------------|
+| Zone 20 | Sürekli veya uzun süreli toz bulutu | > 1000 saat/yıl |
+| Zone 21 | Normal çalışmada zaman zaman oluşan | 10 — 1000 saat/yıl |
+| Zone 22 | Normal çalışmada oluşmayan, kısa süreli | < 10 saat/yıl |
+
+**Hizmet Kapsamı:**
+- Tesis genelinde zone sınıflandırma çalışması
+- Zone haritası ve teknik dokümantasyon hazırlığı
+- Mevcut ekipmanların zone uyumluluk denetimi
+- ATEX Patlamadan Korunma Dokümanı (EPD) hazırlığı
+
+---
+
+## Ex-proof Koruma Tipleri
+
+Patlayıcı ortamlarda kullanılan ekipmanlar, farklı koruma prensipleriyle tasarlanır. Her koruma tipi, belirli zone ve uygulama koşulları için optimize edilmiştir.
+
+**Exd — Alev Sızdırmaz (Flameproof):**
+Ekipman içinde meydana gelen patlamanın muhafaza dışına yayılmasını engeller. Motorlar, aydınlatma armatürleri, junction boxlar ve kontrol panoları için yaygın çözüm. Zone 1 ve Zone 2 uygulamaları.
+
+**Exi — Kendinden Güvenli (Intrinsic Safety):**
+Devre enerji seviyesini tutuşma eşiğinin altında tutar. Sensörler, transmitterlar ve sinyal kabloları için idealdir. Zone 0 dahil tüm bölgelerde kullanılabilir. Ia (Zone 0), Ib (Zone 1), Ic (Zone 2) kategorileri.
+
+**Exp — Basınçlandırma (Pressurization):**
+Muhafaza içi basınçlı hava veya inert gaz ile sürekli purge yaparak patlayıcı atmosferin girişini engeller. Büyük kontrol panoları, analizör kabinleri ve VFD panoları için uygun. px, py, pz kategorileri.
+
+**Exe — Artırılmış Güvenlik (Increased Safety):**
+Normal çalışmada kıvılcım veya sıcak yüzey oluşmaması için ek güvenlik önlemleri uygular. Terminal kutuları, kablo bağlantıları ve aydınlatma için kullanılır. Zone 1 ve Zone 2.
+
+**Exn — Kıvılcımsız (Non-sparking):**
+Normal çalışmada kıvılcım üretmeyen ekipmanlar için maliyet etkin çözüm. Sadece Zone 2 uygulamaları. Motorlar, aydınlatma ve kontrol ekipmanları.
+
+---
+
+## Ex-proof Ekipman Temini ve Entegrasyonu
+
+ARK Global, dünya genelindeki lider üreticilerden sertifikalı Ex-proof ekipman temin ederek tesise özel entegrasyon çözümleri sunar.
+
+**Ekipman Kategorileri:**
+- Ex-proof aydınlatma armatürleri (LED floodlight, linear, emergency)
+- Ex-proof kontrol panoları ve dağıtım kutuları
+- Ex-proof kablo rekorları, buat ve junction boxlar
+- Ex-proof motorlar ve fan üniteleri
+- Ex-proof sinyal ve güç kabloları
+- Ex-proof kamera ve CCTV sistemleri
+- Ex-proof iletişim ekipmanları (telefon, interkom, siren)
+
+---
+
+## Periyodik Ex Denetimi ve Sertifikasyon
+
+Patlayıcı ortamlardaki ekipmanların düzenli denetimi yasal zorunluluktur. ARK Global, IEC 60079-17 standardına uygun periyodik denetim hizmeti sunar.
+
+**Hizmet Kapsamı:**
+- Görsel muayene (sıkılaştırma, kablo girişleri, etiketler)
+- Detaylı muayene (iç bileşenler, sızdırmazlık, topraklama)
+- Ölçümlü muayene (yalıtım direnci, topraklama sürekliliği)
+- Denetim raporu ve eksiklik bildirim formu
+- İyileştirme planı ve takibi
+- IEC 60079-17 ve IEC 60079-14 uyumlu belgelendirme`,
   },
   {
     title: "Servis ve Bakım Hizmetleri",
@@ -672,33 +1187,111 @@ const DEFAULT_SERVICES: Array<{
     features: ["Yıllık ve periyodik bakım sözleşmeleri", "Gaz dedektörü kalibrasyonu ve sertifikasyonu", "Yangın alarmı ve söndürme sistemi fonksiyon testleri", "Arıza tespiti ve acil müdahale (7/24)", "Yedek parça temini ve stok yönetimi", "Bakım kayıt ve raporlama sistemi"],
     standards: ["EN 15004", "NFPA 25", "NFPA 72 Bölüm 14", "EN 54-14"],
     applications: ["Tüm sektörlerdeki kurulu sistemler", "Devralınan ve modernize edilecek sistemler", "Fabrika kabul testleri (FAT / SAT)", "Yıllık zorunlu denetim ve sigorta raporları", "Operatör eğitim programları"],
+    content: `## Periyodik Bakım ve Test Hizmetleri
+
+Güvenlik sistemlerinin sürekliliği ve güvenilirliği, düzenli bakım ve fonksiyon testlerine bağlıdır. ARK Global, uluslararası standartlara uygun periyodik bakım programları ile sistemlerinizin her an çalışır durumda kalmasını garantiler.
+
+**Yangın Algılama ve Alarm Sistemleri Bakımı:**
+- Dedektör kirlilik ve hassasiyet testi
+- Manuel ihbar butonu fonksiyon testi
+- Alarm paneli fonksiyon ve batarya testi
+- Siren ve flaşör ses/ışık seviyesi kontrolü
+- Loop bütünlük ve kablo izolasyon ölçümü
+- Yazılım güncelleme ve parametre doğrulama
+- EN 54-14 ve NFPA 72 Bölüm 14 uyumlu test protokolleri
+
+**Söndürme Sistemleri Bakımı:**
+- Gazlı söndürme tüp basınç ve ağırlık kontrolü
+- Selenoid valf ve mekanik aktüatör fonksiyon testi
+- Nozul ve boru hattı bütünlük muayenesi
+- Yönlendirme vanası ve damper fonksiyon testi
+- Su sprinkler sistemi akış ve basınç testi
+- NFPA 25 ve EN 15004 uyumlu test prosedürleri
+
+---
+
+## Gaz Dedektörü Kalibrasyon Hizmetleri
+
+Gaz dedektörlerinin doğru ve güvenilir ölçüm yapabilmesi için düzenli kalibrasyon zorunludur. ARK Global, sahada ve laboratuvar ortamında profesyonel kalibrasyon hizmeti sunar.
+
+**Hizmet Kapsamı:**
+- Sıfır ve span gazı ile tam kalibrasyon
+- Sertifikalı test gazları (izlenebilir referans standartlar)
+- Sensör ömür değerlendirmesi ve değişim planlaması
+- Kalibrasyon sertifikası düzenlenmesi (ISO 17025 izlenebilir)
+- Bump test (fonksiyon doğrulama) uygulaması
+- Kalibrasyon periyodu takibi ve hatırlatma sistemi
+- Katalitik, elektrokimyasal, IR ve PID sensör kalibrasyonu
+
+---
+
+## Devreye Alma (Commissioning) Hizmetleri
+
+Yeni kurulan veya modifiye edilen güvenlik sistemlerinin tasarım spesifikasyonlarına uygun çalıştığının doğrulanması için kapsamlı devreye alma hizmeti sunulmaktadır.
+
+**Hizmet Kapsamı:**
+- Mekanik tamamlanma kontrolü (mechanical completion)
+- Kablo bağlantı ve izolasyon direnci ölçümleri
+- Loop testi ve I/O doğrulama
+- Fonksiyon testi (her cihaz ve senaryo bazında)
+- Cause & Effect matris doğrulama
+- Entegrasyon testi (DCS, ESD, F&G, SCADA)
+- FAT (Fabrika Kabul Testi) ve SAT (Saha Kabul Testi)
+- Devreye alma raporu ve as-built dokümantasyon
+
+---
+
+## Arıza Tespit ve Acil Müdahale (7/24)
+
+ARK Global, 7 gün 24 saat acil müdahale hizmeti ile kritik arıza durumlarında hızlı çözüm sunar.
+
+**Hizmet Kapsamı:**
+- Uzaktan arıza teşhis ve yönlendirme
+- 24 saat içinde sahaya müdahale ekibi sevkiyatı
+- Yedek parça express temin hizmeti
+- Geçici yedekleme (bypass/workaround) çözümleri
+- Kök neden analizi ve kalıcı çözüm önerisi
+- Arıza raporu ve önleyici aksiyon planı
+
+---
+
+## Eğitim ve Yetkinlik Geliştirme
+
+Güvenlik sistemlerinin etkin kullanımı, operatör ve bakım personelinin doğru eğitim almasına bağlıdır. ARK Global, tesise özel eğitim programları düzenler.
+
+**Eğitim Programları:**
+- Sistem operatör eğitimi (panel kullanımı, alarm yönetimi)
+- Bakım teknisyeni eğitimi (arıza tespit, yedek parça değişimi)
+- Gaz dedektörü kullanım ve kalibrasyon eğitimi
+- Yangın söndürme sistemi müdahale eğitimi
+- ATEX farkındalık ve Ex-proof ekipman kullanım eğitimi
+- Acil durum tatbikatı planlama ve yönetimi
+- Eğitim sertifikası ve yetkinlik değerlendirmesi`,
   },
 ];
 
-async function ensureServicePages(): Promise<void> {
-  // Check if already seeded correctly (all 7 slugs exist and count matches)
-  const existingCount = await redis.zcard(KEYS.servicesAll);
-  if (existingCount === DEFAULT_SERVICES.length) {
-    const firstSlugId = await redis.get<string>(KEYS.serviceBySlug(DEFAULT_SERVICES[0].slug));
-    const lastSlugId = await redis.get<string>(KEYS.serviceBySlug(DEFAULT_SERVICES[6].slug));
-    if (firstSlugId && lastSlugId) {
-      const score1 = await redis.zscore(KEYS.servicesAll, firstSlugId);
-      const score2 = await redis.zscore(KEYS.servicesAll, lastSlugId);
-      if (score1 !== null && score2 !== null) return;
-    }
-  }
+// Bump this version whenever DEFAULT_SERVICES change to trigger a reseed
+const SERVICES_SEED_VERSION = 5;
 
-  // Clear and reseed to avoid duplicates
+async function ensureServicePages(): Promise<void> {
+  const storedVersion = await redis.get<number>(KEYS.servicesSeedVersion);
+  if (storedVersion === SERVICES_SEED_VERSION) return;
+
+  // Clear old data
   const existingIds = await redis.zrange<string[]>(KEYS.servicesAll, 0, -1);
   if (existingIds.length > 0) {
     const cleanPipeline = redis.pipeline();
     for (const id of existingIds) {
+      const svc = await redis.get<string>(KEYS.service(id));
+      if (svc) {
+        try {
+          const parsed = typeof svc === "string" ? JSON.parse(svc) : svc;
+          cleanPipeline.del(KEYS.serviceBySlug(parsed.slug));
+        } catch { /* ignore */ }
+      }
       cleanPipeline.del(KEYS.service(id));
     }
     cleanPipeline.del(KEYS.servicesAll);
-    for (const def of DEFAULT_SERVICES) {
-      cleanPipeline.del(KEYS.serviceBySlug(def.slug));
-    }
     await cleanPipeline.exec();
   }
 
@@ -712,7 +1305,7 @@ async function ensureServicePages(): Promise<void> {
       id,
       title: def.title,
       slug: def.slug,
-      content: "",
+      content: def.content || "",
       excerpt: def.shortDesc,
       cover_image_url: null,
       order: i + 1,
@@ -730,12 +1323,13 @@ async function ensureServicePages(): Promise<void> {
     seedPipeline.set(KEYS.serviceBySlug(def.slug), id);
     seedPipeline.zadd(KEYS.servicesAll, { score: i + 1, member: id });
   }
+  seedPipeline.set(KEYS.servicesSeedVersion, SERVICES_SEED_VERSION);
   await seedPipeline.exec();
 }
 
 export async function updateServicePage(
   id: string,
-  data: Partial<Omit<ServicePage, "id" | "created_at" | "slug" | "title" | "order">>
+  data: Partial<Omit<ServicePage, "id" | "created_at" | "slug" | "order">>
 ): Promise<ServicePage | null> {
   const existing = await getServicePageById(id);
   if (!existing) return null;
@@ -769,7 +1363,13 @@ export async function getAllServicePages(): Promise<ServicePage[]> {
   if (!ids.length) return [];
 
   const services = await Promise.all(ids.map((id) => getServicePageById(id)));
-  return services.filter(Boolean) as ServicePage[];
+  // Deduplicate by slug (keep first occurrence)
+  const seen = new Set<string>();
+  return (services.filter(Boolean) as ServicePage[]).filter((s) => {
+    if (seen.has(s.slug)) return false;
+    seen.add(s.slug);
+    return true;
+  });
 }
 
 export async function getPublishedServicePages(): Promise<ServicePage[]> {

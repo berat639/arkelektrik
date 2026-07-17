@@ -1,6 +1,7 @@
 "use client";
 
-import { useState, lazy, Suspense } from "react";
+import { useState } from "react";
+import dynamic from "next/dynamic";
 import { useRouter } from "next/navigation";
 import { toast } from "sonner";
 import { Button } from "@/components/ui/button";
@@ -16,7 +17,14 @@ import {
 } from "@/components/ui/select";
 import { UploadDropzone } from "@/lib/uploadthing";
 
-const MdxEditor = lazy(() => import("@/components/admin/mdx-editor"));
+const MdxEditor = dynamic(() => import("@/components/admin/mdx-editor"), {
+  ssr: false,
+  loading: () => (
+    <div className="h-[350px] flex items-center justify-center text-muted-foreground">
+      Editör yükleniyor...
+    </div>
+  ),
+});
 import { postFormSchema, type PostFormData } from "@/lib/validators";
 import type { Category, Tag } from "@/lib/types";
 
@@ -136,20 +144,12 @@ export function PostForm({ categories, tags, initialData }: PostFormProps) {
       <div className="space-y-2">
         <Label>İçerik</Label>
         <div className="border rounded-md overflow-hidden [&_.mdxeditor]:bg-background">
-          <Suspense
-            fallback={
-              <div className="h-[350px] flex items-center justify-center text-muted-foreground">
-                Editör yükleniyor...
-              </div>
-            }
-          >
             <MdxEditor
               markdown={formData.content}
               onChange={(value) =>
                 setFormData((prev) => ({ ...prev, content: value }))
               }
             />
-          </Suspense>
         </div>
       </div>
 

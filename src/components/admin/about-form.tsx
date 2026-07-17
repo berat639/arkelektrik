@@ -1,13 +1,17 @@
 "use client";
 
-import { useState, lazy, Suspense } from "react";
+import { useState } from "react";
+import dynamic from "next/dynamic";
 import { useRouter } from "next/navigation";
 import { toast } from "sonner";
 import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
 import { UploadDropzone } from "@/lib/uploadthing";
 
-const MdxEditor = lazy(() => import("@/components/admin/mdx-editor"));
+const MdxEditor = dynamic(() => import("@/components/admin/mdx-editor"), {
+  ssr: false,
+  loading: () => <div className="h-64 border rounded-lg animate-pulse bg-muted" />,
+});
 
 interface AboutFormProps {
   initialData: {
@@ -95,18 +99,12 @@ export function AboutForm({ initialData }: AboutFormProps) {
 
       <div className="space-y-2">
         <Label>İçerik</Label>
-        <Suspense
-          fallback={
-            <div className="h-64 border rounded-lg animate-pulse bg-muted" />
-          }
-        >
-          <MdxEditor
+        <MdxEditor
             markdown={formData.content}
             onChange={(val) =>
               setFormData((prev) => ({ ...prev, content: val }))
             }
           />
-        </Suspense>
       </div>
 
       <Button type="submit" disabled={loading}>

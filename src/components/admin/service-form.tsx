@@ -1,14 +1,21 @@
 "use client";
 
-import { useState, lazy, Suspense } from "react";
+import { useState } from "react";
+import dynamic from "next/dynamic";
 import { useRouter } from "next/navigation";
 import { toast } from "sonner";
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
+import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { UploadDropzone } from "@/lib/uploadthing";
 
-const MdxEditor = lazy(() => import("@/components/admin/mdx-editor"));
+const MdxEditor = dynamic(() => import("@/components/admin/mdx-editor"), {
+  ssr: false,
+  loading: () => <div className="h-64 border rounded-lg animate-pulse bg-muted" />,
+});
+
+const ICON_OPTIONS = ["Flame", "Zap", "Shield", "Gauge", "Wind", "Lock", "Wrench"];
 
 interface ServiceFormProps {
   initialData: {
@@ -17,6 +24,9 @@ interface ServiceFormProps {
     content: string;
     excerpt: string;
     cover_image_url: string | null;
+    icon: string;
+    shortDesc: string;
+    is_published: boolean;
   };
 }
 
@@ -24,9 +34,13 @@ export function ServiceForm({ initialData }: ServiceFormProps) {
   const router = useRouter();
   const [loading, setLoading] = useState(false);
   const [formData, setFormData] = useState({
+    title: initialData.title || "",
     content: initialData.content || "",
     excerpt: initialData.excerpt || "",
     cover_image_url: initialData.cover_image_url || "",
+    icon: initialData.icon || "Shield",
+    shortDesc: initialData.shortDesc || "",
+    is_published: initialData.is_published ?? true,
   });
 
   async function handleSubmit(e: React.FormEvent) {
@@ -39,7 +53,13 @@ export function ServiceForm({ initialData }: ServiceFormProps) {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           id: initialData.id,
-          ...formData,
+          title: formData.title,
+          content: formData.content,
+          excerpt: formData.excerpt,
+          cover_image_url: formData.cover_image_url || null,
+          icon: formData.icon,
+          shortDesc: formData.shortDesc,
+          is_published: formData.is_published,
         }),
       });
 
@@ -62,19 +82,79 @@ export function ServiceForm({ initialData }: ServiceFormProps) {
 
   return (
     <form onSubmit={handleSubmit} className="space-y-6 max-w-4xl">
+      {/* Title & Icon */}
+      <div className="grid sm:grid-cols-[1fr_180px] gap-4">
+        <div className="space-y-2">
+          <Label htmlFor="title">Başlık</Label>
+          <Input
+            id="title"
+            value={formData.title}
+            onChange={(e) =>
+              setFormData((prev) => ({ ...prev, title: e.target.value }))
+            }
+            placeholder="Hizmet başlığı..."
+          />
+        </div>
+        <div className="space-y-2">
+          <Label htmlFor="icon">İkon</Label>
+          <select
+            id="icon"
+            value={formData.icon}
+            onChange={(e) =>
+              setFormData((prev) => ({ ...prev, icon: e.target.value }))
+            }
+            className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm"
+          >
+            {ICON_OPTIONS.map((ic) => (
+              <option key={ic} value={ic}>{ic}</option>
+            ))}
+          </select>
+        </div>
+      </div>
+
+      {/* Published toggle */}
+      <div className="flex items-center gap-2">
+        <input
+          type="checkbox"
+          id="is_published"
+          checked={formData.is_published}
+          onChange={(e) =>
+            setFormData((prev) => ({ ...prev, is_published: e.target.checked }))
+          }
+          className="h-4 w-4 rounded border-gray-300"
+        />
+        <Label htmlFor="is_published">Yayında</Label>
+      </div>
+
+      {/* Short description (for cards & hero subtitle) */}
       <div className="space-y-2">
-        <Label htmlFor="excerpt">Kısa Açıklama</Label>
+        <Label htmlFor="shortDesc">Kısa Açıklama (Kart & Hero)</Label>
+        <Textarea
+          id="shortDesc"
+          value={formData.shortDesc}
+          onChange={(e) =>
+            setFormData((prev) => ({ ...prev, shortDesc: e.target.value }))
+          }
+          placeholder="Kart görünümü ve hero alt başlığında kullanılır..."
+          rows={2}
+        />
+      </div>
+
+      {/* Excerpt / SEO */}
+      <div className="space-y-2">
+        <Label htmlFor="excerpt">SEO / Meta Açıklaması</Label>
         <Textarea
           id="excerpt"
           value={formData.excerpt}
           onChange={(e) =>
             setFormData((prev) => ({ ...prev, excerpt: e.target.value }))
           }
-          placeholder="Sayfa kısa açıklaması..."
-          rows={3}
+          placeholder="Arama motorları için meta açıklama..."
+          rows={2}
         />
       </div>
 
+      {/* Cover image */}
       <div className="space-y-2">
         <Label>Kapak Görseli</Label>
         {formData.cover_image_url ? (
@@ -115,20 +195,18 @@ export function ServiceForm({ initialData }: ServiceFormProps) {
         )}
       </div>
 
+      {/* Content — single WYSIWYG editor */}
       <div className="space-y-2">
-        <Label>İçerik</Label>
-        <Suspense
-          fallback={
-            <div className="h-64 border rounded-lg animate-pulse bg-muted" />
+        <Label>Sayfa İçeriği</Label>
+        <p className="text-xs text-muted-foreground">
+          Tüm sayfa içeriğini buradan düzenleyin — başlıklar, listeler, tablolar, görseller ekleyebilirsiniz.
+        </p>
+        <MdxEditor
+          markdown={formData.content}
+          onChange={(val) =>
+            setFormData((prev) => ({ ...prev, content: val }))
           }
-        >
-          <MdxEditor
-            markdown={formData.content}
-            onChange={(val) =>
-              setFormData((prev) => ({ ...prev, content: val }))
-            }
-          />
-        </Suspense>
+        />
       </div>
 
       <Button type="submit" disabled={loading}>

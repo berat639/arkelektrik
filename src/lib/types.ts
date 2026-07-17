@@ -183,7 +183,7 @@ export interface SiteSettings {
   values: ValueCard[];
   expertiseItems: string[];
   expertiseImage: string;
-  certPartners: { name: string; desc: string }[];
+  certPartners: { name: string; desc: string; image_url?: string }[];
   
   // YENİ: Hizmetler & İletişim sayfası hero görselleri
   servicesPageImage: string;

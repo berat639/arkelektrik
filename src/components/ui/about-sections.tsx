@@ -150,14 +150,20 @@ export function AboutSections({ settings, aboutContent, aboutImage }: AboutSecti
               </ul>
 
               <div className="flex gap-4 mt-8 flex-wrap">
-                {settings.certPartners.map(({ name, desc }) => (
+                {settings.certPartners.map(({ name, desc, image_url }) => (
                   <div
                     key={name}
-                    className="bg-white border border-gray-200 px-4 py-3 text-center"
+                    className="relative bg-white border border-gray-200 px-6 py-4 text-center min-w-[160px] flex flex-col justify-center items-center overflow-hidden group"
                     style={{ clipPath: "polygon(0 0, calc(100% - 8px) 0, 100% 8px, 100% 100%, 8px 100%, 0 calc(100% - 8px))" }}
                   >
-                    <div className="font-heading font-bold text-base text-gray-800">{name}</div>
-                    <div className="text-teal-500 text-xs uppercase tracking-wide mt-0.5">{desc}</div>
+                    {image_url && (
+                      <div
+                        className="absolute inset-0 bg-cover bg-center opacity-10 group-hover:opacity-25 transition-opacity duration-300 pointer-events-none"
+                        style={{ backgroundImage: `url(${image_url})` }}
+                      />
+                    )}
+                    <div className="relative z-10 font-heading font-bold text-base text-gray-800">{name}</div>
+                    <div className="relative z-10 text-teal-500 text-xs uppercase tracking-wide mt-0.5">{desc}</div>
                   </div>
                 ))}
               </div>

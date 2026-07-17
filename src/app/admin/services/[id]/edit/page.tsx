@@ -24,6 +24,9 @@ export default async function EditServicePage({ params }: Props) {
           content: service.content,
           excerpt: service.excerpt,
           cover_image_url: service.cover_image_url,
+          icon: service.icon,
+          shortDesc: service.shortDesc,
+          is_published: service.is_published,
         }}
       />
     </div>

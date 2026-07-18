@@ -58,10 +58,10 @@ export function ContactInline({ phone, email, title, subtitle, text }: ContactIn
   };
 
   const inputClass =
-    "w-full bg-dark-700 border border-dark-500 focus:border-teal-500 text-white placeholder-white/35 px-4 py-3 text-sm outline-none transition-colors duration-200";
+    "w-full bg-dark-800/80 border border-amber-800/15 focus:border-amber-500 text-white placeholder-white/40 px-4 py-3 text-sm outline-none transition-colors duration-200";
 
   return (
-    <section id="contact" className="bg-dark-900 py-28 relative overflow-hidden">
+    <section id="contact" className="bg-gradient-to-br from-dark-900 via-amber-900/35 to-fire-900/30 py-28 relative overflow-hidden">
       <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-teal-500/30 to-transparent" />
 
       <div className="max-w-7xl mx-auto px-6">
@@ -148,7 +148,7 @@ export function ContactInline({ phone, email, title, subtitle, text }: ContactIn
             className={`lg:col-span-3 animate-on-scroll-right ${rightVisible ? "is-visible" : ""}`}
           >
             <div
-              className="bg-dark-800 border border-dark-500 p-8"
+              className="bg-gradient-to-br from-dark-800 to-amber-900/30 border border-amber-800/15 p-8"
               style={{
                 clipPath:
                   "polygon(0 0, calc(100% - 24px) 0, 100% 24px, 100% 100%, 24px 100%, 0 calc(100% - 24px))",

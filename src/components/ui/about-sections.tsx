@@ -88,7 +88,7 @@ export function AboutSections({ settings, aboutContent, aboutImage }: AboutSecti
       </section>
 
       {/* Values */}
-      <section className="bg-dark-900 py-24">
+      <section className="bg-gradient-to-b from-dark-900 via-amber-900/40 to-fire-900/30 py-24">
         <div className="max-w-7xl mx-auto px-6">
           <div
             ref={ref2 as React.RefObject<HTMLDivElement>}
@@ -104,7 +104,7 @@ export function AboutSections({ settings, aboutContent, aboutImage }: AboutSecti
               return (
                 <div
                   key={title}
-                  className={`bg-dark-800 border border-dark-500 p-6 hover:border-teal-500/40 transition-all duration-300 hover:-translate-y-0.5 animate-on-scroll ${v2 ? "is-visible" : ""}`}
+                  className={`bg-gradient-to-br from-dark-800 to-amber-900/30 border border-amber-800/15 p-6 hover:border-amber-500/25 transition-all duration-300 hover:-translate-y-0.5 animate-on-scroll ${v2 ? "is-visible" : ""}`}
                   style={{
                     transitionDelay: `${i * 60}ms`,
                     clipPath: "polygon(0 0, calc(100% - 16px) 0, 100% 16px, 100% 100%, 16px 100%, 0 calc(100% - 16px))",
@@ -182,7 +182,7 @@ export function AboutSections({ settings, aboutContent, aboutImage }: AboutSecti
       </section>
 
       {/* CTA */}
-      <section className="bg-dark-900 py-20 border-t border-dark-600">
+      <section className="bg-gradient-to-br from-dark-900 to-amber-900/35 py-20 border-t border-amber-800/15">
         <div className="max-w-3xl mx-auto px-6 text-center">
           <h2 className="font-heading font-bold text-3xl uppercase text-white mb-4">
             Projenizi Konuşalım

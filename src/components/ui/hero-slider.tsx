@@ -110,16 +110,16 @@ export function HeroSlider({ slides, stats }: HeroSliderProps) {
       ))}
 
       {/* ── Overlays ── */}
-      <div className="absolute inset-0 bg-gradient-to-r from-dark-900/95 via-dark-900/75 to-dark-900/30" />
-      <div className="absolute inset-0 bg-gradient-to-t from-dark-900 via-transparent to-dark-900/20" />
-      <div className="absolute inset-0 bg-gradient-to-br from-teal-500/8 via-transparent to-transparent" />
+      <div className="absolute inset-0 bg-gradient-to-r from-dark-900/80 via-amber-900/30 to-dark-900/20" />
+      <div className="absolute inset-0 bg-gradient-to-t from-dark-900/80 via-transparent to-dark-900/50" />
+      <div className="absolute inset-0 bg-gradient-to-br from-amber-900/10 via-transparent to-transparent" />
 
       {/* ── Grid overlay ── */}
       <div
         className="absolute inset-0 opacity-[0.03]"
         style={{
           backgroundImage:
-            "linear-gradient(rgba(255,255,255,0.5) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.5) 1px, transparent 1px)",
+            "linear-gradient(rgba(184,134,11,0.4) 1px, transparent 1px), linear-gradient(90deg, rgba(184,134,11,0.4) 1px, transparent 1px)",
           backgroundSize: "60px 60px",
         }}
       />
@@ -280,7 +280,7 @@ export function HeroSlider({ slides, stats }: HeroSliderProps) {
 
       {/* ── Stats bar ── */}
       {stats && stats.length > 0 && (
-        <div className="relative z-10 bg-dark-800/85 backdrop-blur-sm border-t border-white/10">
+        <div className="relative z-10 bg-gradient-to-r from-dark-900/90 via-amber-900/45 to-dark-900/90 backdrop-blur-sm border-t border-amber-500/10">
           <div className="max-w-7xl mx-auto px-6">
             <div className="grid grid-cols-2 md:grid-cols-4 divide-x divide-white/10">
               {stats.map(({ value, label }) => (

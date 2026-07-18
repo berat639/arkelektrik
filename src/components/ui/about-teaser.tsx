@@ -57,7 +57,7 @@ export function AboutTeaser({ aboutImage, title, subtitle, text, quote }: AboutT
                 }}
               />
               <div
-                className="absolute inset-0 bg-gradient-to-t from-dark-800/60 via-transparent to-transparent"
+                className="absolute inset-0 bg-gradient-to-t from-fire-950/50 via-transparent to-transparent"
                 style={{
                   clipPath:
                     "polygon(0 0, calc(100% - 30px) 0, 100% 30px, 100% 100%, 30px 100%, 0 calc(100% - 30px))",

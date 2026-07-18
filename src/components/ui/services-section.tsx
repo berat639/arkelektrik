@@ -54,11 +54,11 @@ export function ServicesSection({ services, title, subtitle, text }: ServicesSec
   const { ref: titleRef, isVisible: titleVisible } = useScrollAnimation();
 
   return (
-    <section id="services" className="bg-dark-900 py-28 relative overflow-hidden">
+    <section id="services" className="bg-gradient-to-br from-dark-900 via-amber-900/40 to-fire-900/40 py-28 relative overflow-hidden">
       <div
-        className="absolute inset-0 opacity-[0.025]"
+        className="absolute inset-0 opacity-[0.03]"
         style={{
-          backgroundImage: "radial-gradient(circle, rgba(196,30,30,1) 1px, transparent 1px)",
+          backgroundImage: "radial-gradient(circle, rgba(184,134,11,1) 1px, transparent 1px)",
           backgroundSize: "40px 40px",
         }}
       />

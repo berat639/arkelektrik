@@ -133,11 +133,17 @@ export function HeaderNav({ serviceLinks }: HeaderNavProps) {
 
   // ── Public ARK layout ──
   const headerBg = scrolled
-    ? "bg-dark-900/95 backdrop-blur-md shadow-xl shadow-black/30 border-b border-teal-500/25"
-    : "bg-dark-900/80 backdrop-blur-sm";
+    ? "backdrop-blur-md shadow-xl shadow-black/15 border-b border-amber-500/12"
+    : "backdrop-blur-sm";
+
+  const headerStyle = scrolled
+    ? { background: "linear-gradient(90deg, rgba(30,42,50,0.90) 0%, rgba(46,31,10,0.45) 50%, rgba(30,42,50,0.90) 100%)" }
+    : { background: "linear-gradient(90deg, rgba(30,42,50,0.40) 0%, rgba(46,31,10,0.20) 50%, rgba(30,42,50,0.40) 100%)" };
 
   return (
-    <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${headerBg}`}>
+    <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${headerBg}`} style={headerStyle}>
+      {/* Amber top line like footer */}
+      <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-amber-500/30 to-transparent" />
       <div className="max-w-7xl mx-auto px-6 flex items-center justify-between h-20">
         {/* Logo */}
         <Link href="/" className="flex items-center gap-3 flex-shrink-0">
@@ -183,7 +189,7 @@ export function HeaderNav({ serviceLinks }: HeaderNavProps) {
               {/* Inner wrapper for hover gap continuity */}
               <div className="absolute -top-3 left-0 right-0 h-3 bg-transparent" />
               <div
-                className="bg-dark-800 border border-teal-500/25 shadow-2xl relative"
+                className="bg-dark-800/95 backdrop-blur-xl border border-amber-500/15 shadow-2xl shadow-amber-900/20 relative"
                 style={{
                   clipPath:
                     "polygon(0 0, calc(100% - 12px) 0, 100% 12px, 100% 100%, 12px 100%, 0 calc(100% - 12px))",
@@ -192,7 +198,7 @@ export function HeaderNav({ serviceLinks }: HeaderNavProps) {
                 <div className="p-2">
                   <Link
                     href="/hizmetler"
-                    className="block px-4 py-2 text-xs font-semibold text-teal-500 uppercase tracking-wider border-b border-dark-600 mb-1"
+                    className="block px-4 py-2 text-xs font-semibold text-teal-500 uppercase tracking-wider border-b border-amber-500/10 mb-1"
                   >
                     Tüm Faaliyet Alanlarımız
                   </Link>
@@ -239,7 +245,7 @@ export function HeaderNav({ serviceLinks }: HeaderNavProps) {
 
       {/* Mobile Menu */}
       <div
-        className={`lg:hidden bg-dark-800 border-t border-teal-500/25 transition-all duration-300 overflow-hidden ${
+        className={`lg:hidden bg-dark-800/95 backdrop-blur-xl border-t border-amber-500/15 transition-all duration-300 overflow-hidden ${
           mobileOpen ? "max-h-[700px] opacity-100" : "max-h-0 opacity-0"
         }`}
       >
@@ -253,7 +259,7 @@ export function HeaderNav({ serviceLinks }: HeaderNavProps) {
               <Link
                 href={to}
                 onClick={() => setMobileOpen(false)}
-                className="block py-3 text-white/75 hover:text-white text-sm uppercase tracking-wider font-medium border-b border-teal-500/25 transition-colors"
+                className="block py-3 text-white/75 hover:text-white text-sm uppercase tracking-wider font-medium border-b border-amber-500/10 transition-colors"
               >
                 {label}
               </Link>
@@ -264,7 +270,7 @@ export function HeaderNav({ serviceLinks }: HeaderNavProps) {
           <li>
             <button
               onClick={() => setServicesOpen(!servicesOpen)}
-              className="w-full flex items-center justify-between py-3 text-white/75 hover:text-white text-sm uppercase tracking-wider font-medium border-b border-teal-500/25 cursor-pointer"
+              className="w-full flex items-center justify-between py-3 text-white/75 hover:text-white text-sm uppercase tracking-wider font-medium border-b border-amber-500/10 cursor-pointer"
             >
               Faaliyet Alanlarımız
               <ChevronDown

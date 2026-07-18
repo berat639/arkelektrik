@@ -25,7 +25,7 @@ export function PostCard({ post }: PostCardProps) {
             className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
           />
         ) : (
-          <div className="w-full h-full bg-gradient-to-br from-dark-800 to-dark-900 flex items-center justify-center">
+          <div className="w-full h-full bg-gradient-to-br from-fire-950 to-dark-800 flex items-center justify-center">
             <span className="text-white/20 font-heading text-4xl font-bold uppercase">ARK</span>
           </div>
         )}

@@ -15,12 +15,12 @@ export function CtaBanner({ settings }: CtaBannerProps) {
           alt="Industrial"
           className="w-full h-full object-cover"
         />
-        <div className="absolute inset-0 bg-dark-900/85" />
-        <div className="absolute inset-0 bg-gradient-to-r from-teal-500/20 via-transparent to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-br from-dark-900/90 via-amber-900/50 to-fire-900/40" />
+        <div className="absolute inset-0 bg-gradient-to-r from-amber-500/15 via-transparent to-transparent" />
       </div>
 
-      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-teal-500 via-teal-500/50 to-transparent" />
-      <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-teal-500 via-teal-500/50 to-transparent" />
+      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-amber-500 via-amber-500/40 to-transparent" />
+      <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-amber-500 via-amber-500/40 to-transparent" />
 
       <div className="relative z-10 max-w-5xl mx-auto px-6 text-center">
         <span className="inline-flex items-center gap-2 bg-teal-500/15 border border-teal-500/40 px-4 py-2 mb-6">

@@ -15,7 +15,7 @@ export function FixedStandards() {
   const { ref, isVisible } = useScrollAnimation();
 
   return (
-    <section className="bg-dark-900 py-16 relative border-y border-dark-700">
+    <section className="bg-gradient-to-r from-dark-900 via-amber-900/50 to-dark-900 py-16 relative border-y border-amber-800/25">
       <div className="max-w-7xl mx-auto px-6 relative z-10">
         <div
           ref={ref as React.RefObject<HTMLDivElement>}
@@ -37,7 +37,7 @@ export function FixedStandards() {
           {STANDARDS.map((std, index) => (
             <div
               key={index}
-              className="relative bg-dark-800 border border-dark-600 p-6 flex flex-col items-center justify-center text-center hover:border-teal-500/40 hover:bg-dark-900 hover:shadow-2xl transition-all duration-300 group"
+              className="relative bg-gradient-to-br from-dark-800 to-amber-900/35 border border-amber-800/20 p-6 flex flex-col items-center justify-center text-center hover:border-amber-500/30 hover:bg-amber-900/40 hover:shadow-2xl hover:shadow-amber-500/5 transition-all duration-300 group"
               style={{
                 clipPath: "polygon(0 0, calc(100% - 12px) 0, 100% 12px, 100% 100%, 12px 100%, 0 calc(100% - 12px))"
               }}

@@ -26,9 +26,9 @@ export function PageHero({
       {/* Background */}
       <div className="absolute inset-0">
         <img src={image} alt="" className="w-full h-full object-cover" />
-        <div className="absolute inset-0 bg-dark-900/85" />
-        <div className="absolute inset-0 bg-gradient-to-r from-dark-900/70 via-dark-900/50 to-transparent" />
-        <div className="absolute inset-0 bg-gradient-to-b from-dark-900/20 via-transparent to-dark-900/80" />
+        <div className="absolute inset-0 bg-fire-950/65" />
+        <div className="absolute inset-0 bg-gradient-to-r from-fire-950/50 via-dark-900/30 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-b from-fire-950/30 via-transparent to-fire-950/60" />
       </div>
 
       {/* Grid overlay */}
@@ -36,13 +36,13 @@ export function PageHero({
         className="absolute inset-0 opacity-[0.03]"
         style={{
           backgroundImage:
-            "linear-gradient(rgba(255,255,255,0.6) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.6) 1px, transparent 1px)",
+            "linear-gradient(rgba(184,134,11,0.4) 1px, transparent 1px), linear-gradient(90deg, rgba(184,134,11,0.4) 1px, transparent 1px)",
           backgroundSize: "60px 60px",
         }}
       />
 
       {/* Red accent bar */}
-      <div className="absolute left-0 top-0 bottom-0 w-1 bg-gradient-to-b from-transparent via-teal-500 to-transparent" />
+      <div className="absolute left-0 top-0 bottom-0 w-1 bg-gradient-to-b from-transparent via-amber-500 to-transparent" />
 
       <div className="relative z-10 max-w-7xl mx-auto px-6">
         {/* Breadcrumbs */}

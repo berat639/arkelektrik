@@ -165,7 +165,7 @@ export default async function ServiceDetailPage({ params }: Props) {
       </section>
 
       {/* Process section */}
-      <section className="bg-dark-900 py-20 relative overflow-hidden">
+      <section className="bg-gradient-to-br from-dark-900 via-amber-900/40 to-fire-900/25 py-20 relative overflow-hidden">
         <TechBackground variant="dark" />
         <div className="max-w-7xl mx-auto px-6 relative z-10">
           <div className="text-center mb-12">
@@ -185,7 +185,7 @@ export default async function ServiceDetailPage({ params }: Props) {
             ].map(({ step, title, desc }) => (
               <div
                 key={step}
-                className="bg-dark-800 border border-dark-500 p-6 relative"
+                className="bg-gradient-to-br from-dark-800 to-amber-900/30 border border-amber-800/15 p-6 relative"
                 style={{
                   clipPath:
                     "polygon(0 0, calc(100% - 14px) 0, 100% 14px, 100% 100%, 14px 100%, 0 calc(100% - 14px))",
@@ -203,7 +203,7 @@ export default async function ServiceDetailPage({ params }: Props) {
       </section>
 
       {/* Prev / Next navigation */}
-      <section className="bg-dark-800 border-t border-dark-600 py-8">
+      <section className="bg-gradient-to-t from-dark-900 to-amber-950/80 border-t border-amber-800/15 py-8">
         <div className="max-w-7xl mx-auto px-6 flex justify-between items-center gap-4">
           {prevService ? (
             <Link

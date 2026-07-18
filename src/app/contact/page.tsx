@@ -87,7 +87,7 @@ export default function ContactPage() {
   };
 
   const inputClass =
-    "w-full bg-dark-700 border border-dark-500 focus:border-teal-500 text-white placeholder-white/35 px-4 py-3 text-sm outline-none transition-colors duration-200";
+    "w-full bg-gray-50 border border-gray-200 focus:border-teal-500 text-gray-900 placeholder-gray-400 px-4 py-3 text-sm outline-none transition-colors duration-200";
 
   return (
     <>
@@ -98,8 +98,7 @@ export default function ContactPage() {
         image={info.contactPageImage}
       />
 
-      <section className="bg-dark-900 py-24 relative overflow-hidden">
-        <TechBackground variant="dark" />
+      <section className="bg-white py-24 relative">
         <div className="max-w-7xl mx-auto px-6 relative z-10">
           <div className="grid lg:grid-cols-5 gap-12">
             {/* Left — Info */}
@@ -108,11 +107,11 @@ export default function ContactPage() {
                 <span className="text-teal-500 text-xs font-semibold uppercase tracking-[0.25em] mb-4 block">
                   Bilgi
                 </span>
-                <h2 className="font-heading font-bold text-3xl uppercase text-white mb-4">
+                <h2 className="font-heading font-bold text-3xl uppercase text-gray-900 mb-4">
                   Bize <span className="text-teal-500">Ulaşın</span>
                 </h2>
                 <div className="w-16 h-1 bg-teal-500 mb-6" />
-                <p className="text-white/70 leading-relaxed text-sm">
+                <p className="text-gray-600 leading-relaxed text-sm">
                   Uzman ekibimiz tesisinizi analiz ederek en uygun güvenlik sistemini önerecektir.
                   Aşağıdaki formu doldurun veya doğrudan iletişime geçin.
                 </p>
@@ -124,10 +123,10 @@ export default function ContactPage() {
                     <Phone size={18} className="text-teal-500" />
                   </div>
                   <div>
-                    <p className="text-white/40 text-xs uppercase tracking-wider mb-0.5">Telefon</p>
+                    <p className="text-gray-400 text-xs uppercase tracking-wider mb-0.5">Telefon</p>
                     <a
                       href={`tel:${info.phone.replace(/[^+\d]/g, "")}`}
-                      className="text-white hover:text-teal-500 transition-colors text-sm font-medium"
+                      className="text-gray-900 hover:text-teal-500 transition-colors text-sm font-medium"
                     >
                       {info.phone}
                     </a>
@@ -138,10 +137,10 @@ export default function ContactPage() {
                     <Mail size={18} className="text-teal-500" />
                   </div>
                   <div>
-                    <p className="text-white/40 text-xs uppercase tracking-wider mb-0.5">E-posta</p>
+                    <p className="text-gray-400 text-xs uppercase tracking-wider mb-0.5">E-posta</p>
                     <a
                       href={`mailto:${info.email}`}
-                      className="text-white hover:text-teal-500 transition-colors text-sm font-medium"
+                      className="text-gray-900 hover:text-teal-500 transition-colors text-sm font-medium"
                     >
                       {info.email}
                     </a>
@@ -152,8 +151,8 @@ export default function ContactPage() {
                     <MapPin size={18} className="text-teal-500" />
                   </div>
                   <div>
-                    <p className="text-white/40 text-xs uppercase tracking-wider mb-0.5">Adres</p>
-                    <p className="text-white text-sm">{info.address}</p>
+                    <p className="text-gray-400 text-xs uppercase tracking-wider mb-0.5">Adres</p>
+                    <p className="text-gray-900 text-sm">{info.address}</p>
                   </div>
                 </div>
               </div>
@@ -166,7 +165,7 @@ export default function ContactPage() {
                     "polygon(0 0, calc(100% - 16px) 0, 100% 16px, 100% 100%, 16px 100%, 0 calc(100% - 16px))",
                 }}
               >
-                <h4 className="font-heading font-bold text-xl uppercase text-white mb-2">
+                <h4 className="font-heading font-bold text-xl uppercase text-gray-900 mb-2">
                   Acil Destek
                 </h4>
                 <p className="text-white/85 text-sm leading-relaxed mb-3">
@@ -185,7 +184,7 @@ export default function ContactPage() {
             {/* Right — Form */}
             <div className="lg:col-span-3">
               <div
-                className="bg-dark-800 border border-dark-500 p-8"
+                className="bg-white border border-gray-200 shadow-sm p-8"
                 style={{
                   clipPath:
                     "polygon(0 0, calc(100% - 24px) 0, 100% 24px, 100% 100%, 24px 100%, 0 calc(100% - 24px))",
@@ -194,10 +193,10 @@ export default function ContactPage() {
                 {status === "success" ? (
                   <div className="flex flex-col items-center justify-center py-16 text-center">
                     <CheckCircle size={56} className="text-green-400 mb-4" />
-                    <h3 className="font-heading font-bold text-2xl text-white uppercase mb-2">
+                    <h3 className="font-heading font-bold text-2xl text-gray-900 uppercase mb-2">
                       Mesajınız Alındı
                     </h3>
-                    <p className="text-white/60 text-sm mb-6">
+                    <p className="text-gray-500 text-sm mb-6">
                       En kısa sürede uzmanımız sizinle iletişime geçecektir.
                     </p>
                     <button
@@ -209,12 +208,12 @@ export default function ContactPage() {
                   </div>
                 ) : (
                   <form onSubmit={handleSubmit} className="space-y-4">
-                    <h3 className="font-heading font-bold text-xl uppercase text-white mb-6">
+                    <h3 className="font-heading font-bold text-xl uppercase text-gray-900 mb-6">
                       Teklif Formu
                     </h3>
                     <div className="grid sm:grid-cols-2 gap-4">
                       <div>
-                        <label className="block text-white/60 text-xs uppercase tracking-wider mb-1.5">
+                        <label className="block text-gray-500 text-xs uppercase tracking-wider mb-1.5">
                           Ad Soyad *
                         </label>
                         <input
@@ -227,7 +226,7 @@ export default function ContactPage() {
                         />
                       </div>
                       <div>
-                        <label className="block text-white/60 text-xs uppercase tracking-wider mb-1.5">
+                        <label className="block text-gray-500 text-xs uppercase tracking-wider mb-1.5">
                           E-posta *
                         </label>
                         <input
@@ -243,7 +242,7 @@ export default function ContactPage() {
                     </div>
                     <div className="grid sm:grid-cols-2 gap-4">
                       <div>
-                        <label className="block text-white/60 text-xs uppercase tracking-wider mb-1.5">
+                        <label className="block text-gray-500 text-xs uppercase tracking-wider mb-1.5">
                           Şirket
                         </label>
                         <input
@@ -255,7 +254,7 @@ export default function ContactPage() {
                         />
                       </div>
                       <div>
-                        <label className="block text-white/60 text-xs uppercase tracking-wider mb-1.5">
+                        <label className="block text-gray-500 text-xs uppercase tracking-wider mb-1.5">
                           Telefon
                         </label>
                         <input
@@ -269,7 +268,7 @@ export default function ContactPage() {
                       </div>
                     </div>
                     <div>
-                      <label className="block text-white/60 text-xs uppercase tracking-wider mb-1.5">
+                      <label className="block text-gray-500 text-xs uppercase tracking-wider mb-1.5">
                         Konu *
                       </label>
                       <select
@@ -290,7 +289,7 @@ export default function ContactPage() {
                       </select>
                     </div>
                     <div>
-                      <label className="block text-white/60 text-xs uppercase tracking-wider mb-1.5">
+                      <label className="block text-gray-500 text-xs uppercase tracking-wider mb-1.5">
                         Mesajınız *
                       </label>
                       <textarea

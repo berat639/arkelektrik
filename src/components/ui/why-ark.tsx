@@ -108,7 +108,7 @@ export function WhyArk({
                 }}
               />
               <div
-                className="absolute inset-0 bg-gradient-to-t from-dark-800/60 via-transparent to-transparent"
+                className="absolute inset-0 bg-gradient-to-t from-fire-950/50 via-transparent to-transparent"
                 style={{
                   clipPath:
                     "polygon(0 0, calc(100% - 30px) 0, 100% 30px, 100% 100%, 30px 100%, 0 calc(100% - 30px))",
@@ -162,7 +162,7 @@ export function WhyArk({
                     alt={name}
                     className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-dark-900/85 via-dark-900/20 to-transparent" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-fire-950/85 via-fire-950/20 to-transparent" />
                   <div className="absolute inset-0 bg-teal-500/0 group-hover:bg-teal-500/20 transition-colors duration-300" />
                   <div className="absolute bottom-4 left-4 right-4">
                     <h4 className="text-white font-semibold text-sm uppercase tracking-wide">

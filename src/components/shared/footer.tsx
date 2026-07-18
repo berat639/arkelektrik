@@ -28,8 +28,8 @@ export async function Footer() {
 
 
   return (
-    <footer className="bg-dark-900 pt-20 relative">
-      <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-teal-500 via-teal-500/40 to-transparent" />
+    <footer className="bg-gradient-to-r from-dark-900 via-amber-900/50 to-dark-900 pt-20 relative">
+      <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-amber-500 via-ark-red/40 to-transparent" />
 
       <div className="max-w-7xl mx-auto px-6">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-12 pb-16">
@@ -125,7 +125,7 @@ export async function Footer() {
 
 
         {/* Bottom bar */}
-        <div className="border-t border-dark-600 py-5 flex flex-col sm:flex-row items-center justify-between gap-4">
+        <div className="border-t border-amber-500/10 py-5 flex flex-col sm:flex-row items-center justify-between gap-4">
           <p className="text-white/40 text-xs text-center sm:text-left">
             &copy; {new Date().getFullYear()} {settings.copyrightText}
           </p>

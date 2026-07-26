@@ -60,27 +60,17 @@ export function AboutSections({ settings, aboutContent, aboutImage }: AboutSecti
               )}
             </div>
 
-            {/* Milestones */}
+            {/* Image */}
             <div
               ref={ref1 as React.RefObject<HTMLDivElement>}
               className={`animate-on-scroll-right ${v1 ? "is-visible" : ""}`}
             >
-              <span className="text-ark-red-light text-xs font-semibold uppercase tracking-[0.25em] mb-6 block">Kilometre Taşları</span>
-              <div className="relative">
-                <div className="absolute left-6 top-0 bottom-0 w-px bg-gray-200" />
-                <div className="space-y-6">
-                  {settings.milestones.map(({ year, event }) => (
-                    <div key={year} className="flex gap-6 pl-4 group">
-                      <div className="relative flex-shrink-0">
-                        <div className="w-4 h-4 rounded-full bg-ark-red border-2 border-white shadow-md mt-1 relative z-10 transition-transform duration-300 group-hover:scale-125" />
-                      </div>
-                      <div>
-                        <div className="font-heading font-bold text-ark-red-light text-lg leading-none mb-1">{year}</div>
-                        <p className="text-gray-600 text-sm leading-relaxed">{event}</p>
-                      </div>
-                    </div>
-                  ))}
-                </div>
+              <div className="relative overflow-hidden" style={{ clipPath: "polygon(0 0, calc(100% - 24px) 0, 100% 24px, 100% 100%, 24px 100%, 0 calc(100% - 24px))" }}>
+                <img
+                  src="/about-engineering.jpg"
+                  alt="ARK Global Mühendislik Ekibi"
+                  className="w-full h-auto object-cover"
+                />
               </div>
             </div>
           </div>

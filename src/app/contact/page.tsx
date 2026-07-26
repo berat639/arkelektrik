@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import {
-  Phone, Mail, MapPin, Send, CheckCircle, AlertCircle, ArrowRight,
+  Phone, Mail, MapPin, Send, CheckCircle, AlertCircle,
 } from "lucide-react";
 import { PageHero } from "@/components/ui/page-hero";
 import { TechBackground } from "@/components/ui/tech-background";
@@ -155,29 +155,6 @@ export default function ContactPage() {
                     <p className="text-gray-900 text-sm">{info.address}</p>
                   </div>
                 </div>
-              </div>
-
-              {/* Emergency CTA */}
-              <div
-                className="bg-ark-red p-6"
-                style={{
-                  clipPath:
-                    "polygon(0 0, calc(100% - 16px) 0, 100% 16px, 100% 100%, 16px 100%, 0 calc(100% - 16px))",
-                }}
-              >
-                <h4 className="font-heading font-bold text-xl uppercase text-gray-900 mb-2">
-                  Acil Destek
-                </h4>
-                <p className="text-white/85 text-sm leading-relaxed mb-3">
-                  Mevcut sisteminizde acil arıza veya bakım ihtiyacı mı var? 7/24 teknik destek
-                  hattımız hizmetinizde.
-                </p>
-                <a
-                  href={`tel:${info.phone.replace(/[^+\d]/g, "")}`}
-                  className="inline-flex items-center gap-2 px-5 py-3 bg-white text-ark-red-light font-semibold text-sm uppercase tracking-wider hover:bg-gray-100 transition-colors"
-                >
-                  Hemen Ara <ArrowRight size={14} />
-                </a>
               </div>
             </div>
 

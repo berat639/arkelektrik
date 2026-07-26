@@ -20,7 +20,7 @@ export default async function AboutPage() {
         accent="ARK Global"
         subtitle={settings.aboutPageSubtitle || "15 yılı aşkın endüstriyel güvenlik tecrübesiyle, standart bir tedarikçiden öte uçtan uca mühendislik partneri."}
         breadcrumbs={[{ label: "Hakkımızda" }]}
-        image={settings.aboutHeroImage || about.cover_image_url || "/about-hero.jpg"}
+        image={ "/banner.jpeg"}
       />
 
       <AboutSections 

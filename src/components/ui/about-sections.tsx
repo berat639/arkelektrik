@@ -67,7 +67,7 @@ export function AboutSections({ settings, aboutContent, aboutImage }: AboutSecti
             >
               <div className="relative overflow-hidden" style={{ clipPath: "polygon(0 0, calc(100% - 24px) 0, 100% 24px, 100% 100%, 24px 100%, 0 calc(100% - 24px))" }}>
                 <img
-                  src="/about-engineering.jpg"
+                  src="/about-engineering.png"
                   alt="ARK Global Mühendislik Ekibi"
                   className="w-full h-auto object-cover"
                 />

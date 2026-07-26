@@ -67,7 +67,7 @@ export default async function ServiceDetailPage({ params }: Props) {
               {/* Icon + heading */}
               <div className="flex items-center gap-4 mb-6">
                 <div
-                  className="w-14 h-14 bg-teal-500 flex items-center justify-center flex-shrink-0"
+                  className="w-14 h-14 bg-ark-red flex items-center justify-center flex-shrink-0"
                   style={{
                     clipPath:
                       "polygon(0 0, calc(100% - 10px) 0, 100% 10px, 100% 100%, 10px 100%, 0 calc(100% - 10px))",
@@ -79,7 +79,7 @@ export default async function ServiceDetailPage({ params }: Props) {
                   <h2 className="font-heading font-bold text-2xl uppercase text-gray-900">
                     {service.title}
                   </h2>
-                  <div className="w-12 h-0.5 bg-teal-500 mt-1" />
+                  <div className="w-12 h-0.5 bg-ark-red mt-1" />
                 </div>
               </div>
 
@@ -109,7 +109,7 @@ export default async function ServiceDetailPage({ params }: Props) {
             <div className="space-y-6">
               {/* CTA */}
               <div
-                className="bg-teal-500 p-6"
+                className="bg-ark-red p-6"
                 style={{
                   clipPath:
                     "polygon(0 0, calc(100% - 14px) 0, 100% 14px, 100% 100%, 14px 100%, 0 calc(100% - 14px))",
@@ -123,7 +123,7 @@ export default async function ServiceDetailPage({ params }: Props) {
                 </p>
                 <Link
                   href="/contact"
-                  className="inline-flex items-center gap-2 px-5 py-3 bg-white text-teal-500 font-semibold text-sm uppercase tracking-wider hover:bg-gray-100 transition-colors"
+                  className="inline-flex items-center gap-2 px-5 py-3 bg-white text-ark-red-light font-semibold text-sm uppercase tracking-wider hover:bg-gray-100 transition-colors"
                 >
                   Teklif Al <ArrowRight size={14} />
                 </Link>
@@ -149,9 +149,9 @@ export default async function ServiceDetailPage({ params }: Props) {
                         <li key={s.id}>
                           <Link
                             href={`/hizmetler/${s.slug}`}
-                            className="flex items-center gap-2 text-sm text-gray-600 hover:text-teal-500 transition-colors py-1"
+                            className="flex items-center gap-2 text-sm text-gray-600 hover:text-ark-red-light transition-colors py-1"
                           >
-                            <SIcon size={12} className="text-teal-500 flex-shrink-0" />
+                            <SIcon size={12} className="text-ark-red-light flex-shrink-0" />
                             {s.title}
                           </Link>
                         </li>
@@ -165,15 +165,15 @@ export default async function ServiceDetailPage({ params }: Props) {
       </section>
 
       {/* Process section */}
-      <section className="bg-gradient-to-br from-dark-900 via-amber-900/40 to-fire-900/25 py-20 relative overflow-hidden">
+      <section className="bg-gradient-to-br from-ark-red-muted via-ark-red to-ark-red-muted/25 py-20 relative overflow-hidden">
         <TechBackground variant="dark" />
         <div className="max-w-7xl mx-auto px-6 relative z-10">
           <div className="text-center mb-12">
-            <span className="text-teal-500 text-xs font-semibold uppercase tracking-[0.25em] mb-4 block">
+            <span className="text-ark-red-light text-xs font-semibold uppercase tracking-[0.25em] mb-4 block">
               Nasıl Çalışırız
             </span>
             <h2 className="font-heading font-bold text-3xl uppercase text-white mb-4">Proje Sürecimiz</h2>
-            <div className="w-16 h-1 bg-teal-500 mx-auto" />
+            <div className="w-16 h-1 bg-ark-red mx-auto" />
           </div>
 
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
@@ -185,13 +185,13 @@ export default async function ServiceDetailPage({ params }: Props) {
             ].map(({ step, title, desc }) => (
               <div
                 key={step}
-                className="bg-gradient-to-br from-dark-800 to-amber-900/30 border border-amber-800/15 p-6 relative"
+                className="bg-gradient-to-br from-ark-red-dark/50 to-ark-red-muted/40 border border-ark-red/15 p-6 relative"
                 style={{
                   clipPath:
                     "polygon(0 0, calc(100% - 14px) 0, 100% 14px, 100% 100%, 14px 100%, 0 calc(100% - 14px))",
                 }}
               >
-                <div className="font-heading font-bold text-5xl text-teal-500/20 leading-none mb-4">
+                <div className="font-heading font-bold text-5xl text-ark-red-light/20 leading-none mb-4">
                   {step}
                 </div>
                 <h3 className="font-heading font-bold text-lg uppercase text-white mb-2">{title}</h3>
@@ -203,7 +203,7 @@ export default async function ServiceDetailPage({ params }: Props) {
       </section>
 
       {/* Prev / Next navigation */}
-      <section className="bg-gradient-to-t from-dark-900 to-amber-950/80 border-t border-amber-800/15 py-8">
+      <section className="bg-gradient-to-t from-ark-red-muted to-ark-red-muted/60 border-t border-ark-red/15 py-8">
         <div className="max-w-7xl mx-auto px-6 flex justify-between items-center gap-4">
           {prevService ? (
             <Link
@@ -220,7 +220,7 @@ export default async function ServiceDetailPage({ params }: Props) {
             <div />
           )}
 
-          <Link href="/hizmetler" className="text-teal-500 text-xs uppercase tracking-wider font-semibold hover:underline">
+          <Link href="/hizmetler" className="text-ark-red-light text-xs uppercase tracking-wider font-semibold hover:underline">
             Tüm Hizmetler
           </Link>
 
@@ -254,7 +254,7 @@ export default async function ServiceDetailPage({ params }: Props) {
             <Link href="/contact" className="btn-primary">
               Teklif Al <ArrowRight size={16} />
             </Link>
-            <Link href="/hizmetler" className="btn-outline !border-gray-300 !text-gray-700 !hover:text-teal-500 !hover:border-teal-500">
+            <Link href="/hizmetler" className="btn-outline !border-gray-300 !text-gray-700 !hover:text-ark-red-light !hover:border-ark-red">
               Diğer Hizmetler
             </Link>
           </div>

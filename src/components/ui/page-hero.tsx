@@ -26,9 +26,9 @@ export function PageHero({
       {/* Background */}
       <div className="absolute inset-0">
         <img src={image} alt="" className="w-full h-full object-cover" />
-        <div className="absolute inset-0 bg-fire-950/65" />
-        <div className="absolute inset-0 bg-gradient-to-r from-fire-950/50 via-dark-900/30 to-transparent" />
-        <div className="absolute inset-0 bg-gradient-to-b from-fire-950/30 via-transparent to-fire-950/60" />
+        <div className="absolute inset-0 bg-ark-red-muted/65" />
+        <div className="absolute inset-0 bg-gradient-to-r from-ark-red-muted/60 via-ark-red/40 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-b from-ark-red-muted/30 via-transparent to-ark-red-muted/60" />
       </div>
 
       {/* Grid overlay */}
@@ -36,13 +36,13 @@ export function PageHero({
         className="absolute inset-0 opacity-[0.03]"
         style={{
           backgroundImage:
-            "linear-gradient(rgba(184,134,11,0.4) 1px, transparent 1px), linear-gradient(90deg, rgba(184,134,11,0.4) 1px, transparent 1px)",
+            "linear-gradient(rgba(196,30,30,0.4) 1px, transparent 1px), linear-gradient(90deg, rgba(196,30,30,0.4) 1px, transparent 1px)",
           backgroundSize: "60px 60px",
         }}
       />
 
       {/* Red accent bar */}
-      <div className="absolute left-0 top-0 bottom-0 w-1 bg-gradient-to-b from-transparent via-amber-500 to-transparent" />
+      <div className="absolute left-0 top-0 bottom-0 w-1 bg-gradient-to-b from-transparent via-ark-red to-transparent" />
 
       <div className="relative z-10 max-w-7xl mx-auto px-6">
         {/* Breadcrumbs */}
@@ -59,7 +59,7 @@ export function PageHero({
                     {crumb.label}
                   </Link>
                 ) : (
-                  <span className="text-teal-500">{crumb.label}</span>
+                  <span className="text-ark-red-light">{crumb.label}</span>
                 )}
               </span>
             ))}
@@ -70,7 +70,7 @@ export function PageHero({
         <h1 className="font-heading font-bold text-4xl md:text-5xl lg:text-6xl uppercase text-white leading-tight mb-4">
           {accent ? (
             <>
-              {title} <span className="text-teal-500">{accent}</span>
+              {title} <span className="text-ark-red-light">{accent}</span>
             </>
           ) : (
             title
@@ -78,7 +78,7 @@ export function PageHero({
         </h1>
 
         {/* Divider */}
-        <div className="w-16 h-1 bg-teal-500 mb-6" />
+        <div className="w-16 h-1 bg-ark-red mb-6" />
 
         {subtitle && (
           <p className="text-white/70 text-lg max-w-2xl leading-relaxed">{subtitle}</p>

@@ -80,10 +80,8 @@ export function HeroSlider({ slides, stats }: HeroSliderProps) {
   const badge = slide.badge || "ARK Global";
   const description = slide.description || slide.subtitle || "";
   const tags = slide.tags || [];
-  const ctaPrimaryLabel = slide.ctaPrimaryLabel || slide.cta || "Hizmetlerimiz";
-  const ctaPrimaryHref = slide.ctaPrimaryHref || slide.href || "#services";
-  const ctaSecondaryLabel = slide.ctaSecondaryLabel || "Teklif Al";
-  const ctaSecondaryHref = slide.ctaSecondaryHref || "/contact";
+  const ctaPrimaryLabel = slide.ctaPrimaryLabel || slide.cta || "";
+  const ctaPrimaryHref = slide.ctaPrimaryHref || slide.href || "";
 
   return (
     <section id="home" className="relative min-h-screen flex flex-col justify-center overflow-hidden">
@@ -110,16 +108,15 @@ export function HeroSlider({ slides, stats }: HeroSliderProps) {
       ))}
 
       {/* ── Overlays ── */}
-      <div className="absolute inset-0 bg-gradient-to-r from-dark-900/80 via-amber-900/30 to-dark-900/20" />
-      <div className="absolute inset-0 bg-gradient-to-t from-dark-900/80 via-transparent to-dark-900/50" />
-      <div className="absolute inset-0 bg-gradient-to-br from-amber-900/10 via-transparent to-transparent" />
+      <div className="absolute inset-0 bg-gradient-to-r from-black/60 via-black/30 to-black/10" />
+      <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-black/30" />
 
       {/* ── Grid overlay ── */}
       <div
         className="absolute inset-0 opacity-[0.03]"
         style={{
           backgroundImage:
-            "linear-gradient(rgba(184,134,11,0.4) 1px, transparent 1px), linear-gradient(90deg, rgba(184,134,11,0.4) 1px, transparent 1px)",
+            "linear-gradient(rgba(196,30,30,0.4) 1px, transparent 1px), linear-gradient(90deg, rgba(196,30,30,0.4) 1px, transparent 1px)",
           backgroundSize: "60px 60px",
         }}
       />
@@ -129,12 +126,12 @@ export function HeroSlider({ slides, stats }: HeroSliderProps) {
         <div className="max-w-3xl">
           {/* Badge */}
           <div
-            className={`inline-flex items-center gap-2 bg-teal-500/15 border border-teal-500/40 px-4 py-2 mb-8 transition-all duration-500 ${
+            className={`inline-flex items-center gap-2 bg-ark-red/15 border border-ark-red/40 px-4 py-2 mb-8 transition-all duration-500 ${
               isTransitioning ? "opacity-0 -translate-y-3" : "opacity-100 translate-y-0"
             }`}
           >
-            <span className="w-2 h-2 bg-teal-500 rounded-full animate-pulse-slow" />
-            <span className="text-teal-500 text-xs font-semibold uppercase tracking-[0.2em]">
+            <span className="w-2 h-2 bg-ark-red rounded-full animate-pulse-slow" />
+            <span className="text-ark-red-light text-xs font-semibold uppercase tracking-[0.2em]">
               {badge}
             </span>
           </div>
@@ -145,7 +142,7 @@ export function HeroSlider({ slides, stats }: HeroSliderProps) {
               <span
                 key={`${current}-${i}`}
                 className={`block transition-all duration-500 ${
-                  i === highlightIndex ? "text-teal-500" : "text-white"
+                  i === highlightIndex ? "text-ark-red-light" : "text-white"
                 } ${isTransitioning ? "opacity-0 translate-y-6" : "opacity-100 translate-y-0"}`}
                 style={{ transitionDelay: `${i * 80}ms` }}
               >
@@ -165,31 +162,24 @@ export function HeroSlider({ slides, stats }: HeroSliderProps) {
           </p>
 
           {/* CTAs */}
-          <div
-            className={`flex flex-wrap gap-4 transition-all duration-500 ${
-              isTransitioning ? "opacity-0 translate-y-4" : "opacity-100 translate-y-0"
-            }`}
-            style={{ transitionDelay: "320ms" }}
-          >
-            {ctaPrimaryHref.startsWith("#") ? (
-              <button onClick={() => handleCta(ctaPrimaryHref)} className="btn-primary">
-                {ctaPrimaryLabel} <ArrowRight size={16} />
-              </button>
-            ) : (
-              <Link href={ctaPrimaryHref} className="btn-primary">
-                {ctaPrimaryLabel} <ArrowRight size={16} />
-              </Link>
-            )}
-            {ctaSecondaryHref.startsWith("#") ? (
-              <button onClick={() => handleCta(ctaSecondaryHref)} className="btn-outline">
-                {ctaSecondaryLabel}
-              </button>
-            ) : (
-              <Link href={ctaSecondaryHref} className="btn-outline">
-                {ctaSecondaryLabel}
-              </Link>
-            )}
-          </div>
+          {ctaPrimaryHref && ctaPrimaryLabel && (
+            <div
+              className={`flex flex-wrap gap-4 transition-all duration-500 ${
+                isTransitioning ? "opacity-0 translate-y-4" : "opacity-100 translate-y-0"
+              }`}
+              style={{ transitionDelay: "320ms" }}
+            >
+              {ctaPrimaryHref.startsWith("#") ? (
+                <button onClick={() => handleCta(ctaPrimaryHref)} className="btn-primary">
+                  {ctaPrimaryLabel} <ArrowRight size={16} />
+                </button>
+              ) : (
+                <Link href={ctaPrimaryHref} className="btn-primary">
+                  {ctaPrimaryLabel} <ArrowRight size={16} />
+                </Link>
+              )}
+            </div>
+          )}
 
           {/* Tags */}
           {tags.length > 0 && (
@@ -208,7 +198,7 @@ export function HeroSlider({ slides, stats }: HeroSliderProps) {
                       "polygon(0 0, calc(100% - 6px) 0, 100% 6px, 100% 100%, 6px 100%, 0 calc(100% - 6px))",
                   }}
                 >
-                  <span className="w-1.5 h-1.5 bg-teal-500 rounded-full" />
+                  <span className="w-1.5 h-1.5 bg-ark-red rounded-full" />
                   {tag}
                 </span>
               ))}
@@ -222,7 +212,7 @@ export function HeroSlider({ slides, stats }: HeroSliderProps) {
         <div className="absolute bottom-44 right-8 z-20 hidden lg:flex items-center gap-3">
           <button
             onClick={prev}
-            className="w-10 h-10 border border-white/20 flex items-center justify-center text-white/60 hover:text-white hover:border-teal-500 hover:bg-teal-500/10 transition-all duration-200 cursor-pointer"
+            className="w-10 h-10 border border-white/20 flex items-center justify-center text-white/60 hover:text-white hover:border-ark-red hover:bg-ark-red/10 transition-all duration-200 cursor-pointer"
             aria-label="Önceki slide"
             style={{
               clipPath: "polygon(0 0, calc(100% - 6px) 0, 100% 6px, 100% 100%, 6px 100%, 0 calc(100% - 6px))",
@@ -232,7 +222,7 @@ export function HeroSlider({ slides, stats }: HeroSliderProps) {
           </button>
           <button
             onClick={next}
-            className="w-10 h-10 border border-white/20 flex items-center justify-center text-white/60 hover:text-white hover:border-teal-500 hover:bg-teal-500/10 transition-all duration-200 cursor-pointer"
+            className="w-10 h-10 border border-white/20 flex items-center justify-center text-white/60 hover:text-white hover:border-ark-red hover:bg-ark-red/10 transition-all duration-200 cursor-pointer"
             aria-label="Sonraki slide"
             style={{
               clipPath: "polygon(0 0, calc(100% - 6px) 0, 100% 6px, 100% 100%, 6px 100%, 0 calc(100% - 6px))",
@@ -257,7 +247,7 @@ export function HeroSlider({ slides, stats }: HeroSliderProps) {
               <span className="absolute inset-0 bg-white/20 rounded-full" />
               {i === current && (
                 <span
-                  className="absolute inset-0 bg-teal-500 rounded-full origin-left"
+                  className="absolute inset-0 bg-ark-red rounded-full origin-left"
                   style={{ transform: `scaleX(${progress / 100})`, transition: "transform 30ms linear" }}
                 />
               )}
@@ -275,22 +265,6 @@ export function HeroSlider({ slides, stats }: HeroSliderProps) {
           <span className="text-3xl font-bold text-white">{String(current + 1).padStart(2, "0")}</span>
           <span className="text-sm text-white/30 mx-1">/</span>
           <span className="text-sm text-white/30">{String(total).padStart(2, "0")}</span>
-        </div>
-      )}
-
-      {/* ── Stats bar ── */}
-      {stats && stats.length > 0 && (
-        <div className="relative z-10 bg-gradient-to-r from-dark-900/90 via-amber-900/45 to-dark-900/90 backdrop-blur-sm border-t border-amber-500/10">
-          <div className="max-w-7xl mx-auto px-6">
-            <div className="grid grid-cols-2 md:grid-cols-4 divide-x divide-white/10">
-              {stats.map(({ value, label }) => (
-                <div key={label} className="py-6 px-8 text-center">
-                  <div className="font-heading font-bold text-3xl text-teal-500">{value}</div>
-                  <div className="text-white/65 text-xs uppercase tracking-wider mt-1">{label}</div>
-                </div>
-              ))}
-            </div>
-          </div>
         </div>
       )}
 

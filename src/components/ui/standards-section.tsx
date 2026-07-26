@@ -17,14 +17,14 @@ export function StandardsSection({ title, brands }: StandardsSectionProps) {
   return (
     <section className="bg-slate-50 py-28 relative overflow-hidden">
       <TechBackground />
-      <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-teal-500 via-teal-500/60 to-transparent z-10" />
+      <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-ark-red via-ark-red/60 to-transparent z-10" />
 
       <div className="max-w-7xl mx-auto px-6 relative z-10">
         <div
           ref={ref as React.RefObject<HTMLDivElement>}
           className={`text-center mb-16 animate-on-scroll ${isVisible ? "is-visible" : ""}`}
         >
-          <span className="text-teal-500 text-xs font-semibold uppercase tracking-[0.25em] mb-4 block">
+          <span className="text-ark-red-light text-xs font-semibold uppercase tracking-[0.25em] mb-4 block">
             Çözüm Ortakları & Markalar
           </span>
           <h2 className="font-heading font-bold text-4xl lg:text-5xl uppercase leading-tight text-gray-900 mb-4">
@@ -47,14 +47,14 @@ export function StandardsSection({ title, brands }: StandardsSectionProps) {
           {duplicatedItems.map((brand, index) => (
             <div key={index} className="px-4 flex-shrink-0">
               <div
-                className="relative bg-white border-t border-b border-gray-200 hover:border-teal-500/40 hover:shadow-2xl overflow-hidden transition-all duration-300 flex flex-col justify-center items-center h-32 w-64 group"
+                className="relative bg-white border-t border-b border-gray-200 hover:border-ark-red/40 hover:shadow-2xl overflow-hidden transition-all duration-300 flex flex-col justify-center items-center h-32 w-64 group"
                 style={{
                   clipPath:
                     "polygon(0 0, calc(100% - 16px) 0, 100% 16px, 100% 100%, 16px 100%, 0 calc(100% - 16px))",
                 }}
               >
                 {/* Accent Line */}
-                <div className="absolute top-0 left-0 w-full h-1 bg-teal-500 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left" />
+                <div className="absolute top-0 left-0 w-full h-1 bg-ark-red transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left" />
 
                 {/* Background Image */}
                 <div
@@ -64,7 +64,7 @@ export function StandardsSection({ title, brands }: StandardsSectionProps) {
                 
                 {/* Brand Title Overlay */}
                 <div 
-                  className="relative z-10 font-heading font-bold text-sm uppercase text-gray-900 tracking-widest transition-colors duration-300 group-hover:text-teal-600 bg-white/95 px-4 py-1.5 mt-auto mb-3 shadow-md"
+                  className="relative z-10 font-heading font-bold text-sm uppercase text-gray-900 tracking-widest transition-colors duration-300 group-hover:text-ark-red bg-white/95 px-4 py-1.5 mt-auto mb-3 shadow-md"
                   style={{
                     clipPath: "polygon(0 0, calc(100% - 8px) 0, 100% 8px, 100% 100%, 8px 100%, 0 calc(100% - 8px))"
                   }}

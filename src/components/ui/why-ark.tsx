@@ -40,7 +40,7 @@ export function WhyArk({
 
   return (
     <section id="why-ark" className="bg-slate-50 py-28 relative overflow-hidden">
-      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-teal-500/30 to-transparent" />
+      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-ark-red/30 to-transparent" />
 
       <div className="max-w-7xl mx-auto px-6">
         <div className="grid lg:grid-cols-2 gap-16 items-center mb-24">
@@ -49,13 +49,13 @@ export function WhyArk({
             ref={leftRef as React.RefObject<HTMLDivElement>}
             className={`animate-on-scroll-left ${leftVisible ? "is-visible" : ""}`}
           >
-            <span className="text-teal-500 text-xs font-semibold uppercase tracking-[0.25em] mb-4 block">
+            <span className="text-ark-red-light text-xs font-semibold uppercase tracking-[0.25em] mb-4 block">
               {HARDCODED_TITLE}
             </span>
             <h2 className="font-heading font-bold text-4xl lg:text-5xl uppercase leading-tight text-gray-900 mb-4 whitespace-pre-wrap">
               {subtitle.includes(" ") ? (
                 <>
-                  {subtitle.split(" ")[0]} <span className="text-teal-500">{subtitle.substring(subtitle.indexOf(" ") + 1)}</span>
+                  {subtitle.split(" ")[0]} <span className="text-ark-red-light">{subtitle.substring(subtitle.indexOf(" ") + 1)}</span>
                 </>
               ) : (
                 subtitle
@@ -78,7 +78,7 @@ export function WhyArk({
                   ul: ({ children }) => <ul className="space-y-3">{children}</ul>,
                   li: ({ children }) => (
                     <li className="flex items-start gap-3">
-                      <CheckCircle size={18} className="text-teal-500 flex-shrink-0 mt-0.5" />
+                      <CheckCircle size={18} className="text-ark-red-light flex-shrink-0 mt-0.5" />
                       <span className="text-gray-600 text-sm leading-relaxed">{children}</span>
                     </li>
                   ),
@@ -108,7 +108,7 @@ export function WhyArk({
                 }}
               />
               <div
-                className="absolute inset-0 bg-gradient-to-t from-fire-950/50 via-transparent to-transparent"
+                className="absolute inset-0 bg-gradient-to-t from-ark-red-muted/50 via-transparent to-transparent"
                 style={{
                   clipPath:
                     "polygon(0 0, calc(100% - 30px) 0, 100% 30px, 100% 100%, 30px 100%, 0 calc(100% - 30px))",
@@ -125,8 +125,8 @@ export function WhyArk({
                   {quote}
                 </p>
                 <div className="mt-3 flex items-center gap-2">
-                  <div className="w-8 h-px bg-teal-500" />
-                  <span className="text-teal-500 text-xs font-semibold uppercase tracking-wider">
+                  <div className="w-8 h-px bg-ark-red" />
+                  <span className="text-ark-red-light text-xs font-semibold uppercase tracking-wider">
                     ARK Global
                   </span>
                 </div>
@@ -162,8 +162,8 @@ export function WhyArk({
                     alt={name}
                     className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-fire-950/85 via-fire-950/20 to-transparent" />
-                  <div className="absolute inset-0 bg-teal-500/0 group-hover:bg-teal-500/20 transition-colors duration-300" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-ark-red-muted/85 via-ark-red-muted/20 to-transparent" />
+                  <div className="absolute inset-0 bg-ark-red/0 group-hover:bg-ark-red/20 transition-colors duration-300" />
                   <div className="absolute bottom-4 left-4 right-4">
                     <h4 className="text-white font-semibold text-sm uppercase tracking-wide">
                       {name}

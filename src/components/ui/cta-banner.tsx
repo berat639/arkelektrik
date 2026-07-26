@@ -1,5 +1,4 @@
 import Link from "next/link";
-import { ArrowRight } from "lucide-react";
 import type { SiteSettings } from "@/lib/types";
 
 interface CtaBannerProps {
@@ -15,17 +14,17 @@ export function CtaBanner({ settings }: CtaBannerProps) {
           alt="Industrial"
           className="w-full h-full object-cover"
         />
-        <div className="absolute inset-0 bg-gradient-to-br from-dark-900/90 via-amber-900/50 to-fire-900/40" />
-        <div className="absolute inset-0 bg-gradient-to-r from-amber-500/15 via-transparent to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-br from-ark-red-muted/90 via-ark-red/60 to-ark-red-muted/80" />
+        <div className="absolute inset-0 bg-gradient-to-r from-ark-red/10 via-transparent to-transparent" />
       </div>
 
-      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-amber-500 via-amber-500/40 to-transparent" />
-      <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-amber-500 via-amber-500/40 to-transparent" />
+      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-ark-red via-ark-red/40 to-transparent" />
+      <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-ark-red via-ark-red/40 to-transparent" />
 
       <div className="relative z-10 max-w-5xl mx-auto px-6 text-center">
-        <span className="inline-flex items-center gap-2 bg-teal-500/15 border border-teal-500/40 px-4 py-2 mb-6">
-          <span className="w-2 h-2 bg-teal-500 rounded-full animate-pulse-slow" />
-          <span className="text-teal-500 text-xs font-semibold uppercase tracking-[0.2em]">
+        <span className="inline-flex items-center gap-2 bg-white/15 border border-white/40 px-4 py-2 mb-6">
+          <span className="w-2 h-2 bg-white rounded-full animate-pulse-slow" />
+          <span className="text-white text-xs font-semibold uppercase tracking-[0.2em]">
             {settings.ctaBannerBadge}
           </span>
         </span>
@@ -33,7 +32,7 @@ export function CtaBanner({ settings }: CtaBannerProps) {
         <h2 className="font-heading font-bold text-4xl lg:text-6xl uppercase text-white leading-tight mb-6">
           {settings.ctaBannerTitle}
           <br />
-          <span className="text-teal-500">{settings.ctaBannerAccent}</span>
+          <span className="text-white">{settings.ctaBannerAccent}</span>
         </h2>
 
         <p className="text-white/70 text-lg max-w-2xl mx-auto mb-10 leading-relaxed">
@@ -41,9 +40,6 @@ export function CtaBanner({ settings }: CtaBannerProps) {
         </p>
 
         <div className="flex flex-wrap justify-center gap-4">
-          <Link href="/contact" className="btn-primary">
-            Ücretsiz Değerlendirme <ArrowRight size={16} />
-          </Link>
           <Link href="/hizmetler" className="btn-outline">
             Hizmetlerimizi İnceleyin
           </Link>

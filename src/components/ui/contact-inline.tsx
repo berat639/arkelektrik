@@ -58,15 +58,15 @@ export function ContactInline({ phone, email, title, subtitle, text }: ContactIn
   };
 
   const inputClass =
-    "w-full bg-dark-800/80 border border-amber-800/15 focus:border-amber-500 text-white placeholder-white/40 px-4 py-3 text-sm outline-none transition-colors duration-200";
+    "w-full bg-fire-900/80 border border-ark-red/15 focus:border-ark-red text-white placeholder-white/40 px-4 py-3 text-sm outline-none transition-colors duration-200";
 
   return (
-    <section id="contact" className="bg-gradient-to-br from-dark-900 via-amber-900/35 to-fire-900/30 py-28 relative overflow-hidden">
-      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-teal-500/30 to-transparent" />
+    <section id="contact" className="bg-gradient-to-br from-ark-red-muted via-ark-red to-ark-red-muted py-28 relative overflow-hidden">
+      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-ark-red/30 to-transparent" />
 
       <div className="max-w-7xl mx-auto px-6">
         <div className="text-center mb-16">
-          <span className="text-teal-500 text-xs font-semibold uppercase tracking-[0.25em] mb-4 block">
+          <span className="text-ark-red-light text-xs font-semibold uppercase tracking-[0.25em] mb-4 block">
             {title}
           </span>
           <h2 className="font-heading font-bold text-4xl lg:text-5xl uppercase text-white mb-4">
@@ -77,7 +77,7 @@ export function ContactInline({ phone, email, title, subtitle, text }: ContactIn
             {text}{" "}
             <Link
               href="/contact"
-              className="text-teal-500 hover:underline inline-flex items-center gap-1"
+              className="text-ark-red-light hover:underline inline-flex items-center gap-1"
             >
               Detaylı iletişim sayfası <ArrowRight size={12} />
             </Link>
@@ -97,8 +97,8 @@ export function ContactInline({ phone, email, title, subtitle, text }: ContactIn
 
             <div className="space-y-5">
               <div className="flex items-center gap-4">
-                <div className="w-10 h-10 bg-teal-500/10 border border-teal-500/25 flex items-center justify-center flex-shrink-0">
-                  <Phone size={16} className="text-teal-500" />
+                <div className="w-10 h-10 bg-ark-red/10 border border-ark-red/25 flex items-center justify-center flex-shrink-0">
+                  <Phone size={16} className="text-ark-red-light" />
                 </div>
                 <a
                   href={`tel:${phone.replace(/[^+\d]/g, "")}`}
@@ -108,8 +108,8 @@ export function ContactInline({ phone, email, title, subtitle, text }: ContactIn
                 </a>
               </div>
               <div className="flex items-center gap-4">
-                <div className="w-10 h-10 bg-teal-500/10 border border-teal-500/25 flex items-center justify-center flex-shrink-0">
-                  <Mail size={16} className="text-teal-500" />
+                <div className="w-10 h-10 bg-ark-red/10 border border-ark-red/25 flex items-center justify-center flex-shrink-0">
+                  <Mail size={16} className="text-ark-red-light" />
                 </div>
                 <a
                   href={`mailto:${email}`}
@@ -121,7 +121,7 @@ export function ContactInline({ phone, email, title, subtitle, text }: ContactIn
             </div>
 
             <div
-              className="mt-10 bg-teal-500 p-6"
+              className="mt-10 bg-ark-red p-6"
               style={{
                 clipPath:
                   "polygon(0 0, calc(100% - 16px) 0, 100% 16px, 100% 100%, 16px 100%, 0 calc(100% - 16px))",
@@ -148,7 +148,7 @@ export function ContactInline({ phone, email, title, subtitle, text }: ContactIn
             className={`lg:col-span-3 animate-on-scroll-right ${rightVisible ? "is-visible" : ""}`}
           >
             <div
-              className="bg-gradient-to-br from-dark-800 to-amber-900/30 border border-amber-800/15 p-8"
+              className="bg-gradient-to-br from-ark-red-dark/50 to-ark-red-muted/40 border border-ark-red/15 p-8"
               style={{
                 clipPath:
                   "polygon(0 0, calc(100% - 24px) 0, 100% 24px, 100% 100%, 24px 100%, 0 calc(100% - 24px))",

@@ -8,6 +8,7 @@ import { Menu, X, ChevronDown } from "lucide-react";
 
 interface HeaderNavProps {
   serviceLinks: { href: string; label: string }[];
+  hasReferences?: boolean;
 }
 
 const adminLinks = [
@@ -19,7 +20,7 @@ const adminLinks = [
   { href: "/admin/messages", label: "Mesajlar" },
 ];
 
-export function HeaderNav({ serviceLinks }: HeaderNavProps) {
+export function HeaderNav({ serviceLinks, hasReferences }: HeaderNavProps) {
   const pathname = usePathname();
   const isAdmin = (pathname ?? "").startsWith("/admin");
   const [scrolled, setScrolled] = useState(false);
@@ -133,17 +134,17 @@ export function HeaderNav({ serviceLinks }: HeaderNavProps) {
 
   // ── Public ARK layout ──
   const headerBg = scrolled
-    ? "backdrop-blur-md shadow-xl shadow-black/15 border-b border-amber-500/12"
+    ? "backdrop-blur-md shadow-lg shadow-black/10 border-b border-gray-200"
     : "backdrop-blur-sm";
 
   const headerStyle = scrolled
-    ? { background: "linear-gradient(90deg, rgba(30,42,50,0.90) 0%, rgba(46,31,10,0.45) 50%, rgba(30,42,50,0.90) 100%)" }
-    : { background: "linear-gradient(90deg, rgba(30,42,50,0.40) 0%, rgba(46,31,10,0.20) 50%, rgba(30,42,50,0.40) 100%)" };
+    ? { background: "rgba(255,255,255,0.97)" }
+    : { background: "rgba(255,255,255,0.85)" };
 
   return (
     <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${headerBg}`} style={headerStyle}>
-      {/* Amber top line like footer */}
-      <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-amber-500/30 to-transparent" />
+      {/* Ark-red bottom accent line */}
+      <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-ark-red/30 to-transparent" />
       <div className="max-w-7xl mx-auto px-6 flex items-center justify-between h-20">
         {/* Logo */}
         <Link href="/" className="flex items-center gap-3 flex-shrink-0">
@@ -156,7 +157,7 @@ export function HeaderNav({ serviceLinks }: HeaderNavProps) {
           <li>
             <Link
               href="/hakkimizda"
-              className={`nav-link ${isActive("/hakkimizda") ? "active text-white" : ""}`}
+              className={`nav-link ${isActive("/hakkimizda") ? "active text-ark-red" : ""}`}
             >
               Hakkımızda
             </Link>
@@ -171,7 +172,7 @@ export function HeaderNav({ serviceLinks }: HeaderNavProps) {
           >
             <Link
               href="/hizmetler"
-              className={`nav-link flex items-center gap-1 ${isActive("/hizmetler") ? "active text-white" : ""}`}
+              className={`nav-link flex items-center gap-1 ${isActive("/hizmetler") ? "active text-ark-red" : ""}`}
             >
               Faaliyet Alanlarımız
               <ChevronDown
@@ -189,7 +190,7 @@ export function HeaderNav({ serviceLinks }: HeaderNavProps) {
               {/* Inner wrapper for hover gap continuity */}
               <div className="absolute -top-3 left-0 right-0 h-3 bg-transparent" />
               <div
-                className="bg-dark-800/95 backdrop-blur-xl border border-amber-500/15 shadow-2xl shadow-amber-900/20 relative"
+                className="bg-white backdrop-blur-xl border border-gray-200 shadow-2xl shadow-black/10 relative"
                 style={{
                   clipPath:
                     "polygon(0 0, calc(100% - 12px) 0, 100% 12px, 100% 100%, 12px 100%, 0 calc(100% - 12px))",
@@ -198,7 +199,7 @@ export function HeaderNav({ serviceLinks }: HeaderNavProps) {
                 <div className="p-2">
                   <Link
                     href="/hizmetler"
-                    className="block px-4 py-2 text-xs font-semibold text-teal-500 uppercase tracking-wider border-b border-amber-500/10 mb-1"
+                    className="block px-4 py-2 text-xs font-semibold text-ark-red uppercase tracking-wider border-b border-gray-100 mb-1"
                   >
                     Tüm Faaliyet Alanlarımız
                   </Link>
@@ -206,7 +207,7 @@ export function HeaderNav({ serviceLinks }: HeaderNavProps) {
                     <Link
                       key={s.href}
                       href={s.href}
-                      className="block px-4 py-2.5 text-sm text-white/70 hover:text-white hover:bg-teal-500/10 transition-colors duration-150"
+                      className="block px-4 py-2.5 text-sm text-gray-600 hover:text-ark-red hover:bg-ark-red/5 transition-colors duration-150"
                     >
                       {s.label}
                     </Link>
@@ -216,15 +217,17 @@ export function HeaderNav({ serviceLinks }: HeaderNavProps) {
             </div>
           </li>
 
-          <li>
-            <Link href="/blog" className={`nav-link ${isActive("/blog") ? "active text-white" : ""}`}>
-              Blog
-            </Link>
-          </li>
+          {hasReferences && (
+            <li>
+              <Link href="/blog" className={`nav-link ${isActive("/blog") ? "active text-ark-red" : ""}`}>
+                Referanslarımız
+              </Link>
+            </li>
+          )}
           <li>
             <Link
               href="/contact"
-              className={`nav-link ${isActive("/contact") ? "active text-white" : ""}`}
+              className={`nav-link ${isActive("/contact") ? "active text-ark-red" : ""}`}
             >
               İletişim
             </Link>
@@ -234,7 +237,7 @@ export function HeaderNav({ serviceLinks }: HeaderNavProps) {
         {/* Mobile toggle */}
         <div className="flex items-center gap-4">
           <button
-            className="lg:hidden text-white p-2 cursor-pointer"
+            className="lg:hidden text-gray-700 p-2 cursor-pointer"
             onClick={() => setMobileOpen(!mobileOpen)}
             aria-label="Toggle menu"
           >
@@ -245,21 +248,21 @@ export function HeaderNav({ serviceLinks }: HeaderNavProps) {
 
       {/* Mobile Menu */}
       <div
-        className={`lg:hidden bg-dark-800/95 backdrop-blur-xl border-t border-amber-500/15 transition-all duration-300 overflow-hidden ${
+        className={`lg:hidden bg-white backdrop-blur-xl border-t border-gray-200 transition-all duration-300 overflow-hidden ${
           mobileOpen ? "max-h-[700px] opacity-100" : "max-h-0 opacity-0"
         }`}
       >
         <ul className="px-6 py-4 space-y-1">
           {[
             { label: "Hakkımızda", to: "/hakkimizda" },
-            { label: "Blog", to: "/blog" },
+            ...(hasReferences ? [{ label: "Referanslarımız", to: "/blog" }] : []),
             { label: "İletişim", to: "/contact" },
           ].map(({ label, to }) => (
             <li key={to}>
               <Link
                 href={to}
                 onClick={() => setMobileOpen(false)}
-                className="block py-3 text-white/75 hover:text-white text-sm uppercase tracking-wider font-medium border-b border-amber-500/10 transition-colors"
+                className="block py-3 text-gray-700 hover:text-ark-red text-sm uppercase tracking-wider font-medium border-b border-gray-100 transition-colors"
               >
                 {label}
               </Link>
@@ -270,7 +273,7 @@ export function HeaderNav({ serviceLinks }: HeaderNavProps) {
           <li>
             <button
               onClick={() => setServicesOpen(!servicesOpen)}
-              className="w-full flex items-center justify-between py-3 text-white/75 hover:text-white text-sm uppercase tracking-wider font-medium border-b border-amber-500/10 cursor-pointer"
+              className="w-full flex items-center justify-between py-3 text-gray-700 hover:text-ark-red text-sm uppercase tracking-wider font-medium border-b border-gray-100 cursor-pointer"
             >
               Faaliyet Alanlarımız
               <ChevronDown
@@ -284,7 +287,7 @@ export function HeaderNav({ serviceLinks }: HeaderNavProps) {
                   <Link
                     href="/hizmetler"
                     onClick={() => setMobileOpen(false)}
-                    className="block py-2 text-sm text-teal-500 font-medium"
+                    className="block py-2 text-sm text-ark-red font-medium"
                   >
                     Tüm Faaliyet Alanlarımız
                   </Link>
@@ -294,7 +297,7 @@ export function HeaderNav({ serviceLinks }: HeaderNavProps) {
                     <Link
                       href={s.href}
                       onClick={() => setMobileOpen(false)}
-                      className="block py-2 text-sm text-white/55 hover:text-teal-500 transition-colors"
+                      className="block py-2 text-sm text-gray-500 hover:text-ark-red transition-colors"
                     >
                       {s.label}
                     </Link>

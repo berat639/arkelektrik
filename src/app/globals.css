@@ -39,12 +39,12 @@
   --color-amber-300: #f0c040;
 
   /* ─── Dark Surface Palette ─── */
-  --color-dark-900: #1e2a32;
-  --color-dark-800: #283540;
-  --color-dark-700: #34414e;
-  --color-dark-600: #3e4c5a;
-  --color-dark-500: #4a5a68;
-  --color-dark-400: #5a6b78;
+  --color-dark-900: #110808;
+  --color-dark-800: #1c0e0e;
+  --color-dark-700: #2a1414;
+  --color-dark-600: #3a1c1c;
+  --color-dark-500: #4a2424;
+  --color-dark-400: #5a2e2e;
 
   /* ─── Teal Palette ─── */
   --color-teal-50: #f0fdfa;
@@ -215,24 +215,24 @@
 
 /* ─── Buttons ─── */
 .btn-primary {
-  @apply inline-flex items-center gap-2 px-8 py-4 bg-teal-500 text-white font-semibold uppercase tracking-widest text-sm
-    transition-all duration-300 hover:bg-teal-600 hover:scale-105 active:scale-95 cursor-pointer;
+  @apply inline-flex items-center gap-2 px-8 py-4 bg-ark-red text-white font-semibold uppercase tracking-widest text-sm
+    transition-all duration-300 hover:bg-ark-red-dark hover:scale-105 active:scale-95 cursor-pointer;
   clip-path: polygon(0 0, calc(100% - 12px) 0, 100% 12px, 100% 100%, 12px 100%, 0 calc(100% - 12px));
 }
 
 .btn-outline {
   @apply inline-flex items-center gap-2 px-8 py-4 border border-white/30 text-white font-semibold uppercase tracking-widest text-sm
-    transition-all duration-300 hover:border-teal-500 hover:text-teal-500 hover:scale-105 active:scale-95 cursor-pointer;
+    transition-all duration-300 hover:border-ark-red hover:text-ark-red-light hover:scale-105 active:scale-95 cursor-pointer;
   clip-path: polygon(0 0, calc(100% - 12px) 0, 100% 12px, 100% 100%, 12px 100%, 0 calc(100% - 12px));
 }
 
 /* ─── Navigation links ─── */
 .nav-link {
-  @apply relative text-white/70 hover:text-white font-medium text-sm uppercase tracking-wider transition-colors duration-200;
+  @apply relative text-gray-700 hover:text-ark-red font-medium text-sm uppercase tracking-wider transition-colors duration-200;
 }
 
 .nav-link::after {
-  @apply absolute -bottom-1 left-0 w-0 h-0.5 bg-teal-500 transition-all duration-300;
+  @apply absolute -bottom-1 left-0 w-0 h-0.5 bg-ark-red transition-all duration-300;
   content: '';
 }
 
@@ -243,23 +243,17 @@
 
 /* ─── Service card ─── */
 .service-card {
-  @apply relative border p-8 transition-all duration-300 hover:-translate-y-1 cursor-pointer overflow-hidden;
-  background: rgba(255, 255, 255, 0.06);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  border-color: rgba(255, 255, 255, 0.1);
+  @apply relative border border-gray-200 bg-gray-100 p-8 transition-all duration-300 hover:-translate-y-1 cursor-pointer overflow-hidden;
   clip-path: polygon(0 0, calc(100% - 20px) 0, 100% 20px, 100% 100%, 20px 100%, 0 calc(100% - 20px));
 }
 .service-card:hover {
-  background: rgba(255, 255, 255, 0.1);
-  border-color: rgba(212, 160, 23, 0.35);
-  box-shadow: 0 12px 40px rgba(184, 134, 11, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.08);
+  @apply bg-white border-ark-red/35 shadow-xl;
 }
 
 .service-card::before {
   content: '';
   @apply absolute inset-0 transition-opacity duration-300;
-  background: linear-gradient(160deg, rgba(212, 160, 23, 0.06) 0%, transparent 50%);
+  background: linear-gradient(160deg, rgba(196, 30, 30, 0.04) 0%, transparent 50%);
   opacity: 0;
 }
 
@@ -272,7 +266,7 @@
   @apply w-16 h-1 bg-ark-red mt-4 mb-6;
 }
 .divider-teal {
-  @apply w-16 h-1 bg-teal-500 mt-4 mb-6;
+  @apply w-16 h-1 bg-ark-red mt-4 mb-6;
 }
 
 /* ─── Text utilities ─── */
@@ -288,11 +282,11 @@
   background: #0F0F0F;
 }
 ::-webkit-scrollbar-thumb {
-  background: var(--color-teal-500);
+  background: var(--color-ark-red);
   border-radius: 3px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: var(--color-teal-700);
+  background: var(--color-ark-red-dark);
 }
 
 /* ═══════════════════════════════════════════

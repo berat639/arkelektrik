@@ -28,9 +28,9 @@ interface ContactInfo {
 
 export default function ContactPage() {
   const [info, setInfo] = useState<ContactInfo>({
-    phone: "+90 (212) 123 45 67",
-    email: "info@arkglobal.com.tr",
-    address: "Istanbul, Türkiye",
+    phone: "+90 (312) 557 43 28",
+    email: "info@arkelk.com.tr",
+    address: "Altay Mah. Ayaş Ankara Yolu Blv. Platinum No: 212, 10. Kat No: 49, Etimesgut, Ankara, Türkiye",
     contactPageImage: "https://images.pexels.com/photos/2760241/pexels-photo-2760241.jpeg?auto=compress&cs=tinysrgb&w=1920",
   });
 
@@ -87,7 +87,7 @@ export default function ContactPage() {
   };
 
   const inputClass =
-    "w-full bg-gray-50 border border-gray-200 focus:border-teal-500 text-gray-900 placeholder-gray-400 px-4 py-3 text-sm outline-none transition-colors duration-200";
+    "w-full bg-gray-50 border border-gray-200 focus:border-ark-red text-gray-900 placeholder-gray-400 px-4 py-3 text-sm outline-none transition-colors duration-200";
 
   return (
     <>
@@ -104,13 +104,13 @@ export default function ContactPage() {
             {/* Left — Info */}
             <div className="lg:col-span-2 space-y-8">
               <div>
-                <span className="text-teal-500 text-xs font-semibold uppercase tracking-[0.25em] mb-4 block">
+                <span className="text-ark-red-light text-xs font-semibold uppercase tracking-[0.25em] mb-4 block">
                   Bilgi
                 </span>
                 <h2 className="font-heading font-bold text-3xl uppercase text-gray-900 mb-4">
-                  Bize <span className="text-teal-500">Ulaşın</span>
+                  Bize <span className="text-ark-red-light">Ulaşın</span>
                 </h2>
-                <div className="w-16 h-1 bg-teal-500 mb-6" />
+                <div className="w-16 h-1 bg-ark-red mb-6" />
                 <p className="text-gray-600 leading-relaxed text-sm">
                   Uzman ekibimiz tesisinizi analiz ederek en uygun güvenlik sistemini önerecektir.
                   Aşağıdaki formu doldurun veya doğrudan iletişime geçin.
@@ -119,36 +119,36 @@ export default function ContactPage() {
 
               <div className="space-y-5">
                 <div className="flex items-center gap-4">
-                  <div className="w-12 h-12 bg-teal-500/10 border border-teal-500/25 flex items-center justify-center flex-shrink-0">
-                    <Phone size={18} className="text-teal-500" />
+                  <div className="w-12 h-12 bg-ark-red/10 border border-ark-red/25 flex items-center justify-center flex-shrink-0">
+                    <Phone size={18} className="text-ark-red-light" />
                   </div>
                   <div>
                     <p className="text-gray-400 text-xs uppercase tracking-wider mb-0.5">Telefon</p>
                     <a
                       href={`tel:${info.phone.replace(/[^+\d]/g, "")}`}
-                      className="text-gray-900 hover:text-teal-500 transition-colors text-sm font-medium"
+                      className="text-gray-900 hover:text-ark-red-light transition-colors text-sm font-medium"
                     >
                       {info.phone}
                     </a>
                   </div>
                 </div>
                 <div className="flex items-center gap-4">
-                  <div className="w-12 h-12 bg-teal-500/10 border border-teal-500/25 flex items-center justify-center flex-shrink-0">
-                    <Mail size={18} className="text-teal-500" />
+                  <div className="w-12 h-12 bg-ark-red/10 border border-ark-red/25 flex items-center justify-center flex-shrink-0">
+                    <Mail size={18} className="text-ark-red-light" />
                   </div>
                   <div>
                     <p className="text-gray-400 text-xs uppercase tracking-wider mb-0.5">E-posta</p>
                     <a
                       href={`mailto:${info.email}`}
-                      className="text-gray-900 hover:text-teal-500 transition-colors text-sm font-medium"
+                      className="text-gray-900 hover:text-ark-red-light transition-colors text-sm font-medium"
                     >
                       {info.email}
                     </a>
                   </div>
                 </div>
                 <div className="flex items-center gap-4">
-                  <div className="w-12 h-12 bg-teal-500/10 border border-teal-500/25 flex items-center justify-center flex-shrink-0">
-                    <MapPin size={18} className="text-teal-500" />
+                  <div className="w-12 h-12 bg-ark-red/10 border border-ark-red/25 flex items-center justify-center flex-shrink-0">
+                    <MapPin size={18} className="text-ark-red-light" />
                   </div>
                   <div>
                     <p className="text-gray-400 text-xs uppercase tracking-wider mb-0.5">Adres</p>
@@ -159,7 +159,7 @@ export default function ContactPage() {
 
               {/* Emergency CTA */}
               <div
-                className="bg-teal-500 p-6"
+                className="bg-ark-red p-6"
                 style={{
                   clipPath:
                     "polygon(0 0, calc(100% - 16px) 0, 100% 16px, 100% 100%, 16px 100%, 0 calc(100% - 16px))",
@@ -174,7 +174,7 @@ export default function ContactPage() {
                 </p>
                 <a
                   href={`tel:${info.phone.replace(/[^+\d]/g, "")}`}
-                  className="inline-flex items-center gap-2 px-5 py-3 bg-white text-teal-500 font-semibold text-sm uppercase tracking-wider hover:bg-gray-100 transition-colors"
+                  className="inline-flex items-center gap-2 px-5 py-3 bg-white text-ark-red-light font-semibold text-sm uppercase tracking-wider hover:bg-gray-100 transition-colors"
                 >
                   Hemen Ara <ArrowRight size={14} />
                 </a>

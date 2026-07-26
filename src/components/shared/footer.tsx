@@ -28,8 +28,8 @@ export async function Footer() {
 
 
   return (
-    <footer className="bg-gradient-to-r from-dark-900 via-amber-900/50 to-dark-900 pt-20 relative">
-      <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-amber-500 via-ark-red/40 to-transparent" />
+    <footer className="bg-gray-100 pt-20 relative">
+      <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-ark-red via-ark-red/40 to-transparent" />
 
       <div className="max-w-7xl mx-auto px-6">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-12 pb-16">
@@ -38,10 +38,10 @@ export async function Footer() {
             <Link href="/" className="inline-block mb-5">
               <Image src="/ark-logo.png" alt="ARK Global" width={120} height={40} className="h-10 w-auto" />
             </Link>
-            <p className="text-white/65 text-sm leading-relaxed mb-6">{settings.footerDescription}</p>
-            <div className="flex items-center gap-2 bg-teal-500/10 border border-teal-500/30 px-4 py-2.5 rounded-sm">
-              <span className="w-2 h-2 bg-teal-500 rounded-full animate-pulse-slow" />
-              <span className="text-teal-400 text-xs font-semibold uppercase tracking-wider">
+            <p className="text-gray-600 text-sm leading-relaxed mb-6">{settings.footerDescription}</p>
+            <div className="flex items-center gap-2 bg-ark-red/10 border border-ark-red/20 px-4 py-2.5 rounded-sm">
+              <span className="w-2 h-2 bg-ark-red rounded-full animate-pulse-slow" />
+              <span className="text-ark-red text-xs font-semibold uppercase tracking-wider">
                 7/24 Destek
               </span>
             </div>
@@ -49,7 +49,7 @@ export async function Footer() {
 
           {/* 2 — Hizmetler */}
           <div>
-            <h4 className="font-heading font-bold text-sm uppercase text-white tracking-wider mb-5">
+            <h4 className="font-heading font-bold text-sm uppercase text-gray-900 tracking-wider mb-5">
               Hizmetler
             </h4>
             <ul className="space-y-2.5">
@@ -59,9 +59,9 @@ export async function Footer() {
                   <li key={s.id}>
                     <Link
                       href={`/hizmetler/${s.slug}`}
-                      className="flex items-center gap-2 text-white/55 hover:text-teal-500 text-sm transition-colors duration-200"
+                      className="flex items-center gap-2 text-gray-500 hover:text-ark-red text-sm transition-colors duration-200"
                     >
-                      <Icon size={12} className="text-teal-500 flex-shrink-0" />
+                      <Icon size={12} className="text-ark-red flex-shrink-0" />
                       {s.title}
                     </Link>
                   </li>
@@ -72,7 +72,7 @@ export async function Footer() {
 
           {/* 3 — Şirket */}
           <div>
-            <h4 className="font-heading font-bold text-sm uppercase text-white tracking-wider mb-5">
+            <h4 className="font-heading font-bold text-sm uppercase text-gray-900 tracking-wider mb-5">
               Şirket
             </h4>
             <ul className="space-y-2.5">
@@ -80,9 +80,9 @@ export async function Footer() {
                 <li key={link.href}>
                   <Link
                     href={link.href}
-                    className="flex items-center gap-2 text-white/55 hover:text-teal-500 text-sm transition-colors duration-200"
+                    className="flex items-center gap-2 text-gray-500 hover:text-ark-red text-sm transition-colors duration-200"
                   >
-                    <ChevronRight size={12} className="text-teal-500 flex-shrink-0" />
+                    <ChevronRight size={12} className="text-ark-red flex-shrink-0" />
                     {link.label}
                   </Link>
                 </li>
@@ -92,31 +92,31 @@ export async function Footer() {
 
           {/* 4 — İletişim */}
           <div>
-            <h4 className="font-heading font-bold text-sm uppercase text-white tracking-wider mb-5">
+            <h4 className="font-heading font-bold text-sm uppercase text-gray-900 tracking-wider mb-5">
               İletişim
             </h4>
             <ul className="space-y-4">
               <li className="flex items-start gap-3">
-                <Phone size={16} className="text-teal-500 flex-shrink-0 mt-0.5" />
+                <Phone size={16} className="text-ark-red flex-shrink-0 mt-0.5" />
                 <a
                   href={`tel:${settings.phone.replace(/[^+\d]/g, "")}`}
-                  className="text-white/65 hover:text-white text-sm transition-colors"
+                  className="text-gray-600 hover:text-ark-red text-sm transition-colors"
                 >
                   {settings.phone}
                 </a>
               </li>
               <li className="flex items-start gap-3">
-                <Mail size={16} className="text-teal-500 flex-shrink-0 mt-0.5" />
+                <Mail size={16} className="text-ark-red flex-shrink-0 mt-0.5" />
                 <a
                   href={`mailto:${settings.email}`}
-                  className="text-white/65 hover:text-white text-sm transition-colors"
+                  className="text-gray-600 hover:text-ark-red text-sm transition-colors"
                 >
                   {settings.email}
                 </a>
               </li>
               <li className="flex items-start gap-3">
-                <MapPin size={16} className="text-teal-500 flex-shrink-0 mt-0.5" />
-                <span className="text-white/65 text-sm">{settings.address}</span>
+                <MapPin size={16} className="text-ark-red flex-shrink-0 mt-0.5" />
+                <span className="text-gray-600 text-sm">{settings.address}</span>
               </li>
             </ul>
           </div>
@@ -125,8 +125,8 @@ export async function Footer() {
 
 
         {/* Bottom bar */}
-        <div className="border-t border-amber-500/10 py-5 flex flex-col sm:flex-row items-center justify-between gap-4">
-          <p className="text-white/40 text-xs text-center sm:text-left">
+        <div className="border-t border-gray-200 py-5 flex flex-col sm:flex-row items-center justify-between gap-4">
+          <p className="text-gray-400 text-xs text-center sm:text-left">
             &copy; {new Date().getFullYear()} {settings.copyrightText}
           </p>
           <ScrollToTop />

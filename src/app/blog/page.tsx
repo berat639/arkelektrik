@@ -7,8 +7,8 @@ import { PageHero } from "@/components/ui/page-hero";
 export async function generateMetadata(): Promise<Metadata> {
   const settings = await getSiteSettings();
   return {
-    title: "Blog",
-    description: settings.blogPageSubtitle || "En son blog yazıları ve teknoloji içerikleri.",
+    title: "Referanslarımız",
+    description: settings.blogPageSubtitle || "Tamamladığımız projeler ve referanslarımız.",
   };
 }
 
@@ -28,10 +28,10 @@ export default async function BlogPage({
   return (
     <>
       <PageHero
-        title="Blog"
-        accent="Makaleler"
-        subtitle={settings.blogPageSubtitle || "En son yazılar ve teknoloji içerikleri"}
-        breadcrumbs={[{ label: "Blog" }]}
+        title="Referanslarımız"
+        accent=""
+        subtitle={settings.blogPageSubtitle || "Tamamladığımız projeler ve referanslarımız"}
+        breadcrumbs={[{ label: "Referanslarımız" }]}
         image={settings.blogPageImage || "https://images.pexels.com/photos/3861969/pexels-photo-3861969.jpeg?auto=compress&cs=tinysrgb&w=1920"}
       />
       <div className="bg-slate-50 py-20 min-h-screen">

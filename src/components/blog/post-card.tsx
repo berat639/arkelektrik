@@ -25,7 +25,7 @@ export function PostCard({ post }: PostCardProps) {
             className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
           />
         ) : (
-          <div className="w-full h-full bg-gradient-to-br from-fire-950 to-dark-800 flex items-center justify-center">
+          <div className="w-full h-full bg-gradient-to-br from-ark-red-muted to-ark-red-dark flex items-center justify-center">
             <span className="text-white/20 font-heading text-4xl font-bold uppercase">ARK</span>
           </div>
         )}
@@ -39,7 +39,7 @@ export function PostCard({ post }: PostCardProps) {
           {post.category && (
             <Link
               href={`/category/${post.category.slug}`}
-              className="text-xs font-semibold uppercase tracking-wider text-teal-600 hover:text-teal-700 transition-colors"
+              className="text-xs font-semibold uppercase tracking-wider text-ark-red hover:text-ark-red-dark transition-colors"
             >
               {post.category.name}
             </Link>
@@ -60,7 +60,7 @@ export function PostCard({ post }: PostCardProps) {
 
         {/* Title */}
         <Link href={`/blog/${post.slug}`}>
-          <h2 className="font-heading font-bold text-lg uppercase leading-snug text-gray-900 group-hover:text-teal-600 transition-colors line-clamp-2 mb-2">
+          <h2 className="font-heading font-bold text-lg uppercase leading-snug text-gray-900 group-hover:text-ark-red transition-colors line-clamp-2 mb-2">
             {post.title}
           </h2>
         </Link>
@@ -73,7 +73,7 @@ export function PostCard({ post }: PostCardProps) {
         {/* Read more */}
         <Link
           href={`/blog/${post.slug}`}
-          className="inline-flex items-center gap-1.5 mt-4 text-xs font-semibold uppercase tracking-wider text-teal-600 hover:text-teal-700 transition-colors"
+          className="inline-flex items-center gap-1.5 mt-4 text-xs font-semibold uppercase tracking-wider text-ark-red hover:text-ark-red-dark transition-colors"
         >
           Devamını Oku
           <ArrowRight size={12} className="group-hover:translate-x-1 transition-transform duration-200" />

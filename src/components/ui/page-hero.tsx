@@ -26,9 +26,9 @@ export function PageHero({
       {/* Background */}
       <div className="absolute inset-0">
         <img src={image} alt="" className="w-full h-full object-cover" />
-        <div className="absolute inset-0 bg-ark-red-muted/65" />
-        <div className="absolute inset-0 bg-gradient-to-r from-ark-red-muted/60 via-ark-red/40 to-transparent" />
-        <div className="absolute inset-0 bg-gradient-to-b from-ark-red-muted/30 via-transparent to-ark-red-muted/60" />
+        <div className="absolute inset-0 bg-ark-red-muted/40" />
+        <div className="absolute inset-0 bg-gradient-to-r from-ark-red-muted/35 via-ark-red/20 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-b from-ark-red-muted/20 via-transparent to-ark-red-muted/40" />
       </div>
 
       {/* Grid overlay */}

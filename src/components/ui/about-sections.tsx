@@ -78,14 +78,14 @@ export function AboutSections({ settings, aboutContent, aboutImage }: AboutSecti
       </section>
 
       {/* Values */}
-      <section className="bg-gradient-to-b from-ark-red-muted via-ark-red to-ark-red-muted py-24">
+      <section className="bg-white py-24">
         <div className="max-w-7xl mx-auto px-6">
           <div
             ref={ref2 as React.RefObject<HTMLDivElement>}
             className={`text-center mb-14 animate-on-scroll ${v2 ? "is-visible" : ""}`}
           >
             <span className="text-ark-red-light text-xs font-semibold uppercase tracking-[0.25em] mb-4 block">Değerlerimiz</span>
-            <h2 className="font-heading font-bold text-4xl uppercase text-white mb-4">İlkelerimiz</h2>
+            <h2 className="font-heading font-bold text-4xl uppercase text-gray-900 mb-4">İlkelerimiz</h2>
             <div className="w-16 h-1 bg-ark-red mx-auto" />
           </div>
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -94,7 +94,7 @@ export function AboutSections({ settings, aboutContent, aboutImage }: AboutSecti
               return (
                 <div
                   key={title}
-                  className={`bg-gradient-to-br from-ark-red-dark/50 to-ark-red-muted/50 border border-white/10 p-6 hover:border-white/20 transition-all duration-300 hover:-translate-y-0.5 animate-on-scroll ${v2 ? "is-visible" : ""}`}
+                  className={`bg-gray-100 border border-gray-200 p-6 hover:border-ark-red/30 hover:shadow-lg transition-all duration-300 hover:-translate-y-0.5 animate-on-scroll ${v2 ? "is-visible" : ""}`}
                   style={{
                     transitionDelay: `${i * 60}ms`,
                     clipPath: "polygon(0 0, calc(100% - 16px) 0, 100% 16px, 100% 100%, 16px 100%, 0 calc(100% - 16px))",
@@ -103,8 +103,8 @@ export function AboutSections({ settings, aboutContent, aboutImage }: AboutSecti
                   <div className="w-12 h-12 bg-ark-red/10 border border-ark-red/25 flex items-center justify-center mb-4">
                     <Icon size={20} className="text-ark-red-light" />
                   </div>
-                  <h3 className="font-heading font-bold text-lg uppercase text-white mb-2">{title}</h3>
-                  <p className="text-white/65 text-sm leading-relaxed">{desc}</p>
+                  <h3 className="font-heading font-bold text-lg uppercase text-gray-900 mb-2">{title}</h3>
+                  <p className="text-gray-600 text-sm leading-relaxed">{desc}</p>
                 </div>
               );
             })}

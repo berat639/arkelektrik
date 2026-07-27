@@ -47,7 +47,7 @@ export function StandardsSection({ title, brands }: StandardsSectionProps) {
           {duplicatedItems.map((brand, index) => (
             <div key={index} className="px-4 flex-shrink-0">
               <div
-                className="relative bg-white border-t border-b border-gray-200 hover:border-ark-red/40 hover:shadow-2xl overflow-hidden transition-all duration-300 flex flex-col justify-center items-center h-32 w-64 group"
+                className="relative bg-white border-t border-b border-gray-200 hover:border-ark-red/40 hover:shadow-2xl overflow-hidden transition-all duration-300 flex flex-col h-36 w-64 group"
                 style={{
                   clipPath:
                     "polygon(0 0, calc(100% - 16px) 0, 100% 16px, 100% 100%, 16px 100%, 0 calc(100% - 16px))",
@@ -56,18 +56,17 @@ export function StandardsSection({ title, brands }: StandardsSectionProps) {
                 {/* Accent Line */}
                 <div className="absolute top-0 left-0 w-full h-1 bg-ark-red transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left" />
 
-                {/* Background Image */}
-                <div
-                  className="absolute inset-0 bg-center bg-contain bg-no-repeat opacity-40 group-hover:opacity-100 transition-opacity duration-300 filter grayscale group-hover:grayscale-0 m-6"
-                  style={{ backgroundImage: `url(${brand.image})` }}
-                />
+                {/* Brand Image */}
+                <div className="flex-1 flex items-center justify-center p-4">
+                  <div
+                    className="w-full h-full bg-center bg-contain bg-no-repeat opacity-90 group-hover:opacity-100 transition-opacity duration-300"
+                    style={{ backgroundImage: `url(${brand.image})` }}
+                  />
+                </div>
                 
-                {/* Brand Title Overlay */}
+                {/* Brand Title */}
                 <div 
-                  className="relative z-10 font-heading font-bold text-sm uppercase text-gray-900 tracking-widest transition-colors duration-300 group-hover:text-ark-red bg-white/95 px-4 py-1.5 mt-auto mb-3 shadow-md"
-                  style={{
-                    clipPath: "polygon(0 0, calc(100% - 8px) 0, 100% 8px, 100% 100%, 8px 100%, 0 calc(100% - 8px))"
-                  }}
+                  className="font-heading font-bold text-xs uppercase text-gray-900 tracking-widest transition-colors duration-300 group-hover:text-ark-red bg-gray-50 border-t border-gray-100 text-center px-4 py-2"
                 >
                   {brand.title}
                 </div>

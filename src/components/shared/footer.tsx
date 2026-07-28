@@ -1,21 +1,21 @@
 import Link from "next/link";
 import Image from "next/image";
 import {
-  Flame, Zap, Shield, Gauge, Wind, Lock, Wrench,
+  Flame, Zap, Shield, Gauge, Wind, Lock, Wrench, Eye, Bell,
   Phone, Mail, MapPin, ChevronUp, ChevronRight,
 } from "lucide-react";
 import { ScrollToTop } from "./scroll-to-top";
 import { getPublishedServicePages, getSiteSettings } from "@/lib/db";
 
 const iconMap: Record<string, React.ElementType> = {
-  Flame, Zap, Shield, Gauge, Wind, Lock, Wrench,
+  Flame, Zap, Shield, Gauge, Wind, Lock, Wrench, Eye, Bell,
 };
 
 const companyLinks = [
   { label: "Ana Sayfa", href: "/" },
   { label: "Hakkımızda", href: "/hakkimizda" },
   { label: "Hizmetler", href: "/hizmetler" },
-  { label: "Blog", href: "/blog" },
+  { label: "Referanslar", href: "/blog" },
   { label: "İletişim", href: "/contact" },
 ];
 

@@ -84,7 +84,7 @@ export function HeroSlider({ slides, stats }: HeroSliderProps) {
   const ctaPrimaryHref = slide.ctaPrimaryHref || slide.href || "";
 
   return (
-    <section id="home" className="relative min-h-screen flex flex-col justify-center overflow-hidden">
+    <section id="home" className="relative min-h-[calc(100vh-5rem)] flex flex-col justify-center overflow-hidden">
       {/* ── Background images ── */}
       {slides.map((s, i) => (
         <div
@@ -122,7 +122,7 @@ export function HeroSlider({ slides, stats }: HeroSliderProps) {
       />
 
       {/* ── Content ── */}
-      <div className="relative z-10 max-w-7xl mx-auto px-6 flex-1 flex flex-col justify-center pt-20 w-full">
+      <div className="relative z-10 max-w-7xl mx-auto px-6 flex-1 flex flex-col justify-center w-full">
         <div className="max-w-3xl">
           {/* Badge */}
           <div

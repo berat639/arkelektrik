@@ -1,15 +1,15 @@
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import {
-  ArrowRight, ArrowLeft, Flame, Zap, Shield, Gauge, Wind, Lock, Wrench,
+  ArrowRight, ArrowLeft, Flame, Zap, Shield, Gauge, Wind, Lock, Wrench, Eye, Bell,
 } from "lucide-react";
 import { PageHero } from "@/components/ui/page-hero";
-import { getServicePageBySlug, getAllServicePages } from "@/lib/db";
+import { getServicePageBySlug, getAllServicePages, getSubProductsByServiceSlug } from "@/lib/db";
 import { MarkdownRenderer } from "@/components/blog/markdown-renderer";
 import { TechBackground } from "@/components/ui/tech-background";
 
 const iconMap: Record<string, React.ElementType> = {
-  Flame, Zap, Shield, Gauge, Wind, Lock, Wrench,
+  Flame, Zap, Shield, Gauge, Wind, Lock, Wrench, Eye, Bell,
 };
 
 interface Props {
@@ -40,6 +40,9 @@ export default async function ServiceDetailPage({ params }: Props) {
   const prevService = currentIndex > 0 ? publishedServices[currentIndex - 1] : null;
   const nextService =
     currentIndex < publishedServices.length - 1 ? publishedServices[currentIndex + 1] : null;
+
+  const subProducts = await getSubProductsByServiceSlug(slug);
+  const publishedSubProducts = subProducts.filter((sp) => sp.is_published);
 
   const Icon = iconMap[service.icon] ?? Shield;
 
@@ -103,6 +106,52 @@ export default async function ServiceDetailPage({ params }: Props) {
                   <MarkdownRenderer content={service.content} />
                 </div>
               )}
+
+              {/* Sub-Products */}
+              {publishedSubProducts.length > 0 && (
+                <div className="mt-12">
+                  <h3 className="font-heading font-bold text-xl uppercase text-gray-900 mb-6">
+                    Ürün ve Hizmetlerimiz
+                  </h3>
+                  <div className="grid sm:grid-cols-2 gap-4">
+                    {publishedSubProducts.map((sp) => (
+                      <Link
+                        key={sp.id}
+                        href={`/hizmetler/${slug}/${sp.slug}`}
+                        className="bg-white border border-gray-200 p-5 hover:border-red-200 hover:shadow-md transition-all group block"
+                        style={{
+                          clipPath:
+                            "polygon(0 0, calc(100% - 12px) 0, 100% 12px, 100% 100%, 12px 100%, 0 calc(100% - 12px))",
+                        }}
+                      >
+                        <h4 className="font-heading font-bold text-sm uppercase text-gray-900 mb-2 group-hover:text-red-600 transition-colors">
+                          {sp.title}
+                        </h4>
+                        {sp.description && (
+                          <p className="text-gray-500 text-xs leading-relaxed mb-3 line-clamp-3">
+                            {sp.description}
+                          </p>
+                        )}
+                        {sp.features.length > 0 && (
+                          <ul className="space-y-1">
+                            {sp.features.slice(0, 5).map((f, i) => (
+                              <li key={i} className="flex items-start gap-2 text-xs text-gray-600">
+                                <span className="w-1 h-1 rounded-full bg-red-500 mt-1.5 flex-shrink-0" />
+                                {f}
+                              </li>
+                            ))}
+                            {sp.features.length > 5 && (
+                              <li className="text-xs text-gray-400 pl-3">
+                                +{sp.features.length - 5} daha...
+                              </li>
+                            )}
+                          </ul>
+                        )}
+                      </Link>
+                    ))}
+                  </div>
+                </div>
+              )}
             </div>
 
             {/* Right sidebar */}
@@ -121,12 +170,7 @@ export default async function ServiceDetailPage({ params }: Props) {
                 <p className="text-white/85 text-sm mb-4">
                   Uzmanımız tesisinizi değerlendirerek size özel çözüm sunsun.
                 </p>
-                <Link
-                  href="/contact"
-                  className="inline-flex items-center gap-2 px-5 py-3 bg-white text-ark-red-light font-semibold text-sm uppercase tracking-wider hover:bg-gray-100 transition-colors"
-                >
-                  Teklif Al <ArrowRight size={14} />
-                </Link>
+                 
               </div>
 
               {/* Other services */}
@@ -252,10 +296,10 @@ export default async function ServiceDetailPage({ params }: Props) {
           </p>
           <div className="flex justify-center gap-4 flex-wrap">
             <Link href="/contact" className="btn-primary">
-              Teklif Al <ArrowRight size={16} />
+              İletişim <ArrowRight size={16} />
             </Link>
             <Link href="/hizmetler" className="btn-outline !border-gray-300 !text-gray-700 !hover:text-ark-red-light !hover:border-ark-red">
-              Diğer Hizmetler
+              Tüm Hizmetler <ArrowRight size={16} />
             </Link>
           </div>
         </div>

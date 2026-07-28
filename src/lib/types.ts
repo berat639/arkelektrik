@@ -107,6 +107,21 @@ export interface ServicePage {
   updated_at: string;
 }
 
+// ─── Sub-Product (Alt Ürün / Alt Hizmet) ───
+export interface SubProduct {
+  id: string;
+  serviceId: string;
+  title: string;
+  slug: string;
+  description: string;
+  features: string[];
+  order: number;
+  is_published: boolean;
+  cover_image_url: string | null;
+  created_at: string;
+  updated_at: string;
+}
+
 export interface AboutPage {
   content: string;
   cover_image_url: string | null;

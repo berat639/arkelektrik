@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { ArrowRight, Flame, Zap, Shield, Gauge, Wind, Lock, Wrench } from "lucide-react";
+import { ArrowRight, Flame, Zap, Shield, Gauge, Wind, Lock, Wrench, Eye, Bell } from "lucide-react";
 import { PageHero } from "@/components/ui/page-hero";
 import { getPublishedServicePages, getSiteSettings } from "@/lib/db";
 import { TechBackground } from "@/components/ui/tech-background";
@@ -11,7 +11,7 @@ export const metadata = {
 };
 
 const iconMap: Record<string, React.ElementType> = {
-  Flame, Zap, Shield, Gauge, Wind, Lock, Wrench,
+  Flame, Zap, Shield, Gauge, Wind, Lock, Wrench, Eye, Bell,
 };
 
 function ServiceRow({ service, index }: { service: ServicePage; index: number }) {
@@ -29,10 +29,7 @@ function ServiceRow({ service, index }: { service: ServicePage; index: number })
       {/* Image */}
       <div className={`relative h-64 lg:h-auto ${!isEven ? "lg:order-2" : ""}`}>
         <img
-          src={
-            service.cover_image_url ||
-            "https://images.pexels.com/photos/1108101/pexels-photo-1108101.jpeg?auto=compress&cs=tinysrgb&w=900"
-          }
+          src={service.cover_image_url || "/banner.jpeg"}
           alt={service.title}
           className="w-full h-full object-cover"
         />
@@ -88,7 +85,7 @@ export default async function ServicesPage() {
         title="Hizmetlerimiz"
         subtitle="Endüstriyel tesisleriniz için uçtan uca güvenlik çözümleri. Her hizmet, tesisinizin özgün tehlike profiline göre tasarlanmaktadır."
         breadcrumbs={[{ label: "Hizmetler" }]}
-        image={settings.servicesPageImage || "https://images.pexels.com/photos/1108101/pexels-photo-1108101.jpeg?auto=compress&cs=tinysrgb&w=1920"}
+        image={settings.servicesPageImage || "/banner.jpeg"}
       />
 
       <section className="bg-white py-24 relative">
@@ -131,7 +128,7 @@ export default async function ServicesPage() {
             href="/contact"
             className="inline-flex items-center gap-2 px-8 py-4 bg-ark-red text-white font-semibold uppercase tracking-wider text-sm hover:bg-ark-red-dark transition-colors"
           >
-            Ücretsiz Değerlendirme <ArrowRight size={16} />
+            İletişime Geç <ArrowRight size={16} />
           </Link>
         </div>
       </section>

@@ -1,12 +1,13 @@
 "use client";
 
 import Link from "next/link";
-import { Flame, Zap, Shield, Gauge, Wind, Lock, Wrench, ArrowRight } from "lucide-react";
+import Image from "next/image";
+import { Flame, Zap, Shield, Gauge, Wind, Lock, Wrench, Eye, Bell, ArrowRight } from "lucide-react";
 import { useScrollAnimation } from "./scroll-animation";
 import type { ServicePage } from "@/lib/types";
 
 const iconMap: Record<string, React.ElementType> = {
-  Flame, Zap, Shield, Gauge, Wind, Lock, Wrench,
+  Flame, Zap, Shield, Gauge, Wind, Lock, Wrench, Eye, Bell,
 };
 
 function ServiceCard({ service, index }: { service: ServicePage; index: number }) {
@@ -23,7 +24,7 @@ function ServiceCard({ service, index }: { service: ServicePage; index: number }
       {/* Corner accent */}
       <div className="absolute top-0 right-0 w-0 h-0 border-l-[24px] border-l-transparent border-t-[24px] border-t-ark-red opacity-50 group-hover:opacity-100 transition-opacity duration-300" />
 
-      <div className="relative z-10">
+      <div className="relative z-10 flex flex-col h-full">
         <div className="w-14 h-14 bg-ark-red/10 border border-ark-red/25 flex items-center justify-center mb-6 transition-all duration-300 group-hover:bg-ark-red group-hover:border-ark-red">
           <Icon size={24} className="text-ark-red group-hover:text-white transition-colors duration-300" />
         </div>
@@ -32,9 +33,22 @@ function ServiceCard({ service, index }: { service: ServicePage; index: number }
           {service.title}
         </h3>
 
-        <p className="text-gray-600 text-sm leading-relaxed mb-6">{service.shortDesc || service.excerpt}</p>
+        <p className="text-gray-600 text-sm leading-relaxed mb-4">{service.shortDesc || service.excerpt}</p>
 
-        <div className="flex items-center gap-2 text-ark-red text-sm font-semibold uppercase tracking-wider opacity-0 group-hover:opacity-100 transition-all duration-300 -translate-x-2 group-hover:translate-x-0">
+        {service.cover_image_url && (
+          <div className="relative w-full h-36 mt-auto mb-4 overflow-hidden rounded">
+            <Image
+              src={service.cover_image_url}
+              alt={service.title}
+              fill
+              className="object-cover transition-transform duration-500 group-hover:scale-105"
+              sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent" />
+          </div>
+        )}
+
+        <div className="flex items-center gap-2 text-ark-red text-sm font-semibold uppercase tracking-wider opacity-0 group-hover:opacity-100 transition-all duration-300 -translate-x-2 group-hover:translate-x-0 mt-auto">
           <span>Detay</span>
           <ArrowRight size={14} />
         </div>

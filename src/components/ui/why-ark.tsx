@@ -139,7 +139,7 @@ export function WhyArk({
         </div>
 
         {/* Sectors */}
-        {((sectors || HARDCODED_SECTORS).length > 0) && (
+        {(((sectors && sectors.length > 0) ? sectors : HARDCODED_SECTORS).length > 0) && (
           <div
             ref={sectorRef as React.RefObject<HTMLDivElement>}
             className={`animate-on-scroll ${sectorVisible ? "is-visible" : ""}`}
@@ -148,7 +148,7 @@ export function WhyArk({
               {sectorsTitle || HARDCODED_SECTORS_TITLE}
             </h3>
             <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
-              {(sectors || HARDCODED_SECTORS).map(({ name, image: img }, i) => (
+              {((sectors && sectors.length > 0) ? sectors : HARDCODED_SECTORS).map(({ name, image: img }, i) => (
                 <div
                   key={name}
                   className={`relative overflow-hidden group h-48 animate-on-scroll ${

@@ -12,8 +12,7 @@ const HARDCODED_SECTORS = [
   { name: "Ağır Sanayi", image: "https://images.pexels.com/photos/110813/pexels-photo-110813.jpeg?auto=compress&cs=tinysrgb&w=800" },
   { name: "Dikey Yapılar", image: "/dikey-yapi.jpeg" },
   { name: "Depolama ve Lojistik", image: "/depolama-lojistik.jpg" },
-  { name: "Trafo Merkezleri", image: "https://images.pexels.com/photos/8853502/pexels-photo-8853502.jpeg?auto=compress&cs=tinysrgb&w=800" },
-  { name: "Veri Merkezleri", image: "/veri-merkezleri.jpeg" },
+  { name: "Trafo ve Veri Merkezleri", image: "/veri-merkezleri.jpeg" },
 ];
 
 const HARDCODED_TITLE = "Neden ARK Global?";

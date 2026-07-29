@@ -9,7 +9,7 @@ import type { ServicePage } from "@/lib/types";
 const CAPABILITIES = [
   {
     title: "Projelendirme ve Tasarım",
-    image: "/about-engineering.png",
+    image: "/projelendirme-ve-tasarim.jpeg",
     icon: Compass,
   },
   {
@@ -29,12 +29,12 @@ const CAPABILITIES = [
   },
   {
     title: "Dökümantasyon",
-    image: "/about-3200.webp",
+    image: "/dokumantasyon.jpeg",
     icon: FileText,
   },
   {
     title: "Test, Devreye Alma",
-    image: "/k%C4%B1v%C4%B1lc%C4%B1m_algilama.jpeg",
+    image: "/test-ve-devreye-alma.jpeg",
     icon: PlayCircle,
   },
   {
@@ -44,7 +44,7 @@ const CAPABILITIES = [
   },
   {
     title: "Servis ve Bakım",
-    image: "/servis_bakim.webp",
+    image: "/servis_bakim.jpeg",
     icon: Wrench,
   },
 ];

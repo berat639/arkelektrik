@@ -6,10 +6,10 @@ import { useScrollAnimation } from "./scroll-animation";
 import { MarkdownRenderer } from "@/components/blog/markdown-renderer";
 
 const HARDCODED_SECTORS = [
-  { name: "Petrol ve Gaz", image: "https://images.pexels.com/photos/2760241/pexels-photo-2760241.jpeg?auto=compress&cs=tinysrgb&w=800" },
-  { name: "Enerji Tesisleri", image: "https://images.pexels.com/photos/157511/pexels-photo-157511.jpeg?auto=compress&cs=tinysrgb&w=800" },
-  { name: "Petrokimya", image: "https://images.pexels.com/photos/3861969/pexels-photo-3861969.jpeg?auto=compress&cs=tinysrgb&w=800" },
-  { name: "Ağır Sanayi", image: "https://images.pexels.com/photos/110813/pexels-photo-110813.jpeg?auto=compress&cs=tinysrgb&w=800" },
+  { name: "Petrokimya & Rafineri", image: "/petro-kim.jpeg" },
+ { name: "Enerji Tesisleri", image: "/enerji-tesisleri.jpeg" },
+  { name: "Madencilik", image: "/madenclk.jpeg" },
+  { name: "Gıda & Tahıl Tesisleri", image: "/gida.jpeg" },
   { name: "Dikey Yapılar", image: "/dikey-yapi.jpeg" },
   { name: "Depolama ve Lojistik", image: "/depolama-lojistik.jpg" },
   { name: "Trafo ve Veri Merkezleri", image: "/veri-merkezleri.jpeg" },
@@ -139,7 +139,7 @@ export function WhyArk({
         </div>
 
         {/* Sectors */}
-        {(((sectors && sectors.length > 0) ? sectors : HARDCODED_SECTORS).length > 0) && (
+        {(HARDCODED_SECTORS.length > 0) && (
           <div
             ref={sectorRef as React.RefObject<HTMLDivElement>}
             className={`animate-on-scroll ${sectorVisible ? "is-visible" : ""}`}
@@ -148,7 +148,7 @@ export function WhyArk({
               {sectorsTitle || HARDCODED_SECTORS_TITLE}
             </h3>
             <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
-              {((sectors && sectors.length > 0) ? sectors : HARDCODED_SECTORS).map(({ name, image: img }, i) => (
+              {HARDCODED_SECTORS.map(({ name, image: img }, i) => (
                 <div
                   key={name}
                   className={`relative overflow-hidden group h-48 animate-on-scroll ${

@@ -39,12 +39,7 @@ export async function Footer() {
               <Image src="/ark-logo.png" alt="ARK Global" width={120} height={40} className="h-10 w-auto" />
             </Link>
             <p className="text-gray-600 text-sm leading-relaxed mb-6">{settings.footerDescription}</p>
-            <div className="flex items-center gap-2 bg-ark-red/10 border border-ark-red/20 px-4 py-2.5 rounded-sm">
-              <span className="w-2 h-2 bg-ark-red rounded-full animate-pulse-slow" />
-              <span className="text-ark-red text-xs font-semibold uppercase tracking-wider">
-                7/24 Destek
-              </span>
-            </div>
+            
           </div>
 
           {/* 2 — Hizmetler */}

@@ -16,6 +16,7 @@ const adminLinks = [
   { href: "/admin/homepage", label: "Ana Sayfa" },
   { href: "/admin/posts", label: "Yazılar" },
   { href: "/admin/services", label: "Faaliyet Alanları" },
+  { href: "/admin/catalogs", label: "Kataloglar" },
   { href: "/admin/about", label: "Hakkımızda" },
   { href: "/admin/messages", label: "Mesajlar" },
 ];
@@ -233,6 +234,14 @@ export function HeaderNav({ serviceLinks, hasReferences }: HeaderNavProps) {
           )}
           <li>
             <Link
+              href="/kataloglar"
+              className={`nav-link ${!scrolled ? "nav-link-light" : ""} ${isActive("/kataloglar") ? "active text-ark-red" : ""}`}
+            >
+              Kataloglar
+            </Link>
+          </li>
+          <li>
+            <Link
               href="/contact"
               className={`nav-link ${!scrolled ? "nav-link-light" : ""} ${isActive("/contact") ? "active text-ark-red" : ""}`}
             >
@@ -263,6 +272,7 @@ export function HeaderNav({ serviceLinks, hasReferences }: HeaderNavProps) {
           {[
             { label: "Hakkımızda", to: "/hakkimizda" },
             ...(hasReferences ? [{ label: "Referanslarımız", to: "/blog" }] : []),
+            { label: "Kataloglar", to: "/kataloglar" },
             { label: "İletişim", to: "/contact" },
           ].map(({ label, to }) => (
             <li key={to}>

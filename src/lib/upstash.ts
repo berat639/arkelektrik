@@ -53,6 +53,10 @@ export const KEYS = {
   // Static Pages
   pageAbout: "page:about",
 
+  // Catalogs
+  catalog: (id: string) => `catalog:${id}`,
+  catalogsAll: "catalogs:all",
+
   // Site Settings
   siteSettings: "site:settings",
 } as const;

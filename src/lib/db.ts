@@ -11,6 +11,7 @@ import type {
   SubProduct,
   AboutPage,
   SiteSettings,
+  Catalog,
 } from "./types";
 
 // ============================================
@@ -1008,6 +1009,67 @@ export async function deleteSubProduct(id: string): Promise<boolean> {
   pipeline.zrem(KEYS.subProductsByService(existing.serviceId), id);
   await pipeline.exec();
 
+  return true;
+}
+
+// ============================================
+// CATALOGS (Kataloglar)
+// ============================================
+
+export async function getAllCatalogs(): Promise<Catalog[]> {
+  const ids = await redis.zrange<string[]>(KEYS.catalogsAll, 0, -1);
+  if (!ids.length) return [];
+  const items = await Promise.all(ids.map((id) => redis.get<string>(KEYS.catalog(id))));
+  return items
+    .filter(Boolean)
+    .map((item) => (typeof item === "string" ? JSON.parse(item) : item) as Catalog)
+    .sort((a, b) => a.order - b.order);
+}
+
+export async function getPublishedCatalogs(): Promise<Catalog[]> {
+  const all = await getAllCatalogs();
+  return all.filter((c) => c.is_published);
+}
+
+export async function createCatalog(
+  data: Omit<Catalog, "id" | "order" | "created_at" | "updated_at">
+): Promise<Catalog> {
+  const id = crypto.randomUUID();
+  const now = new Date().toISOString();
+  const existingIds = await redis.zrange<string[]>(KEYS.catalogsAll, 0, -1);
+  const order = existingIds.length + 1;
+
+  const catalog: Catalog = { ...data, id, order, created_at: now, updated_at: now };
+
+  const pipeline = redis.pipeline();
+  pipeline.set(KEYS.catalog(id), JSON.stringify(catalog));
+  pipeline.zadd(KEYS.catalogsAll, { score: order, member: id });
+  await pipeline.exec();
+
+  return catalog;
+}
+
+export async function updateCatalog(
+  id: string,
+  data: Partial<Omit<Catalog, "id" | "created_at">>
+): Promise<Catalog | null> {
+  const existing = await redis.get<string>(KEYS.catalog(id));
+  if (!existing) return null;
+  const parsed: Catalog = typeof existing === "string" ? JSON.parse(existing) : existing;
+
+  const updated: Catalog = { ...parsed, ...data, updated_at: new Date().toISOString() };
+  await redis.set(KEYS.catalog(id), JSON.stringify(updated));
+  return updated;
+}
+
+export async function deleteCatalog(id: string): Promise<boolean> {
+  const existing = await redis.get<string>(KEYS.catalog(id));
+  if (!existing) return false;
+
+  const pipeline = redis.pipeline();
+  pipeline.del(KEYS.catalog(id));
+  pipeline.zrem(KEYS.catalogsAll, id);
+  await pipeline.exec();
   return true;
 }
 

@@ -128,6 +128,19 @@ export interface AboutPage {
   updated_at: string;
 }
 
+// ─── Catalog (PDF Katalog) ───
+export interface Catalog {
+  id: string;
+  title: string;
+  slug: string;
+  pdf_url: string;
+  cover_image_url: string | null;
+  order: number;
+  is_published: boolean;
+  created_at: string;
+  updated_at: string;
+}
+
 // ─── Site Settings (global editable content) ───
 export interface StatItem {
   value: string;

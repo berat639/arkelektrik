@@ -15,7 +15,7 @@ const MdxEditor = dynamic(() => import("@/components/admin/mdx-editor"), {
   loading: () => <div className="h-64 border rounded-lg animate-pulse bg-muted" />,
 });
 
-const ICON_OPTIONS = ["Flame", "Zap", "Shield", "Gauge", "Wind", "Lock", "Wrench"];
+const ICON_OPTIONS = ["Flame", "Zap", "Shield", "Gauge", "Wind", "Lock", "Wrench", "Eye", "Bell"];
 
 interface ServiceFormProps {
   initialData: {

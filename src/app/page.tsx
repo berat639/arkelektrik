@@ -16,7 +16,7 @@ export default async function HomePage() {
   ]);
 
   return (
-    <>
+    <div className="-mt-20">
       <HeroSlider slides={slides} stats={settings.stats} />
       <AboutTeaser
         aboutImage={settings.aboutTeaserImage || about.cover_image_url || undefined}
@@ -46,6 +46,6 @@ export default async function HomePage() {
         brands={settings.carouselBrands}
       />
       <CtaBanner settings={settings} />
-    </>
+    </div>
   );
 }

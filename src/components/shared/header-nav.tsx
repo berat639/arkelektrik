@@ -29,7 +29,7 @@ export function HeaderNav({ serviceLinks, hasReferences }: HeaderNavProps) {
   const dropdownRef = useRef<HTMLLIElement>(null);
 
   useEffect(() => {
-    const handleScroll = () => setScrolled(window.scrollY > 60);
+    const handleScroll = () => setScrolled(window.scrollY > 80);
     handleScroll(); // set initial state
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
@@ -135,20 +135,27 @@ export function HeaderNav({ serviceLinks, hasReferences }: HeaderNavProps) {
   // ── Public ARK layout ──
   const headerBg = scrolled
     ? "backdrop-blur-md shadow-lg shadow-black/10 border-b border-gray-200"
-    : "backdrop-blur-sm";
+    : "";
 
   const headerStyle = scrolled
     ? { background: "rgba(255,255,255,0.97)" }
-    : { background: "rgba(255,255,255,0.85)" };
+    : { background: "transparent" };
 
   return (
     <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${headerBg}`} style={headerStyle}>
-      {/* Ark-red bottom accent line */}
-      <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-ark-red/30 to-transparent" />
+      {/* Ark-red bottom accent line (only when scrolled) */}
+      {scrolled && <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-ark-red/30 to-transparent" />}
       <div className="max-w-7xl mx-auto px-6 flex items-center justify-between h-20">
         {/* Logo */}
         <Link href="/" className="flex items-center gap-3 flex-shrink-0">
-          <Image src="/ark-logo.png" alt="ARK Global" width={120} height={40} className="h-10 w-auto" priority />
+          <Image
+            src="/ark-logo.png"
+            alt="ARK Global"
+            width={120}
+            height={40}
+            className={`h-10 w-auto transition-all duration-300 ${!scrolled ? "brightness-0 invert" : ""}`}
+            priority
+          />
         </Link>
 
         {/* Desktop Nav */}
@@ -157,7 +164,7 @@ export function HeaderNav({ serviceLinks, hasReferences }: HeaderNavProps) {
           <li>
             <Link
               href="/hakkimizda"
-              className={`nav-link ${isActive("/hakkimizda") ? "active text-ark-red" : ""}`}
+              className={`nav-link ${!scrolled ? "nav-link-light" : ""} ${isActive("/hakkimizda") ? "active text-ark-red" : ""}`}
             >
               Hakkımızda
             </Link>
@@ -172,7 +179,7 @@ export function HeaderNav({ serviceLinks, hasReferences }: HeaderNavProps) {
           >
             <Link
               href="/hizmetler"
-              className={`nav-link flex items-center gap-1 ${isActive("/hizmetler") ? "active text-ark-red" : ""}`}
+              className={`nav-link flex items-center gap-1 ${!scrolled ? "nav-link-light" : ""} ${isActive("/hizmetler") ? "active text-ark-red" : ""}`}
             >
               Faaliyet Alanlarımız
               <ChevronDown
@@ -219,7 +226,7 @@ export function HeaderNav({ serviceLinks, hasReferences }: HeaderNavProps) {
 
           {hasReferences && (
             <li>
-              <Link href="/blog" className={`nav-link ${isActive("/blog") ? "active text-ark-red" : ""}`}>
+              <Link href="/blog" className={`nav-link ${!scrolled ? "nav-link-light" : ""} ${isActive("/blog") ? "active text-ark-red" : ""}`}>
                 Referanslarımız
               </Link>
             </li>
@@ -227,7 +234,7 @@ export function HeaderNav({ serviceLinks, hasReferences }: HeaderNavProps) {
           <li>
             <Link
               href="/contact"
-              className={`nav-link ${isActive("/contact") ? "active text-ark-red" : ""}`}
+              className={`nav-link ${!scrolled ? "nav-link-light" : ""} ${isActive("/contact") ? "active text-ark-red" : ""}`}
             >
               İletişim
             </Link>
@@ -237,7 +244,7 @@ export function HeaderNav({ serviceLinks, hasReferences }: HeaderNavProps) {
         {/* Mobile toggle */}
         <div className="flex items-center gap-4">
           <button
-            className="lg:hidden text-gray-700 p-2 cursor-pointer"
+            className={`lg:hidden p-2 cursor-pointer transition-colors duration-300 ${scrolled ? "text-gray-700" : "text-white"}`}
             onClick={() => setMobileOpen(!mobileOpen)}
             aria-label="Toggle menu"
           >

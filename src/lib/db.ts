@@ -607,10 +607,10 @@ const DEFAULT_SERVICES: Array<{
   cover_image_url?: string;
 }> = [
   {
-    title: "Yangından Korunma Sistemleri",
-    slug: "yangindan-korunma-sistemleri",
-    icon: "Flame",
-    shortDesc: "",
+    title: "Yangın Algılama ve İhbar Sistemleri",
+    slug: "yangin-algilama-ve-ihbar-sistemleri",
+    icon: "Bell",
+    shortDesc: "Kablo tipi, hava örneklemeli, alev dedektörleri ve adresli/konvansiyonel yangın alarm sistemleri.",
     longDesc: "",
     features: [],
     standards: [],
@@ -619,46 +619,10 @@ const DEFAULT_SERVICES: Array<{
     cover_image_url: "/yangin_algilama.png",
   },
   {
-    title: "Kıvılcım Algılama & Söndürme",
-    slug: "kivilcim-algilama-sondurme",
-    icon: "Zap",
-    shortDesc: "",
-    longDesc: "",
-    features: [],
-    standards: [],
-    applications: [],
-    content: "",
-    cover_image_url: "/k%C4%B1v%C4%B1lc%C4%B1m_algilama.jpeg",
-  },
-  {
-    title: "Patlamadan Korunma",
-    slug: "patlamadan-korunma",
-    icon: "Shield",
-    shortDesc: "",
-    longDesc: "",
-    features: [],
-    standards: [],
-    applications: [],
-    content: "",
-    cover_image_url: "/patlamadan_korunma.jpeg",
-  },
-  {
-    title: "Aşırı Basınçtan Korunma",
-    slug: "asiri-basinctan-korunma",
-    icon: "Gauge",
-    shortDesc: "",
-    longDesc: "",
-    features: [],
-    standards: [],
-    applications: [],
-    content: "",
-    cover_image_url: "/asiri_basinctan_korunma.jpeg",
-  },
-  {
-    title: "Gaz Algılama",
-    slug: "gaz-algilama",
+    title: "Gaz Algılama Sistemleri",
+    slug: "gaz-algilama-sistemleri",
     icon: "Wind",
-    shortDesc: "",
+    shortDesc: "Endüstriyel tesislerde patlayıcı ve zehirli gazların hızlı ve güvenilir algılanması için gelişmiş dedektör çözümleri.",
     longDesc: "",
     features: [],
     standards: [],
@@ -667,40 +631,16 @@ const DEFAULT_SERVICES: Array<{
     cover_image_url: "/basinctan_koruma.jpeg",
   },
   {
-    title: "Ex Proof Çözümler",
-    slug: "ex-proof-cozumler",
-    icon: "Lock",
-    shortDesc: "",
+    title: "Kıvılcım Algılama Söndürme",
+    slug: "kivilcim-algilama-sondurme",
+    icon: "Zap",
+    shortDesc: "Kıvılcım ve kor parçacıklarının erken tespiti ile patlama ve yangın riskini ortadan kaldıran sistemler.",
     longDesc: "",
     features: [],
     standards: [],
     applications: [],
     content: "",
-    cover_image_url: "/exproof.jpeg",
-  },
-  {
-    title: "Servis ve Bakım Hizmetleri",
-    slug: "servis-ve-bakim-hizmetleri",
-    icon: "Wrench",
-    shortDesc: "",
-    longDesc: "",
-    features: [],
-    standards: [],
-    applications: [],
-    content: "",
-    cover_image_url: "/servis_bakim.webp",
-  },
-  {
-    title: "Yangın Söndürme Sistemleri",
-    slug: "yangin-sondurme-sistemleri",
-    icon: "Flame",
-    shortDesc: "Sulu, gazlı, köpüklü ve pano içi söndürme sistemleri ile tesislerinizi yangına karşı koruyoruz.",
-    longDesc: "",
-    features: [],
-    standards: [],
-    applications: [],
-    content: "",
-    cover_image_url: "",
+    cover_image_url: "/k%C4%B1v%C4%B1lc%C4%B1m_algilama.jpeg",
   },
   {
     title: "Görüntü Tabanlı Yangın Algılama",
@@ -715,10 +655,22 @@ const DEFAULT_SERVICES: Array<{
     cover_image_url: "",
   },
   {
-    title: "Yangın Algılama Sistemleri",
-    slug: "yangin-algilama-sistemleri",
-    icon: "Bell",
-    shortDesc: "Kablo tipi, hava örneklemeli, alev dedektörleri ve adresli/konvansiyonel yangın alarm sistemleri.",
+    title: "Exproof Çözümler",
+    slug: "exproof-cozumler",
+    icon: "Lock",
+    shortDesc: "Patlama riski olan tehlikeli alanlarda güvenli ekipman ve aydınlatma çözümleri.",
+    longDesc: "",
+    features: [],
+    standards: [],
+    applications: [],
+    content: "",
+    cover_image_url: "/exproof.jpeg",
+  },
+  {
+    title: "Yangın Söndürme Sistemleri",
+    slug: "yangin-sondurme-sistemleri",
+    icon: "Flame",
+    shortDesc: "Sulu, gazlı, köpüklü ve pano içi söndürme sistemleri ile tesislerinizi yangına karşı koruyoruz.",
     longDesc: "",
     features: [],
     standards: [],
@@ -726,10 +678,46 @@ const DEFAULT_SERVICES: Array<{
     content: "",
     cover_image_url: "",
   },
+  {
+    title: "Patlamadan Korunma",
+    slug: "patlamadan-korunma",
+    icon: "Shield",
+    shortDesc: "Patlama tehlikesi bulunan ortamlarda güvenlik standartlarına uygun koruma çözümleri.",
+    longDesc: "",
+    features: [],
+    standards: [],
+    applications: [],
+    content: "",
+    cover_image_url: "/patlamadan_korunma.jpeg",
+  },
+  {
+    title: "Aşırı Basınçtan Korunma",
+    slug: "asiri-basinctan-korunma",
+    icon: "Gauge",
+    shortDesc: "Yüksek basınç ortamlarında güvenliği sağlayan basınç tahliye ve koruma sistemleri.",
+    longDesc: "",
+    features: [],
+    standards: [],
+    applications: [],
+    content: "",
+    cover_image_url: "/asiri_basinctan_korunma.jpeg",
+  },
+  {
+    title: "Servis ve Bakım Hizmetleri",
+    slug: "servis-ve-bakim-hizmetleri",
+    icon: "Wrench",
+    shortDesc: "Periyodik bakım, test, eğitim ve devreye alma hizmetleri ile sistemlerinizin sürekli çalışmasını sağlıyoruz.",
+    longDesc: "",
+    features: [],
+    standards: [],
+    applications: [],
+    content: "",
+    cover_image_url: "/servis_bakim.webp",
+  },
 ];
 
 // Bump this version whenever DEFAULT_SERVICES change to trigger a reseed
-const SERVICES_SEED_VERSION = 9;
+const SERVICES_SEED_VERSION = 10;
 
 async function ensureServicePages(): Promise<void> {
   const storedVersion = await redis.get<number>(KEYS.servicesSeedVersion);
@@ -847,340 +835,39 @@ const DEFAULT_SUBPRODUCTS: Array<{
   features: string[];
   cover_image_url?: string;
 }> = [
-  // ─── Servis ve Bakım Hizmetleri ───
+  // ─── Exproof Çözümler ───
   {
-    serviceSlug: "servis-ve-bakim-hizmetleri",
-    title: "Yangın ve Patlama Risk Analizi",
-    slug: "yangin-ve-patlama-risk-analizi",
-    description: "Yangın ve patlama risk değerlendirmesi ile tesislerinizin yasal olarak korunmasını sağlamak için mevcut durum değerlendirmesi yapılır. Acil durum düzenlemelerini gözden geçirme, personeli yangın ve patlama durumuna karşı eğitme hizmetleri sunulmaktadır.",
+    serviceSlug: "exproof-cozumler",
+    title: "Exproof Kamera Sistemleri",
+    slug: "exproof-kamera-sistemleri",
+    description: "Patlama riski olan tehlikeli alanlarda güvenli görüntüleme sağlayan patlamaya dayanıklı kamera sistemleri. CCTV, termal kamera ve video analiz çözümleri ile tesislerinizi 7/24 izleyin.",
     features: [
-      "Yangın ve patlama risk değerlendirmesi",
-      "Yasal olarak korunmanızı sağlamak için mevcut durum değerlendirmesi",
-      "Acil durum düzenlemelerini gözden geçirme, personeli yangın ve patlama durumuna karşı eğitme",
-      "Tüm risk değerlendirmesini bir rapor halinde sunma",
+      "Patlamaya dayanıklı CCTV kamera sistemleri",
+      "Termal görüntüleme kameraları",
+      "Video analiz ve uzaktan izleme",
+      "IP ve analog kamera seçenekleri",
+      "Gece görüş ve IR aydınlatma",
+      "ATEX/IECEx sertifikalı ekipmanlar",
     ],
   },
   {
-    serviceSlug: "servis-ve-bakim-hizmetleri",
-    title: "Toz Patlaması Testi",
-    slug: "toz-patlamasi-testi",
-    description: "Tesisinizdeki tozun patlayıcılık özelliklerini test edin! Yanma Testi Laboratuvarı'nda, can ve mal varlıklarının korunmasına yardımcı olan paha biçilmez veriler sağlayan kapsamlı bir patlayıcı toz testi imkanı sunuyoruz.",
-    features: [
-      "Tesisinizdeki tozun patlayıcılık özelliklerini test etme",
-      "Can ve mal varlıklarının korunmasına yardımcı veriler",
-      "Kapsamlı patlayıcı toz testi imkanı",
-    ],
-  },
-  {
-    serviceSlug: "servis-ve-bakim-hizmetleri",
-    title: "Saha Keşfi",
-    slug: "saha-kesfi",
-    description: "Tesislerinizin yerinde incelenmesi ve mevcut durumun değerlendirilmesi hizmetidir.",
-    features: ["Yerinde tesis inceleme", "Mevcut durum değerlendirmesi"],
-  },
-  {
-    serviceSlug: "servis-ve-bakim-hizmetleri",
-    title: "Periyodik Bakım Hizmetleri",
-    slug: "periyodik-bakim-hizmetleri",
-    description: "Sistemlerinizin düzenli aralıklarla bakımını yaparak kesintisiz çalışmasını sağlıyoruz.",
-    features: ["Planlı bakım programları", "Sistem performans kontrolleri", "Yedek parça değişimi"],
-  },
-  {
-    serviceSlug: "servis-ve-bakim-hizmetleri",
-    title: "Nezaret, Denetleme ve Devreye Alma",
-    slug: "nezaret-denetleme-devreye-alma",
-    description: "Kurulum sürecinin denetlenmesi ve sistemlerin devreye alınması hizmetleri.",
-    features: ["Kurulum nezareti", "Denetleme hizmetleri", "Devreye alma"],
-  },
-  {
-    serviceSlug: "servis-ve-bakim-hizmetleri",
-    title: "Test ve Eğitim Hizmetleri",
-    slug: "test-ve-egitim-hizmetleri",
-    description: "Sistem testleri ve personel eğitim programları ile güvenliğinizi en üst düzeye çıkarıyoruz.",
-    features: ["Sistem testleri", "Personel eğitim programları", "Sertifikalı eğitim belgelendirme"],
-  },
-
-  // ─── Gaz Algılama ───
-  {
-    serviceSlug: "gaz-algilama",
-    title: "Katalitik Sensörlü Sabit Gaz Dedektörleri",
-    slug: "katalitik-sensorlu-sabit-gaz-dedektorleri",
-    description: "Endüstriyel tesislerde kullanılan veya proses sonucu ortaya çıkan patlayıcı veya zehirli gazların hızlı ve hatasız algılanması için katalitik sensör teknolojisi kullanan sabit dedektörlerdir.",
-    features: ["Patlayıcı gaz algılama", "Sabit montaj", "Katalitik sensör teknolojisi"],
-  },
-  {
-    serviceSlug: "gaz-algilama",
-    title: "IR (Kızılötesi) Sensörlü Sabit Gaz Dedektörleri",
-    slug: "ir-sensorlu-sabit-gaz-dedektorleri",
-    description: "Kızılötesi teknoloji ile yüksek hassasiyetli gaz algılama sağlayan sabit dedektörlerdir.",
-    features: ["Kızılötesi sensör teknolojisi", "Yüksek hassasiyet", "Uzun ömürlü sensör"],
-  },
-  {
-    serviceSlug: "gaz-algilama",
-    title: "PID Sabit Gaz Dedektörleri",
-    slug: "pid-sabit-gaz-dedektorleri",
-    description: "Fotoiyonizasyon dedektörleri (PID) ile düşük konsantrasyonlarda VOC gazlarının algılanmasını sağlar.",
-    features: ["PID sensör teknolojisi", "VOC algılama", "Düşük konsantrasyon hassasiyeti"],
-  },
-  {
-    serviceSlug: "gaz-algilama",
-    title: "Açık Alan Sabit Gaz Dedektörleri",
-    slug: "acik-alan-sabit-gaz-dedektorleri",
-    description: "Geniş açık alanlarda gaz kaçaklarının tespiti için tasarlanmış dedektörlerdir.",
-    features: ["Açık alan uygulamaları", "Geniş kapsama alanı", "Hava koşullarına dayanıklı"],
-  },
-  {
-    serviceSlug: "gaz-algilama",
-    title: "Örneklemeli Sabit Gaz Dedektörleri",
-    slug: "orneklemeli-sabit-gaz-dedektorleri",
-    description: "Havayı örnekleyerek analiz eden ve uzak noktalardan gaz algılama yapabilen sistemlerdir.",
-    features: ["Örnekleme ile algılama", "Uzak nokta algılama", "Çoklu nokta izleme"],
-  },
-  {
-    serviceSlug: "gaz-algilama",
-    title: "Taşınabilir Gaz Dedektörleri",
-    slug: "tasinabilir-gaz-dedektorleri",
-    description: "Personelin üzerinde taşıyarak kullanabileceği, anlık gaz algılama ve uyarı sağlayan portatif cihazlardır.",
-    features: ["Taşınabilir kullanım", "Anlık algılama ve uyarı", "Kişisel güvenlik"],
-  },
-
-  // ─── Ex Proof Çözümler ───
-  {
-    serviceSlug: "ex-proof-cozumler",
-    title: "Ticari Ürünler",
-    slug: "ex-proof-ticari-urunler",
-    description: "Tehlikeli alanlarda kullanılmak üzere tasarlanmış patlamaya karşı korumalı ticari ürünler.",
-    features: [
-      "EMT bağlantı parçaları, Rijit/IMC ve AC/MC/FMC",
-      "Sızdırmazlık elemanları",
-      "Boru (Kondüvit) bağlantı noktaları",
-      "Priz kutu ve kapakları",
-      "Hazır fabrikasyon (PRE-formance™) ürünleri",
-      "Bağlantı kutuları",
-      "Güneş enerjisi (solar) çözümleri",
-    ],
-  },
-  {
-    serviceSlug: "ex-proof-cozumler",
-    title: "Tehlikeli Alan İletişimi",
-    slug: "tehlikeli-alan-iletisimi",
-    description: "Patlama riski olan ortamlarda güvenli iletişim sağlayan ekipmanlar.",
-    features: [
-      "Görsel ve sesli sinyal cihazları",
-      "Alarm çağrı noktaları",
-      "Flaşör ve çakarlar",
-      "Durum ışıkları",
-      "VoIP ve analog telefonlar",
-      "Kapalı devre (CCTV) kamera sistemleri",
-      "Entegre multimedya iletişim sistemleri",
-    ],
-  },
-  {
-    serviceSlug: "ex-proof-cozumler",
-    title: "Fiş & Prizler",
-    slug: "ex-proof-fis-prizler",
-    description: "Tehlikeli alanlarda güvenli elektrik bağlantısı sağlayan patlamaya dayanıklı fiş ve priz çözümleri.",
-    features: [
-      "IEC 60309 standartlı ekipmanlar",
-      "NEMA standartlı ekipmanlar",
-      "Kilitli prizler",
-      "Tek kutuplu ve çok pinli ekipmanlar",
-      "Endüstriyel kablo ve kablo makaraları",
-      "Taşınabilir güç / besleme çözümleri",
-    ],
-  },
-  {
-    serviceSlug: "ex-proof-cozumler",
-    title: "Kontrol & Ekipman",
-    slug: "ex-proof-kontrol-ekipman",
-    description: "Patlamaya karşı korumalı kontrol panoları, motor yol vericiler ve devre kesiciler.",
-    features: [
-      "Patlamaya Dayanıklı Değişken Frekanslı Sürücüler",
-      "Motor yol vericiler",
-      "Patlamaya dayanıklı (Ex-proof) devre kesiciler",
-      "Kontrol panoları / anahtarları",
-      "Buton ve seçici anahtar kontrol istasyonları",
-      "Elektrik panoları",
-    ],
-  },
-  {
-    serviceSlug: "ex-proof-cozumler",
-    title: "Muhafazalar",
-    slug: "ex-proof-muhafazalar",
-    description: "Tehlikeli ortamlarda ekipman koruması için patlamaya ve aleve dayanıklı muhafaza çözümleri.",
-    features: [
-      "Bağlantı kutuları ve boş muhafazalar",
-      "Bileşenli muhafazalar",
-      "Enstrüman muhafazaları",
-      "Çelik sac muhafazalar - Artırılmış güvenlikli",
-      "Dökme Metalik Muhafazalar",
-      "Patlamaya ve aleve dayanıklı muhafazalar",
-    ],
-  },
-  {
-    serviceSlug: "ex-proof-cozumler",
-    title: "Aydınlatma",
-    slug: "ex-proof-aydinlatma",
-    description: "Tehlikeli alanlarda güvenli aydınlatma sağlayan patlamaya dayanıklı armatür ve ekipmanlar.",
+    serviceSlug: "exproof-cozumler",
+    title: "Exproof Aydınlatma",
+    slug: "exproof-aydinlatma",
+    description: "Tehlikeli alanlarda güvenli aydınlatma sağlayan patlamaya dayanıklı armatür ve ekipmanlar. LED, floresan ve acil durum aydınlatma çözümleri.",
     features: [
       "LED armatürler",
       "Floresan armatürler",
-      "Akkor armatürler",
-      "Yüksek Yoğunluklu Deşarj (HID) armatürler",
       "Projektörler",
       "Acil durum aydınlatma ve çıkış işaretleri",
       "Aydınlatma askıları ve aksesuarları",
       "Taşınabilir aydınlatma",
-    ],
-  },
-
-  // ─── Yangın Söndürme Sistemleri ───
-  {
-    serviceSlug: "yangin-sondurme-sistemleri",
-    title: "Sulu Söndürme Sistemleri",
-    slug: "sulu-sondurme-sistemleri",
-    description: "Sprinkler (Yağmurlama) söndürme sistemleri, su sisi söndürme sistemleri, hidrant sistemleri ve yangın dolapları ile tesislerinizi yangına karşı koruyoruz.",
-    features: [
-      "Baskın Sprinkler Sistemi",
-      "Ön Tepkimeli Sprinkler Sistemi",
-      "Düşük Basınçlı Su Sisi Sistemleri",
-      "Yüksek Basınçlı Su Sisi Sistemleri",
-      "Hidrant Sistemleri",
-      "Yangın Dolapları",
-    ],
-  },
-  {
-    serviceSlug: "yangin-sondurme-sistemleri",
-    title: "Pano İçi Söndürme Sistemleri",
-    slug: "pano-ici-sondurme-sistemleri",
-    description: "Tüm oda yerine sadece belirli bir boyuttaki kabin, pano vb. daha küçük kapalı hacimlerin yangından korunması gerektiğinde pano içi söndürme sistemleri kullanılabilir. İndirekt tip sistemlerde yangın durumunda eriyerek tepki veren gazın ortama otomatik boşalmasını sağlayan plastik boru kullanılır. Direkt sistemde ise oda koruma gibi algılama sistemi ve nozul bulunmaktadır.",
-    features: [
-      "İndirekt Pano İçi Söndürme Sistemleri",
-      "Direkt Pano İçi Söndürme Sistemleri",
-    ],
-  },
-  {
-    serviceSlug: "yangin-sondurme-sistemleri",
-    title: "Gazlı Söndürme Sistemleri",
-    slug: "gazli-sondurme-sistemleri",
-    description: "Kritik ve değerli varlıklarınızın yangına karşı korunmasında temiz gazlı söndürme sistemleri tercih edilmelidir. NFPA2001, EN15004 ve ISO14520 standartlarına uygun tamamı sertifikalı sistemler kullanılır.",
-    features: [
-      "HFC227ea (FM-200) ve HFC125 (Ecaro25)",
-      "FK-5-1-12 (Novec 1230)",
-      "İnert Gazlar (IG-01, IG-55, IG-541, IG-100)",
-      "Karbondioksit (CO2)",
-    ],
-  },
-  {
-    serviceSlug: "yangin-sondurme-sistemleri",
-    title: "Köpüklü Söndürme Sistemleri",
-    slug: "kopuklu-sondurme-sistemleri",
-    description: "Köpüklü söndürme sistemleri, su ile söndürülmesi mümkün olmayan yoğun yanıcı, parlayıcı kimyasal maddelerin veya yakıt yangınlarının söndürülmesinde tercih edilir. Söndürücü madde olarak kullanılan yangın söndürme köpüğü, yanan yüzeyin üzerini örterek yangın ile hava temasını keser.",
-    features: [
-      "Düşük Genleşmeli Köpük Sistemleri",
-      "Orta Genleşmeli Köpük Sistemleri",
-      "Yüksek Genleşmeli Köpük Sistemleri",
-    ],
-  },
-
-  // ─── Görüntü Tabanlı Yangın Algılama ───
-  {
-    serviceSlug: "goruntu-tabanli-yangin-algilama",
-    title: "Video Analiz ile Duman ve Alev Algılama",
-    slug: "video-analiz-duman-alev-algilama",
-    description: "Klasik sistemlerin yetersiz kaldığı yerlerde video görüntüleme ile yangın algılama çok erken algılama imkanı sunar. Standart duman algılama sistemlerinde ekipman dumanın kendisine ulaşmasını beklerken, video görüntü ile algılamada dumanın görüş alanına girmesi yeterlidir. Uzaktan canlı izleme ve kayıt imkanları sayesinde yangın ve güvenlik anlamında kolaylık sağlar.",
-    features: [
-      "Yangın durumunun anında doğrulanması",
-      "Yangın noktasının gözle hemen tespit edilmesi",
-      "Yangın öncesi ve sonrasının izlenebilmesi",
-      "Yangın olayının kayıt altına alınarak kanıt olarak kullanılabilmesi",
-      "Yangına daha hızlı ve doğru müdahale imkanı",
-      "İnsansız bölgeleri yangına karşı uzaktan denetleme ve güvenlik",
-      "Standart sistemlerin doğru çalışamayacağı tozlu / kirli alanlar",
-      "Yüksek tavanlı yerler",
-      "Duman algılama yapılamayacak dış ortamlar",
-      "Yanlış alarmların çok sık alındığı yerler",
-      "Erken algılamanın kritik olduğu bölgeler",
-    ],
-  },
-
-  // ─── Yangın Algılama Sistemleri ───
-  {
-    serviceSlug: "yangin-algilama-sistemleri",
-    title: "Kablo Tipi Dedektörler",
-    slug: "kablo-tipi-dedektorler",
-    description: "Tüneller, kablo galerileri, konveyör hatları, yürüyen merdivenler gibi alanlarda ısı algılamak için uygun sistemlerdir.",
-    features: [
-      "Dijital Kablo Tipi Dedektörler",
-      "Analog Kablo Tipi Dedektörler",
-      "Fiber Optik Kablo Tipi Dedektörler",
-    ],
-  },
-  {
-    serviceSlug: "yangin-algilama-sistemleri",
-    title: "Hava Örneklemeli Algılama Sistemleri",
-    slug: "hava-orneklemeli-algilama-sistemleri",
-    description: "Algılama süresinin çok önemli olduğu, kritik ve değerli ekipmanların korunması gerektiği yerlerde tercih edilen yangın alarm sistemleridir. Standart dedektörlere göre çok daha erken uyarı verirler. Veri merkezleri, sunucu odaları, pano odaları gibi yerlerde tercih edilir.",
-    features: [
-      "Çok erken uyarı kapasitesi",
-      "Veri merkezleri için ideal",
-      "Sunucu ve pano odaları uygulamaları",
-    ],
-  },
-  {
-    serviceSlug: "yangin-algilama-sistemleri",
-    title: "Alev Dedektörleri",
-    slug: "alev-dedektorleri",
-    description: "Çeşitli sensör teknolojileri ile alevin hızlı ve güvenilir tespitini sağlayan dedektörlerdir.",
-    features: [
-      "UV (Ultraviyole) Sensörlü Alev Dedektörleri",
-      "IR (Kızılötesi) Sensörlü Alev Dedektörleri",
-      "IR2 Sensörlü Alev Dedektörleri",
-      "IR3 Sensörlü Alev Dedektörleri",
-      "UV/IR Sensörlü Alev Dedektörleri",
-      "Multi IR Sensörlü Alev Dedektörleri",
-    ],
-  },
-  {
-    serviceSlug: "yangin-algilama-sistemleri",
-    title: "Konvansiyonel Yangın Alarm Sistemleri",
-    slug: "konvansiyonel-yangin-alarm-sistemleri",
-    description: "Bölge bazlı algılama yapan, kurulumu ve yönetimi kolay yangın alarm sistemleridir.",
-    features: [
-      "Konvansiyonel Yangın Alarm Panelleri",
-      "Konvansiyonel Dedektörler",
-      "Konvansiyonel Yangın İhbar Butonları",
-      "Konvansiyonel Sesli / Görsel Uyarı Cihazları",
-    ],
-  },
-  {
-    serviceSlug: "yangin-algilama-sistemleri",
-    title: "Adresli Yangın Alarm Sistemleri",
-    slug: "adresli-yangin-alarm-sistemleri",
-    description: "Her cihazın ayrı adreslenerek izlenebildiği, gelişmiş ve esnek yangın alarm sistemleridir.",
-    features: [
-      "Adresli Yangın Alarm Panelleri",
-      "Adresli Dedektörler",
-      "Adresli Yangın İhbar Butonu",
-      "Adresli Giriş / Çıkış Modülleri",
-      "Adresli Sesli / Görsel Uyarı Cihazları",
-    ],
-  },
-  {
-    serviceSlug: "yangin-algilama-sistemleri",
-    title: "Işın Tipi Dedektörler",
-    slug: "isin-tipi-dedektorler",
-    description: "Yüksekliğin noktasal tip dedektör sınırını aştığı yerlerde veya geniş hacimlerde ışın tipi dedektörler kullanılabilir.",
-    features: [
-      "Alıcı ve Verici Ayrı Üniteli Tip",
-      "Alıcı/Verici ve Reflektörlü Tip",
-      "5 metre ile 200 metre Arası Algılama Mesafesi",
-      "Adreslenebilir veya Konvansiyonel Tip",
+      "ATEX/IECEx sertifikalı ürünler",
     ],
   },
 ];
 
-const SUBPRODUCTS_SEED_VERSION = 1;
+const SUBPRODUCTS_SEED_VERSION = 2;
 
 async function ensureSubProducts(): Promise<void> {
   const storedVersion = await redis.get<number>(KEYS.subProductsSeedVersion);
@@ -1188,6 +875,25 @@ async function ensureSubProducts(): Promise<void> {
 
   // Make sure services are seeded first
   await ensureServicePages();
+
+  // Clear ALL old subproducts before reseeding
+  const allServices = await redis.zrange<string[]>(KEYS.servicesAll, 0, -1);
+  const cleanPipeline = redis.pipeline();
+  for (const serviceId of allServices) {
+    const subIds = await redis.zrange<string[]>(KEYS.subProductsByService(serviceId), 0, -1);
+    for (const subId of subIds) {
+      const sub = await redis.get<string>(KEYS.subProduct(subId));
+      if (sub) {
+        try {
+          const parsed = typeof sub === "string" ? JSON.parse(sub) : sub;
+          cleanPipeline.del(KEYS.subProductBySlug(parsed.slug));
+        } catch { /* ignore */ }
+      }
+      cleanPipeline.del(KEYS.subProduct(subId));
+    }
+    cleanPipeline.del(KEYS.subProductsByService(serviceId));
+  }
+  await cleanPipeline.exec();
 
   // Seed sub-products
   const seedPipeline = redis.pipeline();

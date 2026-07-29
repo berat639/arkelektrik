@@ -231,9 +231,17 @@
   @apply relative text-gray-700 hover:text-ark-red font-medium text-sm uppercase tracking-wider transition-colors duration-200;
 }
 
+.nav-link.nav-link-light {
+  @apply text-white hover:text-white/80;
+}
+
 .nav-link::after {
   @apply absolute -bottom-1 left-0 w-0 h-0.5 bg-ark-red transition-all duration-300;
   content: '';
+}
+
+.nav-link.nav-link-light::after {
+  @apply bg-white;
 }
 
 .nav-link:hover::after,

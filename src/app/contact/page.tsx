@@ -186,7 +186,7 @@ export default function ContactPage() {
                 ) : (
                   <form onSubmit={handleSubmit} className="space-y-4">
                     <h3 className="font-heading font-bold text-xl uppercase text-gray-900 mb-6">
-                      Teklif Formu
+                      İletişim Formu
                     </h3>
                     <div className="grid sm:grid-cols-2 gap-4">
                       <div>
@@ -297,7 +297,7 @@ export default function ContactPage() {
                         </>
                       ) : (
                         <>
-                          Teklif Formunu Gönder <Send size={16} />
+                          İletişim Formunu Gönder <Send size={16} />
                         </>
                       )}
                     </button>

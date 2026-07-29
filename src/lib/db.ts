@@ -1160,7 +1160,7 @@ const DEFAULT_SITE_SETTINGS: SiteSettings = {
     { name: 'IECEx', desc: 'Sertifika Uzmanı' },
   ],
   servicesPageImage: "https://images.pexels.com/photos/2760241/pexels-photo-2760241.jpeg?auto=compress&cs=tinysrgb&w=1920",
-  contactPageImage: "https://images.pexels.com/photos/3861969/pexels-photo-3861969.jpeg?auto=compress&cs=tinysrgb&w=1920",
+  contactPageImage: "/about-engineering.png",
   aboutPageSubtitle: "15 yılı aşkın endüstriyel güvenlik tecrübesiyle, standart bir tedarikçiden öte uçtan uca mühendislik partneri.",
 
   ctaBannerImage:

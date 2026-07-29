@@ -1,14 +1,16 @@
 "use client";
 
+import Image from "next/image";
 import { useScrollAnimation } from "./scroll-animation";
 
 const STANDARDS = [
-  { name: "NFPA 2001", description: "Clean Agent Fire Protection Systems" },
-  { name: "VdS", description: "VdS Approved" },
-  { name: "FM", description: "FM Global Approved" },
-  { name: "LPCB", description: "Loss Prevention Certification Board" },
-  { name: "ISO 14520", description: "Gaseous Fire Extinguishing Systems" },
-  { name: "UL", description: "UL Listed" },
+  { name: "NFPA", description: "National Fire Protection Association", logo: "/nfpa.png" },
+  { name: "VdS", description: "VdS Approved", logo: "/vds.png" },
+  { name: "FM Global", description: "FM Global Approved", logo: "/fmglobal.png" },
+  { name: "LPCB", description: "Loss Prevention Certification Board", logo: "/lpcb.png" },
+  { name: "ISO", description: "International Organization for Standardization", logo: "/%C4%B1so.png" },
+  { name: "UL", description: "UL Listed", logo: "/ul.png" },
+  { name: "CNPP", description: "Centre National de Prévention et de Protection", logo: "/cnpp.png" },
 ];
 
 export function FixedStandards() {
@@ -33,28 +35,28 @@ export function FixedStandards() {
           </p>
         </div>
 
-        <div className={`grid grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-4 animate-on-scroll delay-100 ${isVisible ? "is-visible" : ""}`}>
+        <div className={`grid grid-cols-3 md:grid-cols-4 lg:grid-cols-7 gap-3 animate-on-scroll delay-100 ${isVisible ? "is-visible" : ""}`}>
           {STANDARDS.map((std, index) => (
             <div
               key={index}
-              className="relative bg-gray-100 border border-gray-200 p-6 flex flex-col items-center justify-center text-center hover:border-ark-red/30 hover:bg-white hover:shadow-xl transition-all duration-300 group"
+              className="relative bg-gray-100 border border-gray-200 px-3 py-4 flex flex-col items-center justify-center text-center hover:border-ark-red/30 hover:bg-white hover:shadow-lg transition-all duration-300 group"
               style={{
-                clipPath: "polygon(0 0, calc(100% - 12px) 0, 100% 12px, 100% 100%, 12px 100%, 0 calc(100% - 12px))"
+                clipPath: "polygon(0 0, calc(100% - 8px) 0, 100% 8px, 100% 100%, 8px 100%, 0 calc(100% - 8px))"
               }}
             >
-              {/* Accent corner */}
-              <div className="absolute top-0 right-0 w-3 h-3 bg-ark-red opacity-0 group-hover:opacity-100 transition-opacity duration-300" 
-                   style={{ clipPath: "polygon(100% 0, 0 0, 100% 100%)" }} 
-              />
-              <div className="absolute bottom-0 left-0 w-3 h-3 bg-ark-red opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-                   style={{ clipPath: "polygon(0 100%, 100% 100%, 0 0)" }}
-              />
-
-              <div className="text-xl font-heading font-bold text-gray-900 mb-2 tracking-wider">
-                {std.name}
+              {/* Logo */}
+              <div className="relative w-10 h-10 mb-2 flex items-center justify-center">
+                <Image
+                  src={std.logo}
+                  alt={std.name}
+                  width={40}
+                  height={40}
+                  className="object-contain max-h-10 w-auto"
+                />
               </div>
-              <div className="text-[10px] text-gray-500 uppercase tracking-widest">
-                {std.description}
+
+              <div className="text-xs font-heading font-bold text-gray-900 tracking-wider">
+                {std.name}
               </div>
             </div>
           ))}

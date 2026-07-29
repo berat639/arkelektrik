@@ -45,31 +45,33 @@ export function StandardsSection({ title, brands }: StandardsSectionProps) {
 
         <div className="flex w-max brand-carousel-track hover:animation-paused">
           {duplicatedItems.map((brand, index) => (
-            <div key={index} className="px-4 flex-shrink-0">
+            <div key={index} className="px-3 flex-shrink-0">
               <div
-                className="relative bg-white border-t border-b border-gray-200 hover:border-ark-red/40 hover:shadow-2xl overflow-hidden transition-all duration-300 flex flex-col h-36 w-64 group"
+                className="relative bg-white border border-gray-100 hover:border-ark-red/30 hover:shadow-lg overflow-hidden transition-all duration-300 flex items-center justify-center h-28 w-52 group"
                 style={{
                   clipPath:
-                    "polygon(0 0, calc(100% - 16px) 0, 100% 16px, 100% 100%, 16px 100%, 0 calc(100% - 16px))",
+                    "polygon(0 0, calc(100% - 12px) 0, 100% 12px, 100% 100%, 12px 100%, 0 calc(100% - 12px))",
                 }}
               >
                 {/* Accent Line */}
-                <div className="absolute top-0 left-0 w-full h-1 bg-ark-red transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left" />
+                <div className="absolute top-0 left-0 w-full h-0.5 bg-ark-red transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left" />
 
-                {/* Brand Image */}
-                <div className="flex-1 flex items-center justify-center p-4">
-                  <div
-                    className="w-full h-full bg-center bg-contain bg-no-repeat opacity-90 group-hover:opacity-100 transition-opacity duration-300"
-                    style={{ backgroundImage: `url(${brand.image})` }}
-                  />
-                </div>
-                
-                {/* Brand Title */}
-                <div 
-                  className="font-heading font-bold text-xs uppercase text-gray-900 tracking-widest transition-colors duration-300 group-hover:text-ark-red bg-gray-50 border-t border-gray-100 text-center px-4 py-2"
-                >
-                  {brand.title}
-                </div>
+                {brand.image ? (
+                  /* Brand with logo image */
+                  <div className="flex items-center justify-center w-full h-full p-5">
+                    <div
+                      className="w-full h-full bg-center bg-contain bg-no-repeat opacity-80 group-hover:opacity-100 transition-opacity duration-300"
+                      style={{ backgroundImage: `url(${brand.image})` }}
+                    />
+                  </div>
+                ) : (
+                  /* Brand with text only */
+                  <div className="flex items-center justify-center w-full h-full px-4">
+                    <span className="font-heading font-bold text-sm uppercase text-gray-700 tracking-wider text-center leading-tight group-hover:text-ark-red transition-colors duration-300">
+                      {brand.title}
+                    </span>
+                  </div>
+                )}
               </div>
             </div>
           ))}

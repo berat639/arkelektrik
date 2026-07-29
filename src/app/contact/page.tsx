@@ -198,7 +198,7 @@ export default function ContactPage() {
                           value={form.name}
                           onChange={handleChange}
                           required
-                          placeholder="Ahmet Yılmaz"
+                          placeholder="Adınız ve soyadınız"
                           className={inputClass}
                         />
                       </div>

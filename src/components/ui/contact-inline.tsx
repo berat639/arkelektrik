@@ -120,26 +120,7 @@ export function ContactInline({ phone, email, title, subtitle, text }: ContactIn
               </div>
             </div>
 
-            <div
-              className="mt-10 bg-ark-red p-6"
-              style={{
-                clipPath:
-                  "polygon(0 0, calc(100% - 16px) 0, 100% 16px, 100% 100%, 16px 100%, 0 calc(100% - 16px))",
-              }}
-            >
-              <h4 className="font-heading font-bold text-xl uppercase text-white mb-2">
-                Acil Destek
-              </h4>
-              <p className="text-white/85 text-sm leading-relaxed mb-3">
-                7/24 teknik destek hattımız hizmetinizde.
-              </p>
-              <a
-                href={`tel:${phone.replace(/[^+\d]/g, "")}`}
-                className="text-white font-semibold text-sm uppercase tracking-wider hover:underline"
-              >
-                Hemen Ara &rarr;
-              </a>
-            </div>
+             
           </div>
 
           {/* Form */}
@@ -176,7 +157,7 @@ export function ContactInline({ phone, email, title, subtitle, text }: ContactIn
                         value={form.name}
                         onChange={handleChange}
                         required
-                        placeholder="Ahmet Yılmaz"
+                        placeholder="Adınız ve soyadınız"
                         className={inputClass}
                       />
                     </div>

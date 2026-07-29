@@ -1,7 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { HeaderNav } from "./header-nav";
-import { getPublishedServicePages, getPublishedPosts } from "@/lib/db";
+import { getPublishedServicePages } from "@/lib/db";
 
 export async function Header() {
   let serviceLinks: { href: string; label: string }[] = [];
@@ -33,13 +33,7 @@ export async function Header() {
     serviceLinks = fallbackLinks;
   }
 
-  let hasReferences = false;
-  try {
-    const { count } = await getPublishedPosts(1, 1);
-    hasReferences = count > 0;
-  } catch {
-    hasReferences = false;
-  }
+  const hasReferences = true;
 
   return (
     <HeaderNav serviceLinks={serviceLinks} hasReferences={hasReferences} />

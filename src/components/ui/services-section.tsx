@@ -2,58 +2,88 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import { Flame, Zap, Shield, Gauge, Wind, Lock, Wrench, Eye, Bell, ArrowRight } from "lucide-react";
+import { Compass, Search, Award, Layers, FileText, PlayCircle, Lock, Wrench, ArrowRight } from "lucide-react";
 import { useScrollAnimation } from "./scroll-animation";
 import type { ServicePage } from "@/lib/types";
 
-const iconMap: Record<string, React.ElementType> = {
-  Flame, Zap, Shield, Gauge, Wind, Lock, Wrench, Eye, Bell,
-};
+const CAPABILITIES = [
+  {
+    title: "Projelendirme ve Tasarım",
+    image: "/about-engineering.png",
+    icon: Compass,
+  },
+  {
+    title: "Keşif ve Uygulama",
+    image: "/yangin_algilama.png",
+    icon: Search,
+  },
+  {
+    title: "Sertifikalı ve Standartlara Uygun Ürün Tedariği",
+    image: "/patlamadan_korunma.jpeg",
+    icon: Award,
+  },
+  {
+    title: "Sistem Entegrasyonu",
+    image: "/basinctan_koruma.jpeg",
+    icon: Layers,
+  },
+  {
+    title: "Dökümantasyon",
+    image: "/about-3200.webp",
+    icon: FileText,
+  },
+  {
+    title: "Test, Devreye Alma",
+    image: "/k%C4%B1v%C4%B1lc%C4%B1m_algilama.jpeg",
+    icon: PlayCircle,
+  },
+  {
+    title: "Exproof Çözümler ve Mühendislik",
+    image: "/exproof.jpeg",
+    icon: Lock,
+  },
+  {
+    title: "Servis ve Bakım",
+    image: "/servis_bakim.webp",
+    icon: Wrench,
+  },
+];
 
-function ServiceCard({ service, index }: { service: ServicePage; index: number }) {
+function CapabilityCard({ item, index }: { item: typeof CAPABILITIES[number]; index: number }) {
   const { ref, isVisible } = useScrollAnimation();
-  const Icon = iconMap[service.icon] ?? Shield;
+  const Icon = item.icon;
 
   return (
-    <Link
-      href={`/hizmetler/${service.slug}`}
-      ref={ref as React.RefObject<HTMLAnchorElement>}
-      className={`service-card group animate-on-scroll ${isVisible ? "is-visible" : ""}`}
+    <div
+      ref={ref as React.RefObject<HTMLDivElement>}
+      className={`group relative overflow-hidden animate-on-scroll ${isVisible ? "is-visible" : ""}`}
       style={{ transitionDelay: `${index * 80}ms` }}
     >
-      {/* Corner accent */}
-      <div className="absolute top-0 right-0 w-0 h-0 border-l-[24px] border-l-transparent border-t-[24px] border-t-ark-red opacity-50 group-hover:opacity-100 transition-opacity duration-300" />
+      <div className="relative h-56 w-full overflow-hidden">
+        <Image
+          src={item.image}
+          alt={item.title}
+          fill
+          className="object-cover transition-transform duration-700 group-hover:scale-110"
+          sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
+        />
+        {/* Gradient overlay */}
+        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-black/10 group-hover:from-black/90 transition-all duration-300" />
 
-      <div className="relative z-10 flex flex-col h-full">
-        <div className="w-14 h-14 bg-ark-red/10 border border-ark-red/25 flex items-center justify-center mb-6 transition-all duration-300 group-hover:bg-ark-red group-hover:border-ark-red">
-          <Icon size={24} className="text-ark-red group-hover:text-white transition-colors duration-300" />
+        {/* Icon */}
+        <div className="absolute top-4 left-4 w-10 h-10 bg-ark-red/90 flex items-center justify-center backdrop-blur-sm transition-transform duration-300 group-hover:scale-110">
+          <Icon size={18} className="text-white" />
         </div>
 
-        <h3 className="font-heading font-bold text-xl uppercase text-gray-900 mb-3 group-hover:text-ark-red transition-colors duration-300">
-          {service.title}
-        </h3>
-
-        <p className="text-gray-600 text-sm leading-relaxed mb-4">{service.shortDesc || service.excerpt}</p>
-
-        {service.cover_image_url && (
-          <div className="relative w-full h-36 mt-auto mb-4 overflow-hidden rounded">
-            <Image
-              src={service.cover_image_url}
-              alt={service.title}
-              fill
-              className="object-cover transition-transform duration-500 group-hover:scale-105"
-              sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent" />
-          </div>
-        )}
-
-        <div className="flex items-center gap-2 text-ark-red text-sm font-semibold uppercase tracking-wider opacity-0 group-hover:opacity-100 transition-all duration-300 -translate-x-2 group-hover:translate-x-0 mt-auto">
-          <span>Detay</span>
-          <ArrowRight size={14} />
+        {/* Title */}
+        <div className="absolute bottom-0 left-0 right-0 p-5">
+          <h3 className="font-heading font-bold text-base uppercase text-white leading-tight group-hover:text-ark-red-light transition-colors duration-300">
+            {item.title}
+          </h3>
+          <div className="w-8 h-0.5 bg-ark-red mt-2 transition-all duration-300 group-hover:w-12" />
         </div>
       </div>
-    </Link>
+    </div>
   );
 }
 
@@ -64,7 +94,7 @@ interface ServicesSectionProps {
   text: string;
 }
 
-export function ServicesSection({ services, title, subtitle, text }: ServicesSectionProps) {
+export function ServicesSection({ title, subtitle, text }: ServicesSectionProps) {
   const { ref: titleRef, isVisible: titleVisible } = useScrollAnimation();
 
   return (
@@ -94,15 +124,15 @@ export function ServicesSection({ services, title, subtitle, text }: ServicesSec
           </p>
         </div>
 
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {services.map((service, i) => (
-            <ServiceCard key={service.id || service.slug} service={service} index={i} />
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+          {CAPABILITIES.map((item, i) => (
+            <CapabilityCard key={item.title} item={item} index={i} />
           ))}
         </div>
 
         <div className={`text-center mt-12 animate-on-scroll ${titleVisible ? "is-visible" : ""}`}>
           <Link href="/hizmetler" className="btn-outline inline-flex">
-            Tüm Hizmetleri İnceleyin <ArrowRight size={16} />
+            Faaliyet Alanlarımız <ArrowRight size={16} />
           </Link>
         </div>
       </div>

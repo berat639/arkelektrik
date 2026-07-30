@@ -616,7 +616,15 @@ const DEFAULT_SERVICES: Array<{
     features: [],
     standards: [],
     applications: [],
-    content: "",
+    content: `Endüstriyel tesisler, ticari binalar ve yaşam alanlarında can ve mal güvenliğini sağlamanın ilk adımı, olası bir yangın riskini henüz başlangıç aşamasında tespit etmektir. **Yangın Algılama ve İkaz Sistemleri**; ısı, duman, alev veya karbonmonoksit gibi yangın belirtilerini anlık olarak algılayarak, erken uyarı ve otomatik acil durum senaryolarını devreye sokan kritik bina kontrol altyapılarıdır.
+
+### Kullanılan Sistem ve Dedektörler
+- **Konvansiyonel Yangın Alarm Sistemleri** (Conventional Fire Alarm Systems)
+- **Adresli Yangın Alarm Sistemleri** (Addressable Fire Alarm Systems)
+- **Işın Tipi (Beam) Dedektörler** (Beam Detectors)
+- **Kablo Tipi Dedektörler** (Linear Heat Detectors)
+- **Hava Örneklemeli Algılama Sistemleri** (Air Sampling Smoke Detection Systems)
+- **Alev Dedektörleri** (Flame Detectors)`,
     cover_image_url: "/yangin_algilama.png",
   },
   {
@@ -628,7 +636,16 @@ const DEFAULT_SERVICES: Array<{
     features: [],
     standards: [],
     applications: [],
-    content: "",
+    content: `Endüstriyel tesislerdeki üretim, depolama ve proses süreçlerinde açığa çıkan patlayıcı, parlayıcı veya toksik gazlar; proses emniyeti standartlarına uygun olarak kontrol altına alınmadığı takdirde birincil derecede hayati risk, patlama ve duruş kayıplarına yol açmaktadır. 
+
+Tehlikeli gaz birikimlerini henüz kritik tutuşma veya zehirleme seviyelerine ulaşmadan algılayarak, erken uyarı, otomatik tahliye ve acil durum emniyet senaryolarını devreye sokan kritik proses emniyet ekipmanlarıdır.
+
+Bir tesiste gaz riskini kaynağında bertaraf etmek ve algılama sistemlerinden maksimum verim almak için aşağıdaki teknik önlemler bütünsel bir proses emniyeti yaklaşımıyla uygulanmalıdır:
+
+### ATEX ve Ex-Proof Ekipman Seçimi
+Tehlikeli bölgelerde (**Zone 0, Zone 1, Zone 2**) kullanılacak tüm dedektörler, bağlantı kutuları ve saha ekipmanları ilgili **ATEX/IECEx** patlamaya dayanıklılık normlarına tam uyumlu seçilmelidir.
+
+![Detronic Dedektör](https://via.placeholder.com/800x400?text=Detronic+Dedektor+Gorseli)`,
     cover_image_url: "/basinctan_koruma.jpeg",
   },
   {
@@ -640,7 +657,25 @@ const DEFAULT_SERVICES: Array<{
     features: [],
     standards: [],
     applications: [],
-    content: "",
+    content: `Kıvılcım algılama ve söndürme sistemleri; toz, lif veya parlayıcı dökme malzemelerin işlendiği, taşındığı ve depolandığı endüstriyel tesislerde proses emniyetini sağlamak amacıyla geniş bir kullanım alanına sahiptir.
+
+![Kıvılcım Algılama](https://via.placeholder.com/800x400?text=Kivilcim+Algilama+Sistemi+Gorseli)
+
+### Ekipman ve Proses Bazlı Kullanım Alanları
+- **Filtre Sistemleri, Siklonlar ve Silolar:** Toz tutma üniteleri, torbalı filtreler, siklon ayırıcılar ve hammadde/ürün depolama siloları.
+- **Pres Sistemleri ve Parçalayıcılar:** Yüksek mekanik sürtünme riskinin bulunduğu presler, kırıcılar, shredder (parçalayıcı) sistemleri.
+- **Soğutucular ve Konveyörler:** Ürün soğutma tamburları/kuleleri, bantlı ve pnomatik sevk konveyörleri.
+- **Değirmenler ve Elekler:** Öğütme, kırma ve eleme proseslerinin yürütüldüğü üniteler.
+
+### Sistemin Başlıca Bileşenleri (Main Components of the System)
+- Sistem kontrol paneli *(System control unit)*
+- Kıvılcım dedektörleri *(Spark detectors)*
+- Söndürme nozulları *(Extinguishing device / nozzles)*
+- Hidrofor sistemi *(Pressure booster system)*
+- Siren flaşör *(Horn and strobe light)*
+- Isı bandı sistemi *(Trace heating system)*
+- Termostat ve ısı dedektörü *(Thermostat and heat detector)*
+- Basınç şalteri ve akış sensörü *(Pressure switch and flow switch)*`,
     cover_image_url: "/k%C4%B1v%C4%B1lc%C4%B1m_algilama.jpeg",
   },
   {
@@ -652,7 +687,30 @@ const DEFAULT_SERVICES: Array<{
     features: [],
     standards: [],
     applications: [],
-    content: "",
+    content: `![Görüntü Tabanlı Yangın Algılama](https://via.placeholder.com/800x400?text=Goruntu+Tabanli+Yangin+Algilama+Gorseli)
+
+### Avantajları
+- Yangın durumunun anında doğrulanması
+- Yangın noktasının gözle hemen tespit edilmesi
+- Yangın öncesi ve sonrasının izlenebilmesi
+- Yangın olayının kayıt altına alınarak kanıt olarak kullanılabilmesi
+- Yangına daha hızlı ve doğru müdahale imkanı
+- İnsansız bölgeleri yangına karşı uzaktan denetleme ve güvenlik
+
+### Nerelerde Kullanılır?
+- Standart sistemlerin doğru çalışamayacağı tozlu / kirli alanlar
+- Yüksek tavanlı yerler
+- Duman algılama yapılamayacak dış ortamlar
+- Yanlış alarmların çok sık alındığı yerler
+- Erken algılamanın kritik olduğu bölgeler
+- Yangın durumunun yüksek maddi kayıplar oluşturacağı üretim tesisleri
+
+### Kullanım Alanları
+- Hangarlar
+- Yüksek tavanlı depolar
+- Endüstriyel tesisler
+- Atık ve geri dönüşüm tesisleri
+- Veri merkezleri`,
     cover_image_url: "",
   },
   {
@@ -664,7 +722,16 @@ const DEFAULT_SERVICES: Array<{
     features: [],
     standards: [],
     applications: [],
-    content: "",
+    content: `Endüstriyel tesislerin parlayıcı, patlayıcı gaz, buhar veya toz riski taşıyan tehlikeli sahalarında (**Zone 0, Zone 1, Zone 2 / Zone 20, Zone 21, Zone 22**) standart elektrikli ve elektronik ekipmanların kullanımı, olası bir ark veya yüksek yüzey sıcaklığı sebebiyle felaketle sonuçlanabilecek patlamaları tetikleyebilir. 
+
+**Ex-Proof** (Explosion-Proof / Flameproof) çözümler; muhafazaları bünyesinde oluşabilecek bir patlamayı hapsedecek, dış atmosfere alev/kıvılcım sızdırmayacak ve yüzey sıcaklığını ortamın tutuşma eşiğinin altında tutacak şekilde tasarlanmış özel mühendislik sistemleridir.
+
+![Ex-Proof Ekipmanlar](https://via.placeholder.com/800x400?text=Ex-Proof+Ekipman+Gorseli)
+
+### Çözüm Alanlarımız
+- Ex-Proof Yangın Algılama Sistemleri
+- Ex-Proof Kamera ve Görüntüleme Sistemleri
+- Ex-Proof Aydınlatma Sistemleri`,
     cover_image_url: "/exproof.jpeg",
   },
   {
@@ -676,7 +743,37 @@ const DEFAULT_SERVICES: Array<{
     features: [],
     standards: [],
     applications: [],
-    content: "",
+    content: `Görsellerdeki katalog sayfalarında yer alan tüm söndürme sistemleri ve alt kategorileri Türkçe olarak aşağıda maddelenmiştir:
+
+![Yangın Söndürme Sistemleri](https://via.placeholder.com/800x400?text=Yangin+Sondurme+Sistemi+Gorseli)
+
+### 1. Gazlı Söndürme Sistemleri
+Kritik ve değerli varlıkların yangına karşı korunmasında temiz gazlı söndürme sistemleri tercih edilmelidir. **NFPA 2001, EN 15004 ve ISO 14520** standartlarına uygun tamamı sertifikalı sistemlerdir.
+- **HFC227ea** (FM-200) ve **HFC125** (Ecaro25)
+- **FK-5-1-12** (Novec 1230)
+- **Inert Gazlar** (IG-01, IG-55, IG-541, IG-100)
+- **Karbondioksit** (CO2)
+
+### 2. Köpüklü Söndürme Sistemleri
+Köpüklü söndürme sistemleri su ile söndürülmesi mümkün olmayan yoğun yanıcı/parlayıcı kimyasal maddelerin veya yakıt yangınlarının söndürülmesinde tercih edilir. Söndürücü madde olarak kullanılan yangın söndürme köpüğü yanan yüzeyin üzerini örterek yangın ile hava temasını keser.
+- Düşük Genleşmeli Köpük Sistemleri
+- Orta Genleşmeli Köpük Sistemleri
+- Yüksek Genleşmeli Köpük Sistemleri
+
+### 3. Sulu Söndürme Sistemleri
+- Sprinkler (Yağmurlama) Söndürme Sistemleri
+- Baskın (Deluge) Sprinkler Sistemi
+- Ön Tepkimeli (Preaction) Sprinkler Sistemi
+- Su Sisi (Watermist) Söndürme Sistemleri
+  - Düşük Basınçlı Su Sisi Sistemleri
+  - Yüksek Basınçlı Su Sisi Sistemleri
+- Hidrant Sistemleri
+- Yangın Dolapları
+
+### 4. Pano İçi Söndürme Sistemleri
+Tüm oda yerine sadece belirli bir boyuttaki kabin, pano vb. daha küçük kapalı hacimlerin yangından korunması gerektiğinde pano içi söndürme sistemleri kullanılabilir. İndirekt tip sistemlerde yangın durumunda eriyerek temiz gazın ortama otomatik boşalmasını sağlayan plastik boru (tubing) kullanılır. Direkt sistemde ise oda koruma gibi bir algılama sistemi ve nozul bulunmaktadır.
+- İndirekt Pano İçi Söndürme Sistemleri
+- Direkt Pano İçi Söndürme Sistemleri`,
     cover_image_url: "",
   },
   {
@@ -688,7 +785,24 @@ const DEFAULT_SERVICES: Array<{
     features: [],
     standards: [],
     applications: [],
-    content: "",
+    content: `![Patlamadan Korunma Çözümleri](https://via.placeholder.com/800x400?text=Patlamadan+Korunma+Cozumleri+Gorseli)
+
+### 1. Patlama Kapakları
+Patlama anında oluşan yüksek basıncı güvenli bir alana tahliye ederek ekipman ve tesisin zarar görmesini engelleyen pasif koruma sistemleridir.
+
+### 2. Alevsiz Tahliye
+Patlama basıncını ve alevi bina içinde veya kapalı mekanlarda güvenli bir şekilde sönümleyerek dışarıya alev yayılmasını önleyen tahliye sistemleridir.
+
+### 3. Patlama İzolasyonu
+Patlamanın basınç ve alev dalgasının boru hatları üzerinden diğer proses ekipmanlarına ve ünitelere sıçramasını engelleyen bariyer ve vana sistemleridir.
+- **Pasif İzolasyon:** Geri dönüşsüz vanalar ve klapeler.
+- **Aktif İzolasyon:** Kimyasal sönümlendirme bariyerleri ve hızlı vanalar.
+
+### 4. Patlama Sönümleme
+Patlamayı basınç henüz tehlikeli seviyeye ulaşmadan (milisaniyeler içinde) algılayıp özel sönümlendirici maddelerle kapalı hacim içinde söndüren aktif sistemlerdir.
+
+### 5. Elevex Sistemi
+Yüksek elevatörler, dikey taşıma hatları ve özel proses alanları için ATEX/NFPA uyumlu bütünleşik aktif ve pasif patlama koruma çözümleridir.`,
     cover_image_url: "/patlamadan_korunma.jpeg",
   },
   {
@@ -700,7 +814,17 @@ const DEFAULT_SERVICES: Array<{
     features: [],
     standards: [],
     applications: [],
-    content: "",
+    content: `Endüstriyel tesislerdeki hatlarda, reaktörlerde ve basınçlı kaplarda proses koşulları veya beklenmeyen reaksiyonlar sebebiyle meydana gelen tehlikeli basınç artışlarını anında tahliye ederek sistemin patlamasını ve hasar görmesini engelleyen basınç emniyet çözümleridir.
+
+![Aşırı Basınçtan Korunma](https://via.placeholder.com/800x400?text=Asiri+Basinctan+Korunma+Gorseli)
+
+### Çözümlerimiz
+- İleri/Geri Yönlü Patlama Diskleri
+- Hijyenik Tip Patlama Diskleri
+- Özel Tip Diskler
+- Grafit Patlama Diskleri
+- Tutucular
+- Aksesuarlar *(Patlama sensörleri/göstergeleri, uyarı sensörleri, contalar, boru uç kapakları vb.)*`,
     cover_image_url: "/asiri_basinctan_korunma.jpeg",
   },
   {
@@ -712,13 +836,32 @@ const DEFAULT_SERVICES: Array<{
     features: [],
     standards: [],
     applications: [],
-    content: "",
+    content: `Endüstriyel tesislerde can güvenliğinin, tesis bütünlüğünün ve operasyonel sürekliliğin korunması; emniyet sistemlerinin kusursuz çalışmasına bağlıdır. Tesislerin proses emniyeti gereksinimlerine yönelik uluslararası standartlara ve yasal mevzuatlara tam uyumlu, kapsamlı mühendislik, test ve bakım hizmetleri sunulmaktadır.
+
+![Servis ve Bakım](https://via.placeholder.com/800x400?text=Servis+ve+Bakim+Gorseli)
+
+### 1. Yangın ve Patlama Risk Analizi
+Tesis genelinde olası yangın ve patlama risklerinin önceden tespiti, mevcut durumun teknik değerlendirmesi ve ulusal/uluslararası mevzuatlar kapsamında muhtemel tehlikelerin bertaraf edilmesine yönelik mühendislik çalışmaları yürütülür.
+- **Risk Değerlendirmesi:** Tesis proses alanları, depolama üniteleri ve hatlar üzerinde kapsamlı yangın ve patlama risk analizi.
+- **Mevzuat ve Standartlara Uyum:** Yasal düzenlemelere (Binaların Yangından Korunması Hakkında Yönetmelik, ATEX 153/114, NFPA, EN vb.) uyumluluğun denetlenmesi ve mevcut güvenlik önlemlerinin gözden geçirilmesi.
+- **Acil Durum Senaryoları:** Acil durum prosedürlerinin revize edilmesi, personel farkındalık eğitimlerinin planlanması ve tatbikat altyapısının oluşturulması.
+- **Raporlama ve Danışmanlık:** Elde edilen tüm verilerin teknik analizlerle desteklenerek kapsayıcı bir "Risk Değerlendirme ve Eylem Planı Raporu" halinde sunulması.
+
+### 2. Toz Patlaması Laboratuvar Testleri
+Proses hatlarında veya depolama alanlarında oluşan endüstriyel tozların patlayıcılık karakteristiklerinin belirlenmesi, doğru patlama koruma (tahliye, sönümleme, izolasyon) sistemlerinin tasarlanmasında kritik role sahiptir.
+
+### 3. Saha Mühendislik ve Periyodik Bakım Hizmetleri
+Sistemlerin ilk kurulum aşamasından işletme ömrü boyunca yüksek performansla çalışmasını garanti altına alan teknik saha hizmetleridir.
+- Saha Keşfi ve Projelendirme
+- Süpervizörlük ve Devreye Alma
+- Periyodik Teknik Bakım
+- Test ve Uygulamalı Eğitim Hizmetleri`,
     cover_image_url: "/servis_bakim.webp",
   },
 ];
 
 // Bump this version whenever DEFAULT_SERVICES change to trigger a reseed
-const SERVICES_SEED_VERSION = 10;
+const SERVICES_SEED_VERSION = 11;
 
 async function ensureServicePages(): Promise<void> {
   const storedVersion = await redis.get<number>(KEYS.servicesSeedVersion);

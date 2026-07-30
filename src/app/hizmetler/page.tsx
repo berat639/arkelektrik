@@ -85,7 +85,7 @@ export default async function ServicesPage() {
         title="Hizmetlerimiz"
         subtitle="Endüstriyel tesisleriniz için uçtan uca güvenlik çözümleri. Her hizmet, tesisinizin özgün tehlike profiline göre tasarlanmaktadır."
         breadcrumbs={[{ label: "Hizmetler" }]}
-        image={settings.servicesPageImage || "/banner.jpeg"}
+        image={settings.servicesPageImage || "/servis_bakim.jpeg"}
       />
 
       <section className="bg-white py-24 relative">

@@ -31,7 +31,7 @@ export default function ContactPage() {
     phone: "+90 (312) 557 43 28",
     email: "info@arkelk.com.tr",
     address: "Altay Mah. Ayaş Ankara Yolu Blv. Platinum No: 212, 10. Kat No: 49, Etimesgut, Ankara, Türkiye",
-    contactPageImage: "/about-engineering.png",
+    contactPageImage: "/iletisim-banner.jpeg",
   });
 
   const [form, setForm] = useState({

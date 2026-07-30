@@ -17,6 +17,7 @@ export default async function CatalogsPage() {
         title="Kataloglar"
         subtitle="Ürün ve çözüm kataloglarımız"
         breadcrumbs={[{ label: "Kataloglar" }]}
+        image="/katalog-banner.jpeg"
       />
 
       <section className="py-20 bg-white">

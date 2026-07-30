@@ -10,7 +10,7 @@ const STANDARDS = [
   { name: "LPCB", description: "Loss Prevention Certification Board", logo: "/lpcb.png" },
   { name: "ISO", description: "International Organization for Standardization", logo: "/%C4%B1so.png" },
   { name: "UL", description: "UL Listed", logo: "/ul.png" },
-  { name: "CNPP", description: "Centre National de Prévention et de Protection", logo: "/cnpp.png" },
+  { name: "EN", description: "European Standards", logo: "/en-logo.jpg" },
 ];
 
 export function FixedStandards() {

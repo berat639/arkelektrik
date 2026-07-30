@@ -115,39 +115,45 @@ export default async function ServiceDetailPage({ params }: Props) {
                   </h3>
                   <div className="grid sm:grid-cols-2 gap-4">
                     {publishedSubProducts.map((sp) => (
-                      <Link
+                      <div
                         key={sp.id}
-                        href={`/hizmetler/${slug}/${sp.slug}`}
-                        className="bg-white border border-gray-200 p-5 hover:border-red-200 hover:shadow-md transition-all group block"
+                        className="bg-white border border-gray-200 hover:border-red-200 hover:shadow-md transition-all group flex flex-col"
                         style={{
                           clipPath:
                             "polygon(0 0, calc(100% - 12px) 0, 100% 12px, 100% 100%, 12px 100%, 0 calc(100% - 12px))",
                         }}
                       >
-                        <h4 className="font-heading font-bold text-sm uppercase text-gray-900 mb-2 group-hover:text-red-600 transition-colors">
-                          {sp.title}
-                        </h4>
-                        {sp.description && (
-                          <p className="text-gray-500 text-xs leading-relaxed mb-3 line-clamp-3">
-                            {sp.description}
-                          </p>
+                        {sp.cover_image_url && (
+                          <div className="w-full h-40 overflow-hidden bg-gray-100 flex-shrink-0">
+                            <img src={sp.cover_image_url} alt={sp.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+                          </div>
                         )}
-                        {sp.features.length > 0 && (
-                          <ul className="space-y-1">
-                            {sp.features.slice(0, 5).map((f, i) => (
-                              <li key={i} className="flex items-start gap-2 text-xs text-gray-600">
-                                <span className="w-1 h-1 rounded-full bg-red-500 mt-1.5 flex-shrink-0" />
-                                {f}
-                              </li>
-                            ))}
-                            {sp.features.length > 5 && (
-                              <li className="text-xs text-gray-400 pl-3">
-                                +{sp.features.length - 5} daha...
-                              </li>
-                            )}
-                          </ul>
-                        )}
-                      </Link>
+                        <div className="p-5 flex flex-col flex-grow">
+                          <h4 className="font-heading font-bold text-sm uppercase text-gray-900 mb-2 group-hover:text-red-600 transition-colors">
+                            {sp.title}
+                          </h4>
+                          {sp.description && (
+                            <p className="text-gray-500 text-xs leading-relaxed mb-3">
+                              {sp.description}
+                            </p>
+                          )}
+                          {sp.features.length > 0 && (
+                            <ul className="space-y-1 mt-auto">
+                              {sp.features.slice(0, 5).map((f, i) => (
+                                <li key={i} className="flex items-start gap-2 text-xs text-gray-600">
+                                  <span className="w-1 h-1 rounded-full bg-red-500 mt-1.5 flex-shrink-0" />
+                                  {f}
+                                </li>
+                              ))}
+                              {sp.features.length > 5 && (
+                                <li className="text-xs text-gray-400 pl-3">
+                                  +{sp.features.length - 5} daha...
+                                </li>
+                              )}
+                            </ul>
+                          )}
+                        </div>
+                      </div>
                     ))}
                   </div>
                 </div>
@@ -209,14 +215,14 @@ export default async function ServiceDetailPage({ params }: Props) {
       </section>
 
       {/* Process section */}
-      <section className="bg-gradient-to-br from-ark-red-muted via-ark-red to-ark-red-muted/25 py-20 relative overflow-hidden">
-        <TechBackground variant="dark" />
+      <section className="bg-slate-50 py-20 relative overflow-hidden border-t border-gray-200">
+        <TechBackground variant="default" />
         <div className="max-w-7xl mx-auto px-6 relative z-10">
           <div className="text-center mb-12">
-            <span className="text-ark-red-light text-xs font-semibold uppercase tracking-[0.25em] mb-4 block">
+            <span className="text-ark-red text-xs font-semibold uppercase tracking-[0.25em] mb-4 block">
               Nasıl Çalışırız
             </span>
-            <h2 className="font-heading font-bold text-3xl uppercase text-white mb-4">Proje Sürecimiz</h2>
+            <h2 className="font-heading font-bold text-3xl uppercase text-gray-900 mb-4">Proje Sürecimiz</h2>
             <div className="w-16 h-1 bg-ark-red mx-auto" />
           </div>
 
@@ -229,17 +235,17 @@ export default async function ServiceDetailPage({ params }: Props) {
             ].map(({ step, title, desc }) => (
               <div
                 key={step}
-                className="bg-gradient-to-br from-ark-red-dark/50 to-ark-red-muted/40 border border-ark-red/15 p-6 relative"
+                className="bg-white border border-gray-200 p-6 relative group hover:border-red-200 hover:shadow-md transition-all"
                 style={{
                   clipPath:
                     "polygon(0 0, calc(100% - 14px) 0, 100% 14px, 100% 100%, 14px 100%, 0 calc(100% - 14px))",
                 }}
               >
-                <div className="font-heading font-bold text-5xl text-ark-red-light/20 leading-none mb-4">
+                <div className="font-heading font-bold text-5xl text-gray-100 group-hover:text-red-50 transition-colors leading-none mb-4">
                   {step}
                 </div>
-                <h3 className="font-heading font-bold text-lg uppercase text-white mb-2">{title}</h3>
-                <p className="text-white/60 text-sm leading-relaxed">{desc}</p>
+                <h3 className="font-heading font-bold text-lg uppercase text-gray-900 mb-2 group-hover:text-ark-red transition-colors">{title}</h3>
+                <p className="text-gray-500 text-sm leading-relaxed">{desc}</p>
               </div>
             ))}
           </div>

@@ -14,7 +14,7 @@ const CAPABILITIES = [
   },
   {
     title: "Keşif ve Uygulama",
-    image: "/yangin_algilama.png",
+    image: "/kesif-ve-uygulama.jpeg",
     icon: Search,
   },
   {

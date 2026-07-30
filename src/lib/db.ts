@@ -617,7 +617,7 @@ const DEFAULT_SERVICES: Array<{
     standards: [],
     applications: [],
     content: `Endüstriyel tesisler, ticari binalar ve yaşam alanlarında can ve mal güvenliğini sağlamanın ilk adımı, olası bir yangın riskini henüz başlangıç aşamasında tespit etmektir. **Yangın Algılama ve İkaz Sistemleri**; ısı, duman, alev veya karbonmonoksit gibi yangın belirtilerini anlık olarak algılayarak, erken uyarı ve otomatik acil durum senaryolarını devreye sokan kritik bina kontrol altyapılarıdır.`,
-    cover_image_url: "/yangin_algilama.png",
+    cover_image_url: "/yangin-algilama-ve-ihbar-sistemleri.jpeg",
   },
   {
     title: "Gaz Algılama Sistemleri",
@@ -667,7 +667,7 @@ Bir tesiste gaz riskini kaynağında bertaraf etmek ve algılama sistemlerinden 
 - İnsansız bölgeleri yangına karşı uzaktan denetleme imkanı
 
 **Kullanım Alanları:** Yüksek tavanlı depolar, hangarlar, endüstriyel üretim tesisleri, atık tesisleri ve dış ortamlar.`,
-    cover_image_url: "",
+    cover_image_url: "/goruntu-tabanli-algilama.jpeg",
   },
   {
     title: "Exproof Çözümler",
@@ -695,7 +695,7 @@ Bir tesiste gaz riskini kaynağında bertaraf etmek ve algılama sistemlerinden 
     content: `Kritik varlıkların yangına karşı korunmasında temiz gazlı, sulu, köpüklü ve pano içi gibi çeşitli teknolojik söndürme sistemleri tercih edilmektedir.
 
 Sistemlerimiz **NFPA 2001, EN 15004 ve ISO 14520** standartlarına uygun olup tamamı sertifikalı ürünlerden oluşmaktadır.`,
-    cover_image_url: "",
+    cover_image_url: "/yangin-sondurme.jpeg",
   },
   {
     title: "Patlamadan Korunma",
@@ -731,12 +731,12 @@ Sistemlerimiz **NFPA 2001, EN 15004 ve ISO 14520** standartlarına uygun olup ta
     standards: [],
     applications: [],
     content: `Endüstriyel tesislerde can güvenliğinin, tesis bütünlüğünün ve operasyonel sürekliliğin korunması; emniyet sistemlerinin kusursuz çalışmasına bağlıdır. Tesislerin proses emniyeti gereksinimlerine yönelik uluslararası standartlara ve yasal mevzuatlara tam uyumlu, kapsamlı mühendislik, test ve bakım hizmetleri sunulmaktadır.`,
-    cover_image_url: "/servis_bakim.webp",
+    cover_image_url: "/servis_bakim.jpeg",
   },
 ];
 
 // Bump this version whenever DEFAULT_SERVICES change to trigger a reseed
-const SERVICES_SEED_VERSION = 12;
+const SERVICES_SEED_VERSION = 16;
 
 async function ensureServicePages(): Promise<void> {
   const storedVersion = await redis.get<number>(KEYS.servicesSeedVersion);
@@ -1390,8 +1390,8 @@ const DEFAULT_SITE_SETTINGS: SiteSettings = {
     { name: 'NFPA', desc: 'Üye & Uygulayıcı' },
     { name: 'IECEx', desc: 'Sertifika Uzmanı' },
   ],
-  servicesPageImage: "https://images.pexels.com/photos/2760241/pexels-photo-2760241.jpeg?auto=compress&cs=tinysrgb&w=1920",
-  contactPageImage: "/about-engineering.png",
+  servicesPageImage: "/servis_bakim.jpeg",
+  contactPageImage: "/iletisim-banner.jpeg",
   aboutPageSubtitle: "15 yılı aşkın endüstriyel güvenlik tecrübesiyle, standart bir tedarikçiden öte uçtan uca mühendislik partneri.",
 
   ctaBannerImage:

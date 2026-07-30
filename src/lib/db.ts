@@ -1099,7 +1099,7 @@ const DEFAULT_SUBPRODUCTS: Array<{
   },
 ];
 
-const SUBPRODUCTS_SEED_VERSION = 3;
+const SUBPRODUCTS_SEED_VERSION = 4;
 
 async function ensureSubProducts(): Promise<void> {
   const storedVersion = await redis.get<number>(KEYS.subProductsSeedVersion);

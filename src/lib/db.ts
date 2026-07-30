@@ -1422,10 +1422,13 @@ const DEFAULT_SITE_SETTINGS: SiteSettings = {
 
   standardsSectionTitle: "Standartlar & Markalar",
   carouselBrands: [
-    { image: "https://upload.wikimedia.org/wikipedia/commons/thumb/c/cd/NFPA_logo.svg/1200px-NFPA_logo.svg.png", title: "NFPA" },
-    { image: "https://upload.wikimedia.org/wikipedia/commons/thumb/1/14/ATEX_logo.svg/1200px-ATEX_logo.svg.png", title: "ATEX" },
-    { image: "https://upload.wikimedia.org/wikipedia/commons/thumb/8/87/IECEx_logo.svg/1200px-IECEx_logo.svg.png", title: "IECEx" },
-    { image: "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7b/CE_mark.svg/1200px-CE_mark.svg.png", title: "CE" },
+    { image: "/cozum-ortaklarimiz-eaton-logo.webp", title: "Eaton" },
+    { image: "/cozum-ortaklarimiz-honeywell.webp", title: "Honeywell" },
+    { image: "/cozum-ortaklarimiz-rsbp-logo.webp", title: "RSBP" },
+    { image: "/cozum-ortaklarimiz-tyco-logo.webp", title: "Tyco" },
+    { image: "/cozum-ortaklarimiz-zook-logo.webp", title: "Zook" },
+    { image: "/detronicsupdate.webp", title: "Det-Tronics" },
+    { image: "/TB-Logo-2025-Wortmarke-1.png.webp", title: "TB" },
   ],
 
 

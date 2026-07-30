@@ -22,7 +22,7 @@ export function PageHero({
   accent,
 }: PageHeroProps) {
   return (
-    <section className="relative -mt-20 pt-32 pb-20 overflow-hidden">
+    <section className="relative -mt-20 pt-48 pb-32 overflow-hidden">
       {/* Background */}
       <div className="absolute inset-0">
         <img src={image} alt="" className="w-full h-full object-cover" />

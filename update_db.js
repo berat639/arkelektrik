@@ -168,7 +168,7 @@ const newSubProducts = `const DEFAULT_SUBPRODUCTS: Array<{
     slug: "konvansiyonel-yangin-alarm-sistemleri",
     description: "Geleneksel yangın algılama ihtiyaçları için bölgesel tespit sağlayan güvenilir ve uygun maliyetli alarm sistemleri.",
     features: ["Bölgesel (Zon) bazlı algılama", "Düşük ilk yatırım maliyeti", "Kolay bakım ve işletme"],
-    cover_image_url: "https://via.placeholder.com/800x400?text=Konvansiyonel+Sistem",
+    cover_image_url: "https://www.elva.com.tr/wp-content/uploads/2024/02/konvansiyel-yangin-algilama-sistem-bilesenleri.jpg",
   },
   {
     serviceSlug: "yangin-algilama-ve-ihbar-sistemleri",
@@ -176,7 +176,7 @@ const newSubProducts = `const DEFAULT_SUBPRODUCTS: Array<{
     slug: "adresli-yangin-alarm-sistemleri",
     description: "Yangının tam noktasal yerini bildiren, gelişmiş senaryo altyapısına sahip akıllı algılama sistemleri.",
     features: ["Noktasal tespit (Dedektör bazlı)", "Gelişmiş entegrasyon", "Hata ve kirlilik uyarısı"],
-    cover_image_url: "https://via.placeholder.com/800x400?text=Adresli+Sistem",
+    cover_image_url: "https://www.elva.com.tr/wp-content/uploads/2024/02/adresli-yangin-algilama-sistemleri-20191018-2.jpg",
   },
   {
     serviceSlug: "yangin-algilama-ve-ihbar-sistemleri",
@@ -184,7 +184,7 @@ const newSubProducts = `const DEFAULT_SUBPRODUCTS: Array<{
     slug: "isin-tipi-beam-dedektorler",
     description: "Yüksek tavanlı ve geniş hacimli alanlarda duman algılaması için kullanılan kızılötesi ışınlı dedektörler.",
     features: ["Geniş alan kapsamı", "Yüksek tavanlara uygun", "Hızlı tepki süresi"],
-    cover_image_url: "https://via.placeholder.com/800x400?text=Beam+Dedektor",
+    cover_image_url: "https://www.kesfedin.com/img/fireray-3000-101-112080-0.jpg",
   },
   {
     serviceSlug: "yangin-algilama-ve-ihbar-sistemleri",
@@ -192,7 +192,7 @@ const newSubProducts = `const DEFAULT_SUBPRODUCTS: Array<{
     slug: "kablo-tipi-dedektorler",
     description: "Zorlu endüstriyel ortamlarda doğrusal sıcaklık artışını algılayan lineer dedektörler.",
     features: ["Doğrusal ısı algılama", "Zorlu ortam direnci", "Kablo galerileri için ideal"],
-    cover_image_url: "https://via.placeholder.com/800x400?text=Kablo+Tipi+Dedektor",
+    cover_image_url: "https://www.elva.com.tr/wp-content/uploads/2024/02/elva-kablo-tipi-dedektorler-4.jpg",
   },
   {
     serviceSlug: "yangin-algilama-ve-ihbar-sistemleri",
@@ -200,7 +200,7 @@ const newSubProducts = `const DEFAULT_SUBPRODUCTS: Array<{
     slug: "hava-orneklemeli-algilama-sistemleri",
     description: "Aktif hava emişi ile ortamdaki çok küçük duman partiküllerini tespit ederek en erken uyarıyı sağlayan sistemler.",
     features: ["Çok erken uyarı (ASD)", "Aktif hava emişi", "Veri merkezleri için ideal"],
-    cover_image_url: "https://via.placeholder.com/800x400?text=ASD+Sistemi",
+    cover_image_url: "https://www.elva.com.tr/wp-content/uploads/2024/02/hava-orneklemeli-sistem-20191018-2-1.jpg",
   },
   {
     serviceSlug: "yangin-algilama-ve-ihbar-sistemleri",
@@ -208,7 +208,7 @@ const newSubProducts = `const DEFAULT_SUBPRODUCTS: Array<{
     slug: "alev-dedektorleri",
     description: "UV/IR teknolojileri kullanarak dumansız alevleri saliseler içinde tespit eden yüksek hızlı dedektörler.",
     features: ["UV / IR sensörler", "Anında tepki süresi", "Yanıcı sıvı/gaz tesisleri"],
-    cover_image_url: "https://via.placeholder.com/800x400?text=Alev+Dedektoru",
+    cover_image_url: "https://www.elva.com.tr/wp-content/uploads/2024/02/adresli-yangin-algilama-sistemleri-200.jpg",
   },
   
   // ─── Gaz Algılama Sistemleri ───
@@ -218,7 +218,7 @@ const newSubProducts = `const DEFAULT_SUBPRODUCTS: Array<{
     slug: "atex-ve-ex-proof-ekipman-secimi",
     description: "Tehlikeli bölgelerde (Zone 0, Zone 1, Zone 2) kullanılacak tüm dedektörler ve ekipmanlar ATEX/IECEx normlarına tam uyumlu seçilmelidir.",
     features: ["ATEX / IECEx Sertifikalı", "Patlayıcı Ortamlara Uygun", "Zone 0, 1, 2 Uyumluluğu"],
-    cover_image_url: "https://via.placeholder.com/800x400?text=ATEX+Ekipman",
+    cover_image_url: "https://www.elva.com.tr/wp-content/smush-webp/2026/02/gaz-algilama-sistemleri-image__3___-1024x817.jpg.webp",
   },
 
   // ─── Kıvılcım Algılama Söndürme ───
@@ -228,7 +228,7 @@ const newSubProducts = `const DEFAULT_SUBPRODUCTS: Array<{
     slug: "filtre-sistemleri-siklonlar-silolar",
     description: "Toz tutma üniteleri, torbalı filtreler, siklon ayırıcılar ve hammadde/ürün depolama siloları için kıvılcım algılama çözümleri.",
     features: ["Toz Tutma Üniteleri", "Torbalı Filtreler", "Depolama Siloları"],
-    cover_image_url: "https://via.placeholder.com/800x400?text=Filtre+Sistemleri",
+    cover_image_url: "https://www.elva.com.tr/wp-content/uploads/2024/02/kivilcim-sondurme.jpeg",
   },
   {
     serviceSlug: "kivilcim-algilama-sondurme",
@@ -236,7 +236,7 @@ const newSubProducts = `const DEFAULT_SUBPRODUCTS: Array<{
     slug: "pres-sistemleri-ve-parcalayicilar",
     description: "Yüksek mekanik sürtünme riskinin bulunduğu presler, kırıcılar, shredder (parçalayıcı) sistemleri için güvenlik.",
     features: ["Presler", "Kırıcılar", "Shredder Sistemleri"],
-    cover_image_url: "https://via.placeholder.com/800x400?text=Pres+Sistemleri",
+    cover_image_url: "https://www.elva.com.tr/wp-content/uploads/2024/02/kivilcim-sondurme.jpeg",
   },
   {
     serviceSlug: "kivilcim-algilama-sondurme",
@@ -244,7 +244,7 @@ const newSubProducts = `const DEFAULT_SUBPRODUCTS: Array<{
     slug: "sogutucular-ve-konveyorler",
     description: "Ürün soğutma tamburları/kuleleri, bantlı ve pnömatik sevk konveyörleri için kıvılcım algılama çözümleri.",
     features: ["Soğutma Tamburları", "Bantlı Konveyörler", "Pnömatik Sevk"],
-    cover_image_url: "https://via.placeholder.com/800x400?text=Sogutucu+Konveyor",
+    cover_image_url: "https://www.elva.com.tr/wp-content/uploads/2024/03/endustriyel-kimya-3.jpg",
   },
   {
     serviceSlug: "kivilcim-algilama-sondurme",
@@ -252,7 +252,7 @@ const newSubProducts = `const DEFAULT_SUBPRODUCTS: Array<{
     slug: "degirmenler-ve-elekler",
     description: "Öğütme, kırma ve eleme proseslerinin yürütüldüğü ünitelerde güvenliği en üst düzeye çıkaran sistemler.",
     features: ["Öğütme Prosesleri", "Kırma İşlemleri", "Eleme Üniteleri"],
-    cover_image_url: "https://via.placeholder.com/800x400?text=Degirmen+ve+Elek",
+    cover_image_url: "https://www.elva.com.tr/wp-content/uploads/2024/02/kivilcim-sondurme.jpeg",
   },
 
   // ─── Görüntü Tabanlı Yangın Algılama ───

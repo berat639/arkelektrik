@@ -1135,7 +1135,7 @@ async function ensureSubProducts(): Promise<void> {
     const serviceId = await redis.get<string>(KEYS.serviceBySlug(def.serviceSlug));
     if (!serviceId) continue;
 
-    const id = crypto.randomUUID();
+    const id = `sub-${def.slug}`;
     const now = new Date().toISOString();
     const subProduct: SubProduct = {
       id,

@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import { getAllSlides, getPublishedServicePages, getSiteSettings, getAboutPage } from "@/lib/db";
 import { HeroSlider } from "@/components/ui/hero-slider";
 import { AboutTeaser } from "@/components/ui/about-teaser";
@@ -6,6 +7,20 @@ import { WhyArk } from "@/components/ui/why-ark";
 import { StandardsSection } from "@/components/ui/standards-section";
 import { FixedStandards } from "@/components/ui/fixed-standards";
 import { CtaBanner } from "@/components/ui/cta-banner";
+
+export async function generateMetadata(): Promise<Metadata> {
+  const settings = await getSiteSettings();
+  
+  const baseKeywords = settings.seoKeywords 
+    ? settings.seoKeywords 
+    : "Endüstriyel Güvenlik, Yangın Algılama, Patlamadan Korunma, ARK Global";
+    
+  const hardcodedKeywords = "Exproof, Endüstriyel, Mke, Fire, Atex, Elektrik, Zayıfakım, Det-tronic, Kidde, Gazlı söndürme, Novec, Fm200, Alev dedektörü";
+
+  return {
+    keywords: `${baseKeywords}, ${hardcodedKeywords}`,
+  };
+}
 
 export default async function HomePage() {
   const [slides, services, settings, about] = await Promise.all([

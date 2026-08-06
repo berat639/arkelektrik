@@ -7,6 +7,7 @@ import {
   deleteSubProduct,
   getServicePageById,
 } from "@/lib/db";
+import { revalidatePath } from "next/cache";
 
 interface RouteContext {
   params: Promise<{ id: string }>;
@@ -52,6 +53,8 @@ export async function POST(request: NextRequest, { params }: RouteContext) {
     cover_image_url: cover_image_url || null,
   });
 
+  revalidatePath("/", "layout");
+
   return NextResponse.json({ subProduct }, { status: 201 });
 }
 
@@ -79,6 +82,8 @@ export async function PUT(request: NextRequest) {
     return NextResponse.json({ error: "Alt ürün bulunamadı" }, { status: 404 });
   }
 
+  revalidatePath("/", "layout");
+
   return NextResponse.json({ subProduct });
 }
 
@@ -99,6 +104,8 @@ export async function DELETE(request: NextRequest) {
   if (!deleted) {
     return NextResponse.json({ error: "Alt ürün bulunamadı" }, { status: 404 });
   }
+
+  revalidatePath("/", "layout");
 
   return NextResponse.json({ success: true });
 }

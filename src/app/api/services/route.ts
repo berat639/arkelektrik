@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
+import { revalidatePath } from "next/cache";
 import { auth } from "@/lib/auth";
 import { updateServicePage, getAllServicePages } from "@/lib/db";
 
@@ -31,6 +32,8 @@ export async function PUT(request: NextRequest) {
   if (!service) {
     return NextResponse.json({ error: "Bulunamadı" }, { status: 404 });
   }
+
+  revalidatePath("/", "layout");
 
   return NextResponse.json({ service });
 }

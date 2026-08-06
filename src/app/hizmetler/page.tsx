@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { ArrowRight, Flame, Zap, Shield, Gauge, Wind, Lock, Wrench, Eye, Bell } from "lucide-react";
+export const dynamic = 'force-dynamic';
 import { PageHero } from "@/components/ui/page-hero";
 import { getPublishedServicePages, getSiteSettings } from "@/lib/db";
 import { TechBackground } from "@/components/ui/tech-background";

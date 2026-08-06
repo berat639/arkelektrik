@@ -1,5 +1,6 @@
 import { notFound } from "next/navigation";
 import Link from "next/link";
+export const dynamic = 'force-dynamic';
 import {
   ArrowRight, ArrowLeft, Flame, Zap, Shield, Gauge, Wind, Lock, Wrench, Eye, Bell,
 } from "lucide-react";

@@ -3,6 +3,7 @@ import Link from "next/link";
 import { getServicePageById, getSubProductsByServiceId } from "@/lib/db";
 import { ServiceForm } from "@/components/admin/service-form";
 import { SubProductsList } from "@/components/admin/subproducts-list";
+export const dynamic = 'force-dynamic';
 
 interface Props {
   params: Promise<{ id: string }>;

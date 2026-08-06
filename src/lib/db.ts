@@ -742,54 +742,71 @@ async function ensureServicePages(): Promise<void> {
   const storedVersion = await redis.get<number>(KEYS.servicesSeedVersion);
   if (storedVersion === SERVICES_SEED_VERSION) return;
 
-  // Clear old data
-  const existingIds = await redis.zrange<string[]>(KEYS.servicesAll, 0, -1);
-  if (existingIds.length > 0) {
-    const cleanPipeline = redis.pipeline();
-    for (const id of existingIds) {
-      const svc = await redis.get<string>(KEYS.service(id));
-      if (svc) {
-        try {
-          const parsed = typeof svc === "string" ? JSON.parse(svc) : svc;
-          cleanPipeline.del(KEYS.serviceBySlug(parsed.slug));
-        } catch { /* ignore */ }
-      }
-      cleanPipeline.del(KEYS.service(id));
-    }
-    cleanPipeline.del(KEYS.servicesAll);
-    await cleanPipeline.exec();
+  // Use a lock to prevent concurrent seeding (race condition causes duplicates)
+  const lockKey = "services:seed_lock";
+  const lockAcquired = await redis.set(lockKey, "1", { nx: true, ex: 30 });
+  if (!lockAcquired) {
+    // Another instance is seeding, wait briefly and return
+    await new Promise((r) => setTimeout(r, 2000));
+    return;
   }
 
-  // Seed all services
-  const seedPipeline = redis.pipeline();
-  for (let i = 0; i < DEFAULT_SERVICES.length; i++) {
-    const def = DEFAULT_SERVICES[i];
-    const id = crypto.randomUUID();
-    const now = new Date().toISOString();
-    const service: ServicePage = {
-      id,
-      title: def.title,
-      slug: def.slug,
-      content: def.content || "",
-      excerpt: def.shortDesc,
-      cover_image_url: def.cover_image_url || null,
-      order: i + 1,
-      is_published: true,
-      icon: def.icon,
-      shortDesc: def.shortDesc,
-      longDesc: def.longDesc,
-      features: def.features,
-      standards: def.standards,
-      applications: def.applications,
-      created_at: now,
-      updated_at: now,
-    };
-    seedPipeline.set(KEYS.service(id), JSON.stringify(service));
-    seedPipeline.set(KEYS.serviceBySlug(def.slug), id);
-    seedPipeline.zadd(KEYS.servicesAll, { score: i + 1, member: id });
+  try {
+    // Double-check after acquiring lock
+    const versionAfterLock = await redis.get<number>(KEYS.servicesSeedVersion);
+    if (versionAfterLock === SERVICES_SEED_VERSION) return;
+
+    // Clear old data
+    const existingIds = await redis.zrange<string[]>(KEYS.servicesAll, 0, -1);
+    if (existingIds.length > 0) {
+      const cleanPipeline = redis.pipeline();
+      for (const id of existingIds) {
+        const svc = await redis.get<string>(KEYS.service(id));
+        if (svc) {
+          try {
+            const parsed = typeof svc === "string" ? JSON.parse(svc) : svc;
+            cleanPipeline.del(KEYS.serviceBySlug(parsed.slug));
+          } catch { /* ignore */ }
+        }
+        cleanPipeline.del(KEYS.service(id));
+      }
+      cleanPipeline.del(KEYS.servicesAll);
+      await cleanPipeline.exec();
+    }
+
+    // Seed all services
+    const seedPipeline = redis.pipeline();
+    for (let i = 0; i < DEFAULT_SERVICES.length; i++) {
+      const def = DEFAULT_SERVICES[i];
+      const id = crypto.randomUUID();
+      const now = new Date().toISOString();
+      const service: ServicePage = {
+        id,
+        title: def.title,
+        slug: def.slug,
+        content: def.content || "",
+        excerpt: def.shortDesc,
+        cover_image_url: def.cover_image_url || null,
+        order: i + 1,
+        is_published: true,
+        icon: def.icon,
+        shortDesc: def.shortDesc,
+        longDesc: def.longDesc,
+        features: def.features,
+        standards: def.standards,
+        applications: def.applications,
+        created_at: now,
+        updated_at: now,
+      };
+      seedPipeline.set(KEYS.service(id), JSON.stringify(service));
+      seedPipeline.set(KEYS.serviceBySlug(def.slug), id);
+      seedPipeline.zadd(KEYS.servicesAll, { score: i + 1, member: id });
+    }
+    seedPipeline.set(KEYS.servicesSeedVersion, SERVICES_SEED_VERSION);
+    await seedPipeline.exec();
+  } finally {
+    await redis.del(lockKey);
   }
-  seedPipeline.set(KEYS.servicesSeedVersion, SERVICES_SEED_VERSION);
-  await seedPipeline.exec();
 }
 
 export async function updateServicePage(
@@ -864,7 +881,7 @@ const DEFAULT_SUBPRODUCTS: Array<{
       slug: "konvansiyonel-yangin-alarm-sistemleri",
       description: "Geleneksel yangın algılama ihtiyaçları için bölgesel tespit sağlayan güvenilir ve uygun maliyetli alarm sistemleri.",
       features: ["Bölgesel (Zon) bazlı algılama", "Düşük ilk yatırım maliyeti", "Kolay bakım ve işletme"],
-      cover_image_url: "https://www.elva.com.tr/wp-content/uploads/2024/02/konvansiyel-yangin-algilama-sistem-bilesenleri.jpg",
+      cover_image_url: "",
     },
     {
       serviceSlug: "yangin-algilama-ve-ihbar-sistemleri",
@@ -872,7 +889,7 @@ const DEFAULT_SUBPRODUCTS: Array<{
       slug: "adresli-yangin-alarm-sistemleri",
       description: "Yangının tam noktasal yerini bildiren, gelişmiş senaryo altyapısına sahip akıllı algılama sistemleri.",
       features: ["Noktasal tespit (Dedektör bazlı)", "Gelişmiş entegrasyon", "Hata ve kirlilik uyarısı"],
-      cover_image_url: "https://www.elva.com.tr/wp-content/uploads/2024/02/adresli-yangin-algilama-sistemleri-20191018-2.jpg",
+      cover_image_url: "",
     },
     {
       serviceSlug: "yangin-algilama-ve-ihbar-sistemleri",
@@ -880,7 +897,7 @@ const DEFAULT_SUBPRODUCTS: Array<{
       slug: "isin-tipi-beam-dedektorler",
       description: "Yüksek tavanlı ve geniş hacimli alanlarda duman algılaması için kullanılan kızılötesi ışınlı dedektörler.",
       features: ["Geniş alan kapsamı", "Yüksek tavanlara uygun", "Hızlı tepki süresi"],
-      cover_image_url: "https://www.kesfedin.com/img/fireray-3000-101-112080-0.jpg",
+      cover_image_url: "",
     },
     {
       serviceSlug: "yangin-algilama-ve-ihbar-sistemleri",
@@ -888,7 +905,7 @@ const DEFAULT_SUBPRODUCTS: Array<{
       slug: "kablo-tipi-dedektorler",
       description: "Zorlu endüstriyel ortamlarda doğrusal sıcaklık artışını algılayan lineer dedektörler.",
       features: ["Doğrusal ısı algılama", "Zorlu ortam direnci", "Kablo galerileri için ideal"],
-      cover_image_url: "https://www.elva.com.tr/wp-content/uploads/2024/02/elva-kablo-tipi-dedektorler-4.jpg",
+      cover_image_url: "",
     },
     {
       serviceSlug: "yangin-algilama-ve-ihbar-sistemleri",
@@ -896,7 +913,7 @@ const DEFAULT_SUBPRODUCTS: Array<{
       slug: "hava-orneklemeli-algilama-sistemleri",
       description: "Aktif hava emişi ile ortamdaki çok küçük duman partiküllerini tespit ederek en erken uyarıyı sağlayan sistemler.",
       features: ["Çok erken uyarı (ASD)", "Aktif hava emişi", "Veri merkezleri için ideal"],
-      cover_image_url: "https://www.elva.com.tr/wp-content/uploads/2024/02/hava-orneklemeli-sistem-20191018-2-1.jpg",
+      cover_image_url: "",
     },
     {
       serviceSlug: "yangin-algilama-ve-ihbar-sistemleri",
@@ -904,7 +921,7 @@ const DEFAULT_SUBPRODUCTS: Array<{
       slug: "alev-dedektorleri",
       description: "UV/IR teknolojileri kullanarak dumansız alevleri saliseler içinde tespit eden yüksek hızlı dedektörler.",
       features: ["UV / IR sensörler", "Anında tepki süresi", "Yanıcı sıvı/gaz tesisleri"],
-      cover_image_url: "https://www.elva.com.tr/wp-content/uploads/2024/02/adresli-yangin-algilama-sistemleri-200.jpg",
+      cover_image_url: "",
     },
 
     // ─── Gaz Algılama Sistemleri ───
@@ -914,7 +931,7 @@ const DEFAULT_SUBPRODUCTS: Array<{
       slug: "atex-ve-ex-proof-ekipman-secimi",
       description: "Tehlikeli bölgelerde (Zone 0, Zone 1, Zone 2) kullanılacak tüm dedektörler ve ekipmanlar ATEX/IECEx normlarına tam uyumlu seçilmelidir.",
       features: ["ATEX / IECEx Sertifikalı", "Patlayıcı Ortamlara Uygun", "Zone 0, 1, 2 Uyumluluğu"],
-      cover_image_url: "https://www.elva.com.tr/wp-content/smush-webp/2026/02/gaz-algilama-sistemleri-image__3___-1024x817.jpg.webp",
+      cover_image_url: "",
     },
 
     // ─── Kıvılcım Algılama Söndürme ───
@@ -924,7 +941,7 @@ const DEFAULT_SUBPRODUCTS: Array<{
       slug: "filtre-sistemleri-siklonlar-silolar",
       description: "Toz tutma üniteleri, torbalı filtreler, siklon ayırıcılar ve hammadde/ürün depolama siloları için kıvılcım algılama çözümleri.",
       features: ["Toz Tutma Üniteleri", "Torbalı Filtreler", "Depolama Siloları"],
-      cover_image_url: "https://www.elva.com.tr/wp-content/uploads/2024/02/kivilcim-sondurme.jpeg",
+      cover_image_url: "",
     },
     {
       serviceSlug: "kivilcim-algilama-sondurme",
@@ -932,7 +949,7 @@ const DEFAULT_SUBPRODUCTS: Array<{
       slug: "pres-sistemleri-ve-parcalayicilar",
       description: "Yüksek mekanik sürtünme riskinin bulunduğu presler, kırıcılar, shredder (parçalayıcı) sistemleri için güvenlik.",
       features: ["Presler", "Kırıcılar", "Shredder Sistemleri"],
-      cover_image_url: "https://www.elva.com.tr/wp-content/uploads/2024/02/kivilcim-sondurme.jpeg",
+      cover_image_url: "",
     },
     {
       serviceSlug: "kivilcim-algilama-sondurme",
@@ -940,7 +957,7 @@ const DEFAULT_SUBPRODUCTS: Array<{
       slug: "sogutucular-ve-konveyorler",
       description: "Ürün soğutma tamburları/kuleleri, bantlı ve pnömatik sevk konveyörleri için kıvılcım algılama çözümleri.",
       features: ["Soğutma Tamburları", "Bantlı Konveyörler", "Pnömatik Sevk"],
-      cover_image_url: "https://www.elva.com.tr/wp-content/uploads/2024/03/endustriyel-kimya-3.jpg",
+      cover_image_url: "",
     },
     {
       serviceSlug: "kivilcim-algilama-sondurme",
@@ -948,7 +965,7 @@ const DEFAULT_SUBPRODUCTS: Array<{
       slug: "degirmenler-ve-elekler",
       description: "Öğütme, kırma ve eleme proseslerinin yürütüldüğü ünitelerde güvenliği en üst düzeye çıkaran sistemler.",
       features: ["Öğütme Prosesleri", "Kırma İşlemleri", "Eleme Üniteleri"],
-      cover_image_url: "https://www.elva.com.tr/wp-content/uploads/2024/02/kivilcim-sondurme.jpeg",
+      cover_image_url: "",
     },
 
     // ─── Görüntü Tabanlı Yangın Algılama ───
@@ -958,7 +975,7 @@ const DEFAULT_SUBPRODUCTS: Array<{
       slug: "akilli-video-analiz-sistemleri",
       description: "Yangın durumunun anında doğrulanması ve gözle tespit edilmesi için gelişmiş video analiz algoritmaları.",
       features: ["Anında Doğrulama", "Olay Öncesi ve Sonrası Kayıt", "Duman ve Alev Analizi"],
-      cover_image_url: "https://via.placeholder.com/800x400?text=Video+Analiz",
+      cover_image_url: "",
     },
 
     // ─── Exproof Çözümler ───
@@ -968,7 +985,7 @@ const DEFAULT_SUBPRODUCTS: Array<{
       slug: "ex-proof-yangin-algilama-sistemleri",
       description: "Tehlikeli sahalarda güvenli yangın algılama sağlayan patlamaya dayanıklı sistemler.",
       features: ["Zone 0, 1, 2 Uyumlu", "Kıvılcım Sızdırmaz Yapı", "Yüksek Emniyet"],
-      cover_image_url: "https://via.placeholder.com/800x400?text=Ex-Proof+Algilama",
+      cover_image_url: "",
     },
     {
       serviceSlug: "exproof-cozumler",
@@ -981,7 +998,7 @@ const DEFAULT_SUBPRODUCTS: Array<{
         "Video analiz ve uzaktan izleme",
         "ATEX/IECEx sertifikalı ekipmanlar",
       ],
-      cover_image_url: "https://via.placeholder.com/800x400?text=Ex-Proof+Kamera",
+      cover_image_url: "",
     },
     {
       serviceSlug: "exproof-cozumler",
@@ -994,7 +1011,7 @@ const DEFAULT_SUBPRODUCTS: Array<{
         "Aydınlatma askıları ve aksesuarları",
         "ATEX/IECEx sertifikalı ürünler",
       ],
-      cover_image_url: "https://via.placeholder.com/800x400?text=Ex-Proof+Aydinlatma",
+      cover_image_url: "",
     },
 
     // ─── Yangın Söndürme Sistemleri ───
@@ -1004,7 +1021,7 @@ const DEFAULT_SUBPRODUCTS: Array<{
       slug: "gazli-sondurme-sistemleri",
       description: "Kritik ve değerli varlıkların yangına karşı korunmasında tercih edilen temiz gazlı söndürme sistemleri.",
       features: ["HFC227ea (FM-200) / HFC125", "FK-5-1-12 (Novec 1230)", "Inert Gazlar", "Karbondioksit (CO2)"],
-      cover_image_url: "https://via.placeholder.com/800x400?text=Gazli+Sondurme",
+      cover_image_url: "",
     },
     {
       serviceSlug: "yangin-sondurme-sistemleri",
@@ -1012,7 +1029,7 @@ const DEFAULT_SUBPRODUCTS: Array<{
       slug: "kopuklu-sondurme-sistemleri",
       description: "Su ile söndürülmesi mümkün olmayan yoğun yanıcı/parlayıcı kimyasal maddelerin veya yakıt yangınlarının söndürülmesinde tercih edilir.",
       features: ["Düşük Genleşmeli", "Orta Genleşmeli", "Yüksek Genleşmeli"],
-      cover_image_url: "https://via.placeholder.com/800x400?text=Kopuklu+Sondurme",
+      cover_image_url: "",
     },
     {
       serviceSlug: "yangin-sondurme-sistemleri",
@@ -1020,7 +1037,7 @@ const DEFAULT_SUBPRODUCTS: Array<{
       slug: "sulu-sondurme-sistemleri",
       description: "Endüstriyel tesisler için sprinkler, baskın ve ön tepkimeli sulu söndürme altyapıları.",
       features: ["Sprinkler (Yağmurlama)", "Baskın (Deluge)", "Ön Tepkimeli (Preaction)", "Su Sisi (Watermist)"],
-      cover_image_url: "https://via.placeholder.com/800x400?text=Sulu+Sondurme",
+      cover_image_url: "",
     },
     {
       serviceSlug: "yangin-sondurme-sistemleri",
@@ -1028,7 +1045,7 @@ const DEFAULT_SUBPRODUCTS: Array<{
       slug: "pano-ici-sondurme-sistemleri",
       description: "Sadece belirli bir boyuttaki kabin ve elektrik panolarının içten korunması için tasarlanmış kompakt sistemler.",
       features: ["İndirekt Pano İçi", "Direkt Pano İçi", "Plastik Boru (Tubing) Teknolojisi"],
-      cover_image_url: "https://via.placeholder.com/800x400?text=Pano+Ici+Sondurme",
+      cover_image_url: "",
     },
 
     // ─── Patlamadan Korunma ───
@@ -1038,7 +1055,7 @@ const DEFAULT_SUBPRODUCTS: Array<{
       slug: "patlama-kapaklari",
       description: "Patlama anında oluşan yüksek basıncı güvenli bir alana tahliye ederek ekipman ve tesisin zarar görmesini engelleyen pasif koruma sistemleridir.",
       features: ["Basınç Tahliyesi", "Pasif Koruma", "Hasar Önleme"],
-      cover_image_url: "https://via.placeholder.com/800x400?text=Patlama+Kapaklari",
+      cover_image_url: "",
     },
     {
       serviceSlug: "patlamadan-korunma",
@@ -1046,7 +1063,7 @@ const DEFAULT_SUBPRODUCTS: Array<{
       slug: "alevsiz-tahliye",
       description: "Patlama basıncını ve alevi bina içinde veya kapalı mekanlarda güvenli bir şekilde sönümleyerek dışarıya alev yayılmasını önleyen sistemlerdir.",
       features: ["İç Mekan Uyumluluğu", "Alev Yutucu", "Güvenli Sönümleme"],
-      cover_image_url: "https://via.placeholder.com/800x400?text=Alevsiz+Tahliye",
+      cover_image_url: "",
     },
     {
       serviceSlug: "patlamadan-korunma",
@@ -1054,7 +1071,7 @@ const DEFAULT_SUBPRODUCTS: Array<{
       slug: "patlama-izolasyonu",
       description: "Patlamanın basınç ve alev dalgasının boru hatları üzerinden diğer proses ekipmanlarına sıçramasını engeller.",
       features: ["Geri Dönüşsüz Vanalar", "Kimyasal Bariyerler", "Hızlı Kapanan Vanalar"],
-      cover_image_url: "https://via.placeholder.com/800x400?text=Patlama+Izolasyonu",
+      cover_image_url: "",
     },
     {
       serviceSlug: "patlamadan-korunma",
@@ -1062,7 +1079,7 @@ const DEFAULT_SUBPRODUCTS: Array<{
       slug: "patlama-sonumleme-elevex",
       description: "Patlamayı milisaniyeler içinde algılayıp söndüren sistemler ve yüksek elevatörler için özel Elevex çözümleri.",
       features: ["Milisaniyelik Tepki", "Özel Sönümlendiriciler", "Dikey Taşıma Koruma"],
-      cover_image_url: "https://via.placeholder.com/800x400?text=Sonumleme+ve+Elevex",
+      cover_image_url: "",
     },
 
     // ─── Aşırı Basınçtan Korunma ───
@@ -1072,7 +1089,7 @@ const DEFAULT_SUBPRODUCTS: Array<{
       slug: "patlama-diskleri-ve-aksesuarlari",
       description: "Tehlikeli basınç artışlarını anında tahliye ederek sistemin patlamasını engelleyen basınç emniyet diskleri.",
       features: ["İleri/Geri Yönlü Diskler", "Hijyenik ve Özel Tip", "Grafit Diskler", "Uyarı Sensörleri"],
-      cover_image_url: "https://via.placeholder.com/800x400?text=Patlama+Diskleri",
+      cover_image_url: "",
     },
 
     // ─── Servis ve Bakım Hizmetleri ───
@@ -1082,7 +1099,7 @@ const DEFAULT_SUBPRODUCTS: Array<{
       slug: "yangin-ve-patlama-risk-analizi",
       description: "Tesis genelinde olası yangın ve patlama risklerinin önceden tespiti ve teknik değerlendirme hizmetleri.",
       features: ["Risk Değerlendirmesi", "Mevzuatlara Uyum", "Acil Durum Senaryoları"],
-      cover_image_url: "https://via.placeholder.com/800x400?text=Risk+Analizi",
+      cover_image_url: "",
     },
     {
       serviceSlug: "servis-ve-bakim-hizmetleri",
@@ -1090,7 +1107,7 @@ const DEFAULT_SUBPRODUCTS: Array<{
       slug: "toz-patlamasi-laboratuvar-testleri",
       description: "Endüstriyel tozların patlayıcılık karakteristiklerinin laboratuvar ortamında test edilerek belirlenmesi.",
       features: ["Karakteristik Analizi", "Tasarım Kriteri Belirleme", "Laboratuvar Testleri"],
-      cover_image_url: "https://via.placeholder.com/800x400?text=Laboratuvar+Testi",
+      cover_image_url: "",
     },
     {
       serviceSlug: "servis-ve-bakim-hizmetleri",
@@ -1098,7 +1115,7 @@ const DEFAULT_SUBPRODUCTS: Array<{
       slug: "saha-muhendislik-ve-periyodik-bakim",
       description: "Sistemlerin işletme ömrü boyunca yüksek performansla çalışmasını garanti altına alan teknik bakım ve saha destek hizmetleri.",
       features: ["Saha Keşfi", "Süpervizörlük", "Periyodik Bakım", "Eğitim"],
-      cover_image_url: "https://via.placeholder.com/800x400?text=Saha+Muhendislik",
+      cover_image_url: "",
     },
   ];
 
@@ -1111,54 +1128,70 @@ async function ensureSubProducts(): Promise<void> {
   // Make sure services are seeded first
   await ensureServicePages();
 
-  // Clear ALL old subproducts before reseeding
-  const allServices = await redis.zrange<string[]>(KEYS.servicesAll, 0, -1);
-  const cleanPipeline = redis.pipeline();
-  for (const serviceId of allServices) {
-    const subIds = await redis.zrange<string[]>(KEYS.subProductsByService(serviceId), 0, -1);
-    for (const subId of subIds) {
-      const sub = await redis.get<string>(KEYS.subProduct(subId));
-      if (sub) {
-        try {
-          const parsed = typeof sub === "string" ? JSON.parse(sub) : sub;
-          cleanPipeline.del(KEYS.subProductBySlug(parsed.slug));
-        } catch { /* ignore */ }
+  // Use a lock to prevent concurrent seeding
+  const lockKey = "subproducts:seed_lock";
+  const lockAcquired = await redis.set(lockKey, "1", { nx: true, ex: 30 });
+  if (!lockAcquired) {
+    await new Promise((r) => setTimeout(r, 2000));
+    return;
+  }
+
+  try {
+    // Double-check after acquiring lock
+    const versionAfterLock = await redis.get<number>(KEYS.subProductsSeedVersion);
+    if (versionAfterLock === SUBPRODUCTS_SEED_VERSION) return;
+
+    // Clear ALL old subproducts before reseeding
+    const allServices = await redis.zrange<string[]>(KEYS.servicesAll, 0, -1);
+    const cleanPipeline = redis.pipeline();
+    for (const serviceId of allServices) {
+      const subIds = await redis.zrange<string[]>(KEYS.subProductsByService(serviceId), 0, -1);
+      for (const subId of subIds) {
+        const sub = await redis.get<string>(KEYS.subProduct(subId));
+        if (sub) {
+          try {
+            const parsed = typeof sub === "string" ? JSON.parse(sub) : sub;
+            cleanPipeline.del(KEYS.subProductBySlug(parsed.slug));
+          } catch { /* ignore */ }
+        }
+        cleanPipeline.del(KEYS.subProduct(subId));
       }
-      cleanPipeline.del(KEYS.subProduct(subId));
+      cleanPipeline.del(KEYS.subProductsByService(serviceId));
     }
-    cleanPipeline.del(KEYS.subProductsByService(serviceId));
-  }
-  await cleanPipeline.exec();
+    await cleanPipeline.exec();
 
-  // Seed sub-products
-  const seedPipeline = redis.pipeline();
-  for (let i = 0; i < DEFAULT_SUBPRODUCTS.length; i++) {
-    const def = DEFAULT_SUBPRODUCTS[i];
-    // Resolve serviceId from slug
-    const serviceId = await redis.get<string>(KEYS.serviceBySlug(def.serviceSlug));
-    if (!serviceId) continue;
+    // Seed sub-products
+    const seedPipeline = redis.pipeline();
+    for (let i = 0; i < DEFAULT_SUBPRODUCTS.length; i++) {
+      const def = DEFAULT_SUBPRODUCTS[i];
+      // Resolve serviceId from slug
+      const serviceId = await redis.get<string>(KEYS.serviceBySlug(def.serviceSlug));
+      if (!serviceId) continue;
 
-    const id = `sub-${def.slug}`;
-    const now = new Date().toISOString();
-    const subProduct: SubProduct = {
-      id,
-      serviceId,
-      title: def.title,
-      slug: def.slug,
-      description: def.description,
-      features: def.features,
-      order: i + 1,
-      is_published: true,
-      cover_image_url: def.cover_image_url || null,
-      created_at: now,
-      updated_at: now,
-    };
-    seedPipeline.set(KEYS.subProduct(id), JSON.stringify(subProduct));
-    seedPipeline.set(KEYS.subProductBySlug(def.slug), id);
-    seedPipeline.zadd(KEYS.subProductsByService(serviceId), { score: i + 1, member: id });
+      const id = `sub-${def.slug}`;
+      const now = new Date().toISOString();
+      const subProduct: SubProduct = {
+        id,
+        serviceId,
+        title: def.title,
+        slug: def.slug,
+        description: def.description,
+        features: def.features,
+        order: i + 1,
+        is_published: true,
+        cover_image_url: def.cover_image_url || null,
+        created_at: now,
+        updated_at: now,
+      };
+      seedPipeline.set(KEYS.subProduct(id), JSON.stringify(subProduct));
+      seedPipeline.set(KEYS.subProductBySlug(def.slug), id);
+      seedPipeline.zadd(KEYS.subProductsByService(serviceId), { score: i + 1, member: id });
+    }
+    seedPipeline.set(KEYS.subProductsSeedVersion, SUBPRODUCTS_SEED_VERSION);
+    await seedPipeline.exec();
+  } finally {
+    await redis.del(lockKey);
   }
-  seedPipeline.set(KEYS.subProductsSeedVersion, SUBPRODUCTS_SEED_VERSION);
-  await seedPipeline.exec();
 }
 
 export async function getSubProductById(id: string): Promise<SubProduct | null> {

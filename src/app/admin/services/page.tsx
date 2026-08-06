@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { getAllServicePages } from "@/lib/db";
 import { format } from "date-fns";
+export const dynamic = 'force-dynamic';
 import { tr } from "date-fns/locale";
 import { ServicesAdminClient } from "@/components/admin/services-admin-client";
 

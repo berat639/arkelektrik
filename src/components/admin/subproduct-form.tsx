@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { toast } from "sonner";
+import { UploadDropzone } from "@/lib/uploadthing";
 
 interface SubProductFormProps {
   serviceId: string;
@@ -138,16 +139,41 @@ export function SubProductForm({ serviceId, initialData }: SubProductFormProps) 
         />
       </div>
 
-      {/* Cover Image URL */}
+      {/* Cover Image Upload */}
       <div>
-        <label className="block text-sm font-medium text-gray-700 mb-1">Kapak Görseli URL</label>
-        <input
-          type="text"
-          value={formData.cover_image_url}
-          onChange={(e) => setFormData((prev) => ({ ...prev, cover_image_url: e.target.value }))}
-          className="w-full border border-gray-300 rounded-md px-3 py-2 focus:ring-2 focus:ring-red-500 focus:border-transparent"
-          placeholder="https://..."
-        />
+        <label className="block text-sm font-medium text-gray-700 mb-1">Kapak Görseli</label>
+        {formData.cover_image_url ? (
+          <div className="relative inline-block">
+            <img
+              src={formData.cover_image_url}
+              alt="Kapak"
+              className="w-full max-w-md rounded-lg border border-gray-200"
+            />
+            <button
+              type="button"
+              onClick={() => setFormData((prev) => ({ ...prev, cover_image_url: "" }))}
+              className="absolute top-2 right-2 px-3 py-1 bg-red-600 text-white text-xs rounded-md hover:bg-red-700 font-medium"
+            >
+              Kaldır
+            </button>
+          </div>
+        ) : (
+          <UploadDropzone
+            endpoint="subProductImage"
+            onClientUploadComplete={(res) => {
+              if (res?.[0]) {
+                setFormData((prev) => ({
+                  ...prev,
+                  cover_image_url: res[0].ufsUrl,
+                }));
+                toast.success("Görsel yüklendi");
+              }
+            }}
+            onUploadError={(error) => {
+              toast.error(`Yükleme hatası: ${error.message}`);
+            }}
+          />
+        )}
       </div>
 
       {/* Features */}

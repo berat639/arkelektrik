@@ -828,13 +828,16 @@ export async function getAllServicePages(): Promise<ServicePage[]> {
   if (!ids.length) return [];
 
   const services = await Promise.all(ids.map((id) => getServicePageById(id)));
-  // Deduplicate by slug (keep first occurrence)
+  // Deduplicate by slug (keep last occurrence because seed script appends)
+  const validServices = services.filter(Boolean) as ServicePage[];
+  const reversed = [...validServices].reverse();
   const seen = new Set<string>();
-  return (services.filter(Boolean) as ServicePage[]).filter((s) => {
+  const deduplicated = reversed.filter((s) => {
     if (seen.has(s.slug)) return false;
     seen.add(s.slug);
     return true;
   });
+  return deduplicated.reverse();
 }
 
 export async function getPublishedServicePages(): Promise<ServicePage[]> {

@@ -11,6 +11,8 @@ const STANDARDS = [
   { name: "ISO", description: "International Organization for Standardization", logo: "/%C4%B1so.png" },
   { name: "UL", description: "UL Listed", logo: "/ul.png" },
   { name: "EN", description: "European Standards", logo: "/en-logo.jpg" },
+  { name: "ATEX", description: "ATEX Certified", logo: "/atex.png" },
+  { name: "SIL", description: "Safety Integrity Level", logo: "/sil.png" },
 ];
 
 export function FixedStandards() {
@@ -35,27 +37,27 @@ export function FixedStandards() {
           </p>
         </div>
 
-        <div className={`grid grid-cols-3 md:grid-cols-4 lg:grid-cols-7 gap-3 animate-on-scroll delay-100 ${isVisible ? "is-visible" : ""}`}>
+        <div className={`grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 animate-on-scroll delay-100 ${isVisible ? "is-visible" : ""}`}>
           {STANDARDS.map((std, index) => (
             <div
               key={index}
-              className="relative bg-gray-100 border border-gray-200 px-3 py-4 flex flex-col items-center justify-center text-center hover:border-ark-red/30 hover:bg-white hover:shadow-lg transition-all duration-300 group"
+              className="relative bg-gray-100 border border-gray-200 px-4 py-6 flex flex-col items-center justify-center text-center hover:border-ark-red/30 hover:bg-white hover:shadow-lg transition-all duration-300 group"
               style={{
-                clipPath: "polygon(0 0, calc(100% - 8px) 0, 100% 8px, 100% 100%, 8px 100%, 0 calc(100% - 8px))"
+                clipPath: "polygon(0 0, calc(100% - 10px) 0, 100% 10px, 100% 100%, 10px 100%, 0 calc(100% - 10px))"
               }}
             >
               {/* Logo */}
-              <div className="relative w-10 h-10 mb-2 flex items-center justify-center">
+              <div className="relative w-full h-16 mb-4 flex items-center justify-center">
                 <Image
                   src={std.logo}
                   alt={std.name}
-                  width={40}
-                  height={40}
-                  className="object-contain max-h-10 w-auto"
+                  width={96}
+                  height={64}
+                  className="object-contain max-h-16 w-auto"
                 />
               </div>
 
-              <div className="text-xs font-heading font-bold text-gray-900 tracking-wider">
+              <div className="text-sm font-heading font-bold text-gray-900 tracking-wider">
                 {std.name}
               </div>
             </div>

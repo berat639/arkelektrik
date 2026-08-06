@@ -41,7 +41,7 @@ export function FixedStandards() {
           {STANDARDS.map((std, index) => (
             <div
               key={index}
-              className="relative bg-gray-100 border border-gray-200 px-4 py-6 flex flex-col items-center justify-center text-center hover:border-ark-red/30 hover:bg-white hover:shadow-lg transition-all duration-300 group"
+              className="relative bg-white border border-gray-200 px-4 py-6 flex flex-col items-center justify-center text-center hover:border-ark-red/30 hover:shadow-lg transition-all duration-300 group"
               style={{
                 clipPath: "polygon(0 0, calc(100% - 10px) 0, 100% 10px, 100% 100%, 10px 100%, 0 calc(100% - 10px))"
               }}

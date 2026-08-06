@@ -14,8 +14,8 @@ export function CtaBanner({ settings }: CtaBannerProps) {
           alt="Industrial"
           className="w-full h-full object-cover"
         />
-        <div className="absolute inset-0 bg-gradient-to-br from-ark-red-muted/90 via-ark-red/60 to-ark-red-muted/80" />
-        <div className="absolute inset-0 bg-gradient-to-r from-ark-red/10 via-transparent to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-br from-ark-red-muted/80 via-ark-red/40 to-ark-red-muted/70" />
+        <div className="absolute inset-0 bg-gradient-to-r from-ark-red/5 via-transparent to-transparent" />
       </div>
 
       <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-ark-red via-ark-red/40 to-transparent" />
